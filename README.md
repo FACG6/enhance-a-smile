@@ -1,4 +1,4 @@
-# enhance-a-smile
+
 # **__Enhance a Smile__**
 
 ## Problem Statement
