@@ -15,8 +15,8 @@ A web-app that :
  - As a user, I can sign in and sign up.
  - As a user, I can make a donation from the donating button and enter all information about clothes.
  - As a user, I can make a request as a poor man and enter all the information about the clothes which he needs.
- - As a user, I can make a request as a middle man to help other and enter all information about people who want to help them.
- - As a user, I cant contact the team of the web site.
+ - As a user, I can make a request as a helper man to help other and enter all information about people who want to help them.
+ - As a user, I can contact with the team of the web site.
 
 ## Tech Stack
 - express.js
