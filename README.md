@@ -2,7 +2,7 @@
 # **__Enhance a Smile__**
 
 ## Problem Statement
-People in need in Gaza can't afford the basics of life such as clothes in which causes a huge problem for them that can devastate them, with a majority of people with spare clothes and don't know what to do with it.
+Poor people in Gaza can't afford the basics of life such as clothes in which causes a huge problem for them that can devastate them, with a majority of people with spare clothes and don't know what to do with it.
 
 ## Solution
 A web-app that :
