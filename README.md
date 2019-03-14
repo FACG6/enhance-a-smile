@@ -1,4 +1,4 @@
-# enhance-a-smile
+
 # **__Enhance a Smile__**
 
 ## Problem Statement
@@ -27,7 +27,7 @@ A web-app that :
 You can find our prototype [here](https://www.figma.com/proto/RvAaKnPgDcdgUyQop38lt6tg/Give-a-Smile?node-id=0%3A1&scaling=scale-down)
 
 ## Team
-- Jamalat Shamalakh
+- Jamalat Shamallakh
 - AminKing Al-Akhsham
 - Abdallah Ammar
 - Ahmed Abdellatif
