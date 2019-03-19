@@ -2,13 +2,11 @@ const express = require('express');
 const { join } = require('path');
 const exphbs = require('express-handlebars');
 const cookieParser = require('cookie-parser');
-const expressValidator = require('express-validator');
 const { router } = require('./controllers/index');
 require('dotenv').config();
 
 const app = express();
 app.disable('x-powered-by');
-app.use(expressValidator());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
