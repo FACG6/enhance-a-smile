@@ -14,8 +14,9 @@
       conduct hospital programs to improve organ donation rate in India.
     </p>
     <div class="main--header-request">
-      <div class="main--header-forYou">For You</div>
-      <div class="main--header-helpOthers">Help Others</div>
+      <button class="main--header-forYou"><a href="/request" class="main--header-forYouA">For You</a></button>
+      <button class="main--header-helpOthers"><a href="/help-other" class="main--header-helpOthersA">Help
+          Others</a></button>
     </div>
   </section>
 
@@ -57,31 +58,36 @@
 <footer class="footer">
   <h1>Contact Us</h1>
   <div class="footer--contactUs">
-    <label for="fullName">
-      <input id="fullName" class="footer--contactUsFullName" type="text" placeholder="Enter your Full Name ...">
-    </label>
-    <label for="email">
-      <input id="email" class="footer--contactUsEmail" type="email" placeholder="Enter your Email ...">
-    </label>
-    <label for="message">
-      <input id="message" class="footer--contactUsMessage" type="text" placeholder="Enter your Message ...">
-    </label>
+    <form class="footer--contactUs-form">
+      <label for="fullName">
+        <input id="fullName" class="footer--contactUs-formFullName" type="text" name="fullName" placeholder="Enter your Full Name ..." required>
+      </label>
+      <label for="email">
+        <input id="email" class="footer--contactUs-formEmail" type="email" name="email" placeholder="Enter your Email ..." required>
+      </label>
+      <label for="message">
+        <input id="message" class="footer--contactUs-formMessage" type="text" name="message" placeholder="Enter your Message ..." required>
+      </label>
+        <button class="footer--contactUs-formSubmit" type="submit">Submit</button>
+    </form>
   </div>
 
   <div class="footer--register">
     <h3 class="footer--registerMsg1">REGISTER FOR OUR EMAIL UPDATE </h3>
     <h5 class="footer--registerMsg2">Stay up to date with our events</h5>
+    <form class="footer--form">
     <label for="registerEmail">
-      <input id="registerEmail" class="footer--registerEmail" type="email" placeholder="Enter your Email ...">
+      <input id="registerEmail" class="footer--form-registerEmail" type="email" name="email" placeholder="Enter your Email ..." required>
     </label>
+    </form>
     <h3 class="footer--connectionMsg1">STAY CONNECTED WITH</h3>
     <h4 class="footer--connectionMsg2">Enhance A Smile</h5>
-    <div class="footer--connectionIcons">
-      <img alt="facebook" src="icons/facebook.png">
-      <img alt="googlePlus" src="icons/google-plus.png">
-      <img alt="twitter" src="icons/twitter.png">
-      <img alt="telegram" src="icons/telegram.png">
-      <img alt="youtube" src="icons/youtube.png">
-    </div>
+      <div class="footer--connectionIcons">
+        <img alt="facebook" src="icons/facebook.png">
+        <img alt="googlePlus" src="icons/google-plus.png">
+        <img alt="twitter" src="icons/twitter.png">
+        <img alt="telegram" src="icons/telegram.png">
+        <img alt="youtube" src="icons/youtube.png">
+      </div>
   </div>
 </footer>
