@@ -1,7 +1,5 @@
-const formContactUs = document.querySelector('.footer--contactUs-form');
-const registerEmail = document.querySelector('.footer--form');
-const popup = document.querySelector('.popup');
-const poppUpDone = document.querySelector('.popup--content-Done');
+const { formContactUs, registerEmail } = querySelectors(['formContactUs', 'registerEmail'], ['.footer--contactUs-form', '.footer--form']);
+
 
 formContactUs.addEventListener('submit', (e) => {
   e.preventDefault();
