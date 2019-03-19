@@ -6,7 +6,7 @@
   "scripts": {
     "test": "tape test/server.test.js | tap-spec && tape test/database.test.js | tap-spec",
     "start": "node ./src/index.js",
-    "dev":"nodemon ./src/index.js"
+    "dev": "nodemon ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
+    "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.4.19"
   },
