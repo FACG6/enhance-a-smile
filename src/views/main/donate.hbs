@@ -1,23 +1,67 @@
-<main class="donate">
-  <section class="donate--taps">
-    <div class="donate--taps--peronalInfo">
-      <h2 class="donate--taps--peronalInfo_text">Personal Details</h2>
+<main class="main">
+
+  <section class="taps">
+    <div class="taps--peronalInfo">
+      <h2 class="taps--text">Personal Details</h2>
     </div>
-    <div class="donate--taps--donationInfo">
-      <h2 class="donate--taps--peronalInfo_text">Donation Details</h2>
+    <div class="taps--donationInfo">
+      <h2 class="taps--text">Donation Details</h2>
     </div>
   </section>
-  <section class="donate--form">
-    <form>
-      <label for="name" class="donate--form--label">Full Name</label>
-      <input type="text" name="fullName" id="name" class="donate--form--name, input">
-      <label for="phone" class="donate--form--label">Phone Number</label>
-      <input type="number" name="phoneNumber" id="phone" class="donate--form--number, input">
-      <label for="city" class="donate--form--label">City Name</label>
-      <input type="text" name="cityName" id="city" class="donate--form--city, input">
-      <label for="email" class="donate--form--label">Email</label>
-      <input type="email" name="email" id="email" class="donate--form--email, input">
-      <input type="submit" class="donate--form--submit">
+
+  <section class="personal">
+    <form class="personal--form">
+      <label for="name" class="label">Full Name</label>
+      <input type="text" name="fullName" id="name" class="name input" placeholder="Enter Your Full Name ... " required>
+
+      <label for="phone" class="label">Phone Number</label>
+      <input type="text" name="phoneNumber" id="phone" class="number input" placeholder="Enter Your Phone Number ... " required>
+
+      <label for="city" class="label">City Name</label>
+      <input type="text" name="cityName" id="city" class="city input" placeholder="Enter Your City Name ... " required>
+      <label for="email" class="label">Email</label>
+      <input type="email" name="email" id="email" class="email input" placeholder="Enter Your Email ... " required>
+
+      <input type="button" class="next" value="Next">
     </form>
   </section>
+
+  <section class="donation">
+    <form class="donation--form">
+      <label for="number" class="label">Number Of Pieces</label>
+      <input type="number" name="numberOfClothes" id="number" class="numberOfClothes" required>
+
+      <label for="quality" class="label">Quality of clothes :</label>
+      <div class="qualityCheckBox">
+        <input type="checkbox" name="veryGood" id="quality" class="veryGood checkBox">Very Good
+        <input type="checkbox" name="medium" id="quality" class="medium checkBox">Medium
+        <input type="checkbox" name="low" id="quality" class="low checkBox">Low
+      </div>
+
+      <label for="gender" class="label">Gender :</label>
+      <div class="genderCheckBox">
+        <input type="checkbox" name="men" id="gender" class="men checkBox">Men
+        <input type="checkbox" name="women" id="gender" class="women checkBox">Women
+        <input type="checkbox" name="kids" id="gender" class="kids checkBox">kids
+      </div>
+
+      <label for="season" class="label">Season :</label>
+      <div class="seasonCheckBox">
+        <input type="checkbox" name="summer" id="season" class="summer checkBox">Summer
+        <input type="checkbox" name="spring" id="season" class="spring checkBox">Spring
+        <input type="checkbox" name="winter" id="season" class="winter checkBox">Winter
+        <input type="checkbox" name="autum" id="season" class="autum checkBox">Autum
+      </div>
+
+      <input type="button" class="submit" value="Done">
+    </form>
+
+  </section>
+
+  <section class="popUp">
+    <p class="mainParagraph">Thank you for your generosity, we appreciate what you have done today</p>
+    <input type="button" value="Back To Home" class="back">
+    <p class="secondryParagraph">By using our service you push us a step forward to achieving our vision</p>
+  </section>
+
 </main>
