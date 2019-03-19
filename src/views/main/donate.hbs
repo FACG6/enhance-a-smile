@@ -1,0 +1,71 @@
+<main class="main">
+
+  <section class="taps">
+    <div class="taps--peronalInfo">
+      <h2 class="taps--text">Personal Details</h2>
+    </div>
+    <div class="taps--donationInfo">
+      <h2 class="taps--text">Donation Details</h2>
+    </div>
+  </section>
+
+  <section class="personal">
+    <form class="personal--form">
+      <label for="name" class="label">Full Name</label>
+      <input type="text" name="fullName" id="name" class="name input" placeholder="Enter Your Full Name ... " required>
+      <label for="phone" class="label">Phone Number</label>
+      <input type="text" name="phoneNumber" id="phone" class="number input" placeholder="Enter Your Phone Number ... "
+        required>
+      <label for="city" class="label">City Name</label>
+      <input type="text" name="cityName" id="city" class="city input" placeholder="Enter Your City Name ... " required>
+      <label for="email" class="label">Email</label>
+      <input type="email" name="email" id="email" class="email input" placeholder="Enter Your Email ... " required>
+      <input type="button" class="next" value="Next">
+    </form>
+  </section>
+
+  <section class="donation">
+    <form class="donation--form">
+      <label for="number" class="label">Number Of Pieces</label>
+      <input type="number" name="numberOfClothes" id="number" class="numberOfClothes" placeholder="Enter Number Of Pieces  ... "
+        required>
+      <label for="quality" class="label">Quality of clothes :</label>
+      <div class="qualityCheckBox">
+        <input type="checkbox" name="veryGood" id="veryGood" class="veryGood checkBox">
+        <label for="veryGood" class="labelCheck">Very Good</label>
+        <input type="checkbox" name="medium" id="medium" class="medium checkBox">
+        <label for="medium" class="labelCheck">Medium</label>
+        <input type="checkbox" name="low" id="low" class="low checkBox">
+        <label for="low" class="labelCheck">Low</label>
+      </div>
+      <label for="gender" class="label">Gender :</label>
+      <div class="genderCheckBox">
+        <input type="checkbox" name="men" id="men" class="men checkBox">
+        <label for="men" class="labelCheck">Men</label>
+        <input type="checkbox" name="women" id="women" class="women checkBox">
+        <label for="women" class="labelCheck">Women</label>
+        <input type="checkbox" name="kids" id="kids" class="kids checkBox">
+        <label for="kids" class="labelCheck">Kids</label>
+      </div>
+      <label for="season" class="label">Season :</label>
+      <div class="seasonCheckBox">
+        <input type="checkbox" name="summer" id="summer" class="summer checkBox">
+        <label for="summer" class="labelCheck">Summer</label>
+        <input type="checkbox" name="spring" id="spring" class="spring checkBox">
+        <label for="spring" class="labelCheck">Spring</label>
+        <input type="checkbox" name="winter" id="winter" class="winter checkBox">
+        <label for="winter" class="labelCheck">Winter</label>
+        <input type="checkbox" name="autum" id="autum" class="autum checkBox">
+        <label for="autum" class="labelCheck">Autum</label>
+      </div>
+      <input type="button" class="submit" value="Done">
+    </form>
+  </section>
+
+  <section class="popUp">
+    <p class="mainParagraph">Thank you for your generosity, we appreciate what you have done today</p>
+    <input type="button" value="Back To Home" class="back">
+    <p class="secondryParagraph">By using our service you push us a step forward to achieving our vision</p>
+  </section>
+
+</main>
