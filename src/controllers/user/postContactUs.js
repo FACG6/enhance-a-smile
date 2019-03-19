@@ -1,7 +1,6 @@
 const joi = require('joi');
 
 exports.postContactUs = (request, response) => {
-  console.log(request.body);
   const schema = joi.object().keys({
     email: joi.string().email({ minDomainAtoms: 2 }),
     fullName: joi.string().alphanum().max(30).required(),
@@ -9,7 +8,6 @@ exports.postContactUs = (request, response) => {
   });
   const { email, fullName, message } = request.body;
   const result = joi.validate({ email, fullName, message }, schema);
-  console.log(result);
   if (result.error === null) {
     response.send({ msg: 'done' });
   } else {
