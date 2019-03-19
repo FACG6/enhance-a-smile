@@ -1,0 +1,141 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.taps {
+  display: flex;
+  justify-content: center
+}
+.taps--peronalInfo {
+  background: rgba(0, 131, 38, 0.9);
+  border-radius: 3px 0px 0px 3px;
+  padding: 10px;
+  color: white;
+  font-family: Roboto;
+  font-size: 10px;
+  width: 230px;
+  height: 60px;
+  text-align: center;
+}
+.taps--donationInfo {
+  background: #FFFFFF;
+  border: 2px solid #C4C4C4;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  padding: 10px;
+  font-family: Roboto;
+  color: rgba(0, 131, 38, 0.9);
+  font-size: 10px;
+  width: 230px;
+  height: 60px;
+  text-align: center;
+}
+.taps--text{
+  font-size: 16PX;
+  margin-top: 7px;
+}
+.personal {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+.personal--form {
+  display: flex;
+  flex-direction: column;
+}
+.input::placeholder {
+  font-family: Roboto;
+  color: #BABABA;
+}
+.input {
+  margin: 15px;
+  background: #FFFFFF;
+  border: 2px solid #CFCFCF;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  padding: 10px;
+  width: 375px;
+  height: 50px;
+}
+.label {
+  width: 300px;
+  padding-left: 30px;
+}
+.next {
+  background: rgba(0, 131, 38, 0.9);
+  border-radius: 5px;
+  width: 70px;
+  height: 35px;
+  align-self: center;
+}
+.donation {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+.donation--form {
+  display: flex;
+  flex-direction: column;
+}
+.qualityCheckBox,
+.genderCheckBox,
+.seasonCheckBox {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px;
+  background: #FFFFFF;
+  border: 2px solid #CFCFCF;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  padding: 10px;
+  width: 375px;
+  height: 50px;
+}
+.submit {
+  background: rgba(0, 131, 38, 0.9);
+  border-radius: 5px;
+  width: 70px;
+  height: 35px;
+  align-self: center;
+}
+.popUp {
+  text-align: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 230px;
+  border-radius: 5px;
+  padding: 20px;
+  
+}
+.mainParagraph {
+  width: 310px;
+}
+.secondryParagraph {
+  width: 310px;
+  font-size: 12px;
+}
+.back {
+  background: rgba(0, 131, 38, 0.9);
+  border-radius: 5px;
+  width: 130px;
+  height: 35px;
+  align-self: center;
+}
+.popUpBack{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4)
+}
+.hide{
+  display: none;
+}
