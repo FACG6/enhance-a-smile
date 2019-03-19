@@ -1,19 +1,12 @@
 const express = require('express');
-const requestForYou=require('./main/request')
-const { donate } = require('./main/donat')
+const { request } = require('./main/request');
+const { getHomePage } = require('./user/getHomePage');
+const { donate } = require('./main/donat');
 
 const router = express.Router();
-router.get('/request',requestForYou.get)
-
+router.get('/request', request);
 router.get('/donate', donate);
+router.get('/', getHomePage);
 
-
-
-
-
-
-const { donate } = require('./main/donat')
-
-router.get('/donate', donate);
 
 module.exports = { router };
