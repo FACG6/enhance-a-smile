@@ -1,5 +1,7 @@
 const formContactUs = document.querySelector('.footer--contactUs-form');
 const registerEmail = document.querySelector('.footer--form');
+const popup = document.querySelector('.popup');
+const poppUpDone = document.querySelector('.popup--content-Done');
 
 formContactUs.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -13,7 +15,12 @@ formContactUs.addEventListener('submit', (e) => {
     body: JSON.stringify(dataContactUs),
     headers: { 'Content-Type': 'application/json' },
   })
-    .then(res => console.log(res.json()));
+    .then(res => res.json())
+    .then((res) => {
+      if (res.msg === 'done') {
+        popup.style.display = 'flex';
+      }
+    });
 });
 
 registerEmail.addEventListener('submit', (e) => {
@@ -28,5 +35,15 @@ registerEmail.addEventListener('submit', (e) => {
     body: JSON.stringify(dataregisterEmail),
     headers: { 'Content-Type': 'application/json' },
   })
-    .then(res => console.log(res.json()));
+    .then(res => res.json())
+    .then((res) => {
+      if (res.msg === 'done') {
+        popup.style.display = 'flex';
+      }
+    });
+});
+
+poppUpDone.addEventListener('click', (e) => {
+  e.preventDefault();
+  popup.style.display = 'none';
 });
