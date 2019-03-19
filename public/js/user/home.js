@@ -12,8 +12,7 @@ formContactUs.addEventListener('submit', (e) => {
     method: 'POST',
     body: JSON.stringify(dataContactUs),
     headers: { 'Content-Type': 'application/json' },
-  })
-    .then(res => console.log(res.json()));
+  });
 });
 
 registerEmail.addEventListener('submit', (e) => {
@@ -27,6 +26,5 @@ registerEmail.addEventListener('submit', (e) => {
     method: 'POST',
     body: JSON.stringify(dataregisterEmail),
     headers: { 'Content-Type': 'application/json' },
-  })
-    .then(res => console.log(res.json()));
+  });
 });
