@@ -1,7 +1,6 @@
 const joi = require('joi');
 
 exports.postRegisterEmail = (request, response) => {
-  console.log(request.body);
   const schema = joi.object().keys({
     email: joi.string().email({ minDomainAtoms: 2 }),
   });
