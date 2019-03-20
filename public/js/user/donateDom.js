@@ -75,6 +75,8 @@ firstTap.addEventListener('click', (e) => {
   e.preventDefault();
   personalSection.classList.remove('hide');
   donatSection.classList.add('hide');
+  firstTap.classList.replace('taps--donationInfo', 'taps--peronalInfo');
+  secundtTap.classList.replace('taps--peronalInfo', 'taps--donationInfo');
   valditMsg.textContent = '';
 });
 
