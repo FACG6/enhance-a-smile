@@ -96,26 +96,22 @@ section {
 .main--header-description-request {
   align-self: flex-end;
   margin-right: 50px;
-  ;
   margin-top: 150px;
 }
 
-.main--header-forYou, .main--header-helpOthers {
+.main--header button {
   background: #008326;
   font-size: 30px;
   width: 200px;
   height: 60px;
   border: none;
   border-radius: 5px;
-}
-
-.main--header-forYouA, .main--header-helpOthersA {
   color: white;
   text-decoration: none;
 }
 
 .main--header-ourVision {
-  background-image: linear-gradient( to left bottom, rgba(1, 1, 1, 0.5), rgba(1, 1, 1, 0.5)), url("https://files.gitter.im/ahmedisam99/pYeg/donation.jpg");
+  background-image: linear-gradient( to left bottom, rgba(1, 1, 1, 0.5), rgba(1, 1, 1, 0.5)), url("../../images/donation.jpg");
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -130,7 +126,7 @@ section {
   margin-bottom: 50px;
 }
 
-.main--header-ourVision-p, .main--header-ourVision-p {
+.main--header-ourVision p {
   font-size: 30px;
   color: #aeffc9;
   font-weight: 300;
@@ -143,13 +139,13 @@ section {
   padding: 140px 50px 120px 50px;
 }
 
-.main--header-how-h1, .main--header-how-h1 {
+.main--header-how h1 {
   font-size: 80px;
   color: #008326;
   font-weight: 300;
 }
 
-.main--header-how-p, .main--header-how-p {
+.main--header-how p {
   font-size: 30px;
   color: black;
   font-weight: 300;
@@ -181,7 +177,7 @@ section {
   font-size: 70px;
 }
 
-.footer--contactUs-formFullName, .footer--contactUs-formEmail, .footer--contactUs-formMessage, .footer--form-registerEmail {
+.footer--contactUs-contactUs {
   width: 100%;
   height: 50px;
   box-sizing: border-box;
