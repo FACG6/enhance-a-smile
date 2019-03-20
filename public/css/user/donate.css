@@ -20,6 +20,7 @@
   width: 230px;
   height: 60px;
   text-align: center;
+  cursor: pointer;
 }
 .taps--donationInfo {
   background: #FFFFFF;
