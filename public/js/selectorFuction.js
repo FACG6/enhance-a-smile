@@ -2,9 +2,8 @@
 const querySelectors = (selectorsName, enterTypeofQuery) => {
   if (selectorsName.length !== enterTypeofQuery.length) return false;
   const elements = {};
-  enterTypeofQuery.map((e, i) => {
+  enterTypeofQuery.forEach((e, i) => {
     elements[selectorsName[i]] = document.querySelector(e);
-    return '';
   });
   return elements;
 };
