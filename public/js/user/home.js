@@ -23,6 +23,12 @@ formContactUs.addEventListener('submit', (e) => {
   formData.forEach((value, key) => {
     dataContactUs[key] = value;
   });
+  const { email, fullName, message } = dataContactUs;
+  if (!email || /^[\w.-_%+]+@[\w.-]+\.[a-zA-Z]{2,4}$/.test(email) === false || fullName || message) {
+    popup.style.display = 'flex';
+    popupMassage.innerText = 'Please enter validation values in inputes';
+    return false;
+  }
   fetch('/contact-us', {
     method: 'POST',
     body: JSON.stringify(dataContactUs),
@@ -35,6 +41,7 @@ formContactUs.addEventListener('submit', (e) => {
         popupMassage.innerText = 'We received your message, we will send you our response soon.';
       }
     });
+  return true;
 });
 
 registerEmail.addEventListener('submit', (e) => {
@@ -44,6 +51,12 @@ registerEmail.addEventListener('submit', (e) => {
   formData.forEach((value, key) => {
     dataregisterEmail[key] = value;
   });
+  const { email } = dataregisterEmail;
+  if (/^[\w.-_%+]+@[\w.-]+\.[a-zA-Z]{2,4}$/.test(email) === false) {
+    popup.style.display = 'flex';
+    popupMassage.innerText = 'Please enter valid email';
+    return false;
+  }
   fetch('/register', {
     method: 'POST',
     body: JSON.stringify(dataregisterEmail),
@@ -56,6 +69,7 @@ registerEmail.addEventListener('submit', (e) => {
         popupMassage.innerText = 'We received your Email, we will send you our news.';
       }
     });
+  return true;
 });
 
 poppUpDone.addEventListener('click', (e) => {
