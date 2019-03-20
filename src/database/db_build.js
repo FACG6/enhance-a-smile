@@ -22,12 +22,12 @@ const runDatabaseBuild = () => {
       {
         full_name: 'Ahmed Abdellatif',
         email: 'ahmed@gmail.com',
-        password: '123',
+        password: '$2a$08$UScJCp.8EzjH24297R4r2eoarSyI7ZbvSMkrnEjlJ4seeduxJbilC',
       },
       {
         full_name: 'Abdallah Ammar',
         email: 'abdallah@gmail.com',
-        password: '123',
+        password: '$2a$08$bW2Pm5ERGNJfxIVgAIyExukAnKcf1idVpuculyzFNRpzTGP5r6qg2',
       },
     ]);
 
