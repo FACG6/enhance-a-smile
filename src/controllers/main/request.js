@@ -2,7 +2,7 @@
 const { join } = require('path');
 
 exports.request = (req, res) => {
-  res.render('main/request', {
+  res.render(join('main', 'request'), {
     css: [join('user', 'request')],
     js: ['selectorFuction', join('user', 'requestDom')],
   });
