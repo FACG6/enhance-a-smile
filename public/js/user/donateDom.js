@@ -1,15 +1,41 @@
-const personalSection = document.querySelector('.personal');
-const personalForm = document.querySelector('.personal--form');
-const next = document.querySelector('.next');
-const donatSection = document.querySelector('.donation');
-const donationForm = document.querySelector('.donation--form');
-const done = document.querySelector('.submit');
-const popUpSection = document.querySelector('.popUpBack');
-const back = document.querySelector('.back');
-const firstTap = document.querySelector('.taps--peronalInfo');
-const secundtTap = document.querySelector('.taps--donationInfo');
-const valditMsg = document.querySelector('.validMsg');
-const validMsgDonation = document.querySelector('.validMsgDonation');
+const {
+  personalSection,
+  personalForm,
+  next,
+  donatSection,
+  donationForm,
+  done,
+  popUpSection,
+  back,
+  firstTap,
+  secundtTap,
+  valditMsg,
+  validMsgDonation,
+} = querySelectors(['personalSection',
+  'personalForm',
+  'next',
+  'donatSection',
+  'donationForm',
+  'done',
+  'popUpSection',
+  'back',
+  'firstTap',
+  'secundtTap',
+  'valditMsg',
+  'validMsgDonation',
+], ['.personal',
+  '.personal--form',
+  '.next',
+  '.donation',
+  '.donation--form',
+  '.submit',
+  '.popUpBack',
+  '.back',
+  '.taps--peronalInfo',
+  '.taps--donationInfo',
+  '.validMsg',
+  '.validMsgDonation',
+]);
 
 next.addEventListener('click', (e) => {
   e.preventDefault();
@@ -18,7 +44,13 @@ next.addEventListener('click', (e) => {
   formData.forEach((value, key) => {
     personalInformation[key] = value;
   });
-  if (!personalInformation.fullName || !personalInformation.phoneNumber || !personalInformation.cityName || !personalInformation.email) {
+  const {
+    fullName,
+    phoneNumber,
+    cityName,
+    email,
+  } = personalInformation;
+  if (!fullName || !phoneNumber || !cityName || !email) {
     valditMsg.textContent = 'All fiels is required';
   } else {
     personalSection.classList.add('hide');
@@ -35,7 +67,20 @@ done.addEventListener('click', (e) => {
   formDatavalid.forEach((value, key) => {
     personalInformationq[key] = value;
   });
-  if (!personalInformationq.numberOfClothes || !(personalInformationq.veryGood || personalInformationq.medium || personalInformationq.low) || !(personalInformationq.men || personalInformationq.women || personalInformationq.kids) || !(personalInformationq.summer || personalInformationq.spring || personalInformationq.winter || personalInformationq.autum)) {
+  const {
+    numberOfClothes,
+    veryGood,
+    medium,
+    low,
+    men,
+    women,
+    kids,
+    summer,
+    spring,
+    winter,
+    autum,
+  } = personalInformationq;
+  if (!numberOfClothes || !(veryGood || medium || low) || !(men || women || kids) || !(summer || spring || winter || autum)) {
     validMsgDonation.textContent = 'All fiels rqured';
   } else {
     const formData2 = new FormData(personalForm);
