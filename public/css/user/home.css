@@ -9,6 +9,7 @@ html {
 
 body {
   overflow-x: hidden;
+  font-family: Roboto;
 }
 
 section {
@@ -29,7 +30,6 @@ section {
 
 .main--header-titleWhite {
   font-weight: 300;
-  font-family: Roboto;
   display: flex;
   background: rgb(0, 131, 38);
   color: white;
@@ -42,7 +42,6 @@ section {
 
 .main--header-titleGreen {
   font-weight: 300;
-  font-family: Roboto;
   display: flex;
   background: white;
   color: #008326;
@@ -96,7 +95,8 @@ section {
 
 .main--header-description-request {
   align-self: flex-end;
-  margin-right: 100px;
+  margin-right: 50px;
+  ;
   margin-top: 150px;
 }
 
@@ -126,7 +126,6 @@ section {
 .main--header-ourVision-h1, .main--header-ourVision-h1 {
   font-size: 80px;
   color: white;
-  font-family: Roboto;
   font-weight: 300;
   margin-bottom: 50px;
 }
@@ -134,7 +133,6 @@ section {
 .main--header-ourVision-p, .main--header-ourVision-p {
   font-size: 30px;
   color: #aeffc9;
-  font-family: Roboto;
   font-weight: 300;
 }
 
@@ -148,14 +146,12 @@ section {
 .main--header-how-h1, .main--header-how-h1 {
   font-size: 80px;
   color: #008326;
-  font-family: Roboto;
   font-weight: 300;
 }
 
 .main--header-how-p, .main--header-how-p {
   font-size: 30px;
   color: black;
-  font-family: Roboto;
   font-weight: 300;
 }
 
@@ -276,6 +272,10 @@ section {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.popup-show {
+  display: flex;
+}
+
 .popup--content {
   background-color: #fefefe;
   padding: 20px;
@@ -288,7 +288,6 @@ section {
 }
 
 .popup--content-message {
-  font-family: Roboto;
   font-weight: 400;
   color: #393939;
   margin-bottom: 20px;

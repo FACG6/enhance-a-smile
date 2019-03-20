@@ -1,10 +1,6 @@
+/* eslint-disable no-undef */
 const {
-  formContactUs,
-  registerEmail,
-  popup,
-  popupMassage,
-  poppUpDone,
-  // eslint-disable-next-line no-undef
+  formContactUs, registerEmail, popup, popupMassage, poppUpDone,
 } = querySelectors(
   ['formContactUs', 'registerEmail', 'popup', 'popupMassage', 'poppUpDone'],
   [
@@ -24,8 +20,8 @@ formContactUs.addEventListener('submit', (e) => {
     dataContactUs[key] = value;
   });
   const { email, fullName, message } = dataContactUs;
-  if (!email || /^[\w.-_%+]+@[\w.-]+\.[a-zA-Z]{2,4}$/.test(email) === false || fullName || message) {
-    popup.style.display = 'flex';
+  if (!email || !validateEamil(email) || !fullName || !message) {
+    popup.classList.add('popup-show');
     popupMassage.innerText = 'Please enter validation values in inputes';
     return false;
   }
@@ -37,7 +33,7 @@ formContactUs.addEventListener('submit', (e) => {
     .then(res => res.json())
     .then((res) => {
       if (res.msg === 'done') {
-        popup.style.display = 'flex';
+        popup.classList.add('popup-show');
         popupMassage.innerText = 'We received your message, we will send you our response soon.';
       }
     });
@@ -52,8 +48,8 @@ registerEmail.addEventListener('submit', (e) => {
     dataregisterEmail[key] = value;
   });
   const { email } = dataregisterEmail;
-  if (/^[\w.-_%+]+@[\w.-]+\.[a-zA-Z]{2,4}$/.test(email) === false) {
-    popup.style.display = 'flex';
+  if (!validateEamil(email)) {
+    popup.classList.add('popup-show');
     popupMassage.innerText = 'Please enter valid email';
     return false;
   }
@@ -65,7 +61,7 @@ registerEmail.addEventListener('submit', (e) => {
     .then(res => res.json())
     .then((res) => {
       if (res.msg === 'done') {
-        popup.style.display = 'flex';
+        popup.classList.add('popup-show');
         popupMassage.innerText = 'We received your Email, we will send you our news.';
       }
     });
@@ -74,5 +70,5 @@ registerEmail.addEventListener('submit', (e) => {
 
 poppUpDone.addEventListener('click', (e) => {
   e.preventDefault();
-  popup.style.display = 'none';
+  popup.classList.remove('popup-show');
 });
