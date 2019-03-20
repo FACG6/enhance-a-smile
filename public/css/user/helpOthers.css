@@ -98,6 +98,11 @@
   padding-top: 0;
   color: #333;
 }
+.error {
+  color: rgb(107, 0, 0);
+  font-family: roboto;
+  text-align: center;
+}
 .popUp {
   text-align: center;
   background-color: white;
