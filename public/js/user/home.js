@@ -12,6 +12,8 @@ const {
   ],
 );
 
+const inputs = document.querySelectorAll('.footer-inputs');
+
 formContactUs.addEventListener('submit', (e) => {
   e.preventDefault();
   const formData = new FormData(formContactUs);
@@ -35,6 +37,7 @@ formContactUs.addEventListener('submit', (e) => {
       if (res.msg === 'done') {
         popup.classList.add('popup-show');
         popupMassage.innerText = 'We received your message, we will send you our response soon.';
+        innerTextRemove(Array.from(inputs).slice(0, 3));
       }
     });
   return true;
@@ -63,6 +66,7 @@ registerEmail.addEventListener('submit', (e) => {
       if (res.msg === 'done') {
         popup.classList.add('popup-show');
         popupMassage.innerText = 'We received your Email, we will send you our news.';
+        innerTextRemove(Array.from(inputs).slice(3, 4));
       }
     });
   return true;
