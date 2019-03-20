@@ -3,14 +3,15 @@
     <div class="nav--form--sections">Personal Details</div>
     <div class="nav--form--sections">Your Request</div>
   </section>
-  <section class="personal--details">
-    <form>
+  <section >
+    <form class="personal--details">
       <label for="full--name" class="personal--details--label">Full Name :</label>
       <input
         type="text"
         placeholder="Enter Your Full Name ... "
         id="full--name"
         class="full--name--form input"
+        name="fullName"
       />
 
       <label for="phone--number" class="personal--details--label">Phone Number :</label>
@@ -19,6 +20,7 @@
         placeholder="Enter Your Phone Nmuber ... "
         id="phone--number"
         class="phone--number--form input"
+        name="phoneNumber"
       />
 
       <label for="city--name" class="personal--details--label">City Name :</label>
@@ -27,6 +29,7 @@
         placeholder="Enter Your City Name ... "
         id="city--name"
         class="city--nam--form input"
+        name="cityName"
       />
 
       <label for="street--name" class="personal--details--label">Street Name :</label>
@@ -35,6 +38,7 @@
         placeholder="Enter Your City Name ... "
         id="street--name"
         class="street--name--form input"
+        name="streetName"
       />
       <input
         type="button"
@@ -46,7 +50,7 @@
     </form>
   </section>
   <section class="your--request">
-    <form>
+    <form class="your--request">
       <label for="number--of--pieces" class="your--request--label">Number of pieces :</label>
       <input
         type="text"
