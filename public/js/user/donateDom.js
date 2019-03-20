@@ -8,35 +8,61 @@ const popUpSection = document.querySelector('.popUpBack');
 const back = document.querySelector('.back');
 const firstTap = document.querySelector('.taps--peronalInfo');
 const secundtTap = document.querySelector('.taps--donationInfo');
+const valditMsg = document.querySelector('.validMsg');
+const validMsgDonation = document.querySelector('.validMsgDonation');
 
 next.addEventListener('click', (e) => {
   e.preventDefault();
-  personalSection.classList.add('hide');
-  donatSection.classList.remove('hide');
-  firstTap.classList.replace('taps--peronalInfo', 'taps--donationInfo');
-  secundtTap.classList.replace('taps--donationInfo', 'taps--peronalInfo');
+  const formData = new FormData(personalForm);
+  const personalInformation = {};
+  formData.forEach((value, key) => {
+    personalInformation[key] = value;
+  });
+  if (!personalInformation.fullName || !personalInformation.phoneNumber || !personalInformation.cityName || !personalInformation.email) {
+    valditMsg.textContent = 'All fiels is required';
+  } else {
+    personalSection.classList.add('hide');
+    donatSection.classList.remove('hide');
+    firstTap.classList.replace('taps--peronalInfo', 'taps--donationInfo');
+    secundtTap.classList.replace('taps--donationInfo', 'taps--peronalInfo');
+  }
 });
 
 done.addEventListener('click', (e) => {
   e.preventDefault();
-  const farmData2 = new FormData(personalForm);
-  const personalInformation = {};
-  farmData2.forEach((value, key) => {
-    personalInformation[key] = value;
+  const formDatavalid = new FormData(donationForm);
+  const personalInformationq = {};
+  formDatavalid.forEach((value, key) => {
+    personalInformationq[key] = value;
   });
-  const farmData = new FormData(donationForm);
-  farmData.forEach((value, key) => {
-    personalInformation[key] = value;
-  });
-  popUpSection.classList.remove('hide');
-  fetch('/donate', {
-    method: 'POST',
-    body: JSON.stringify(personalInformation),
-    credentials: 'same-origin',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  if (!personalInformationq.numberOfClothes || !(personalInformationq.veryGood || personalInformationq.medium || personalInformationq.low) || !(personalInformationq.men || personalInformationq.women || personalInformationq.kids) || !(personalInformationq.summer || personalInformationq.spring || personalInformationq.winter || personalInformationq.autum)) {
+    validMsgDonation.textContent = 'All fiels rqured';
+  } else {
+    const formData2 = new FormData(personalForm);
+    const personalInformation = {};
+    formData2.forEach((value, key) => {
+      personalInformation[key] = value;
+    });
+    const formData = new FormData(donationForm);
+    formData.forEach((value, key) => {
+      personalInformation[key] = value;
+    });
+    fetch('/donate', {
+      method: 'POST',
+      body: JSON.stringify(personalInformation),
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(result => result.json())
+      .then((serverRes) => {
+        if (serverRes.msg === 'donation added sucsesfully') {
+          popUpSection.classList.remove('hide');
+        }
+      })
+      .catch(err => console.log(err));
+  }
 });
 
 back.addEventListener('click', (e) => {
