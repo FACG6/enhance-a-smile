@@ -1,10 +1,8 @@
-// const personalDetails = document.querySelector('.personal--details');
-const next = document.querySelector('.next--button');
 const {
   pesonalSection, requestSection,
-  personalDetails, yourRequest, fullNameSpan, phoneNumberSpan, cityNameSpan, streetNameSpan, requestSubmit,
-} = querySelectors(['pesonalSection', 'requestSection', 'personalDetails', 'yourRequest', 'fullNameSpan', 'phoneNumberSpan', 'cityNameSpan', 'streetNameSpan', 'requestSubmit'], ['.pesonal--section', '.request--section', '.personal--details', '.your--request', '.full--name-span', '.phone--number-span', '.city--name-span', '.street--name-span', '.request--submit']);
-
+  personalDetails, yourRequest, fullNameSpan, phoneNumberSpan, cityNameSpan, streetNameSpan, requestSubmit, popUpSection, next,
+} = querySelectors(['pesonalSection', 'requestSection', 'personalDetails', 'yourRequest', 'fullNameSpan', 'phoneNumberSpan', 'cityNameSpan', 'streetNameSpan', 'requestSubmit', 'popUpSection', 'next'], ['.pesonal--section', '.request--section', '.personal--details', '.your--request', '.full--name-span', '.phone--number-span', '.city--name-span', '.street--name-span', '.request--submit', '.popUpBack', '.next--button']);
+const season = document.querySelector('[name = season]');
 next.addEventListener('click', (e) => {
   e.preventDefault();
   const formData = new FormData(personalDetails);
@@ -33,14 +31,13 @@ next.addEventListener('click', (e) => {
 });
 requestSubmit.addEventListener('click', (e) => {
   e.preventDefault();
-  const formData = new FormData(personalDetails);
+  const personalDetailsForm = new FormData(personalDetails);
   const personalInformation = {};
-  formData.forEach((value, key) => {
+  personalDetailsForm.forEach((value, key) => {
     personalInformation[key] = value.trim();
   });
-  const formData2 = new FormData(yourRequest);
-  console.log(formData2);
-  formData2.forEach((value, key) => {
+  const yourRequestForm = new FormData(yourRequest);
+  yourRequestForm.forEach((value, key) => {
     personalInformation[key] = value;
   });
   fetch('/request', {
@@ -51,5 +48,6 @@ requestSubmit.addEventListener('click', (e) => {
       'Content-Type': 'application/json',
     },
   });
+
   window.location = '/';
 });

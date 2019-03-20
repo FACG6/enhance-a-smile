@@ -9,3 +9,16 @@
 .hide{
     display: none;   
 }
+
+.popUpBack{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4)
+;display: none;
+  }
