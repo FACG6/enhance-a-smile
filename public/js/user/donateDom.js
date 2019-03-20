@@ -50,8 +50,20 @@ next.addEventListener('click', (e) => {
     cityName,
     email,
   } = personalInformation;
-  if (!fullName || !phoneNumber || !cityName || !email) {
-    valditMsg.textContent = 'All fiels is required';
+  if (!fullName) {
+    valditMsg.textContent = 'Please enter your full name';
+  } else if (!phoneNumber) {
+    valditMsg.textContent = 'Please enter your phone number';
+  } else if ((!/^[0-9]{10}$/.test(phoneNumber))) {
+    valditMsg.textContent = 'Please enter a valid phone number';
+  } else if (!cityName) {
+    valditMsg.textContent = 'Please enter your city name';
+  } else if (!email) {
+    valditMsg.textContent = 'Please enter your email';
+  } else if (!email) {
+    valditMsg.textContent = 'Please enter your email';
+  } else if (!(email.includes('@') && email.includes('.'))) {
+    valditMsg.textContent = 'Please enter a valid email';
   } else {
     personalSection.classList.add('hide');
     donatSection.classList.remove('hide');
