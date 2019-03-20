@@ -1,62 +1,68 @@
 <main>
   <section class="nav--form">
-    <div class="nav--form--sections">Personal Details</div>
-    <div class="nav--form--sections">Your Request</div>
+    <div class="nav--form-sections">Personal Details</div>
+    <div class="nav--form-sections">Your Request</div>
   </section>
-  <section >
+  <section class="pesonal--section">
     <form class="personal--details">
-      <label for="full--name" class="personal--details--label">Full Name :</label>
+      <label for="full--name" class="personal--details-label">Full Name :</label>
       <input
         type="text"
         placeholder="Enter Your Full Name ... "
         id="full--name"
-        class="full--name--form input"
+        class="full--name-form input"
         name="fullName"
-      />
+        required
+      /><span class="full--name-span"></span>
 
-      <label for="phone--number" class="personal--details--label">Phone Number :</label>
+      <label for="phone--number" class="personal--details-label">Phone Number :</label>
       <input
         type="text"
         placeholder="Enter Your Phone Nmuber ... "
         id="phone--number"
-        class="phone--number--form input"
+        class="phone--number-form input"
         name="phoneNumber"
-      />
+        required
+      /><span class="phone--number-span"></span>
 
-      <label for="city--name" class="personal--details--label">City Name :</label>
+      <label for="city--name" class="personal--details-label">City Name :</label>
       <input
         type="text"
         placeholder="Enter Your City Name ... "
         id="city--name"
-        class="city--nam--form input"
+        class="city--nam-form input"
         name="cityName"
-      />
+        required
+      /><span class="city--name-span"></span>
 
-      <label for="street--name" class="personal--details--label">Street Name :</label>
+      <label for="street--name" class="personal--details-label">Street Name :</label>
       <input
         type="text"
         placeholder="Enter Your City Name ... "
         id="street--name"
-        class="street--name--form input"
+        class="street--name-form input"
         name="streetName"
-      />
+        required
+      /> <span class="street--name-span"></span>
       <input
         type="button"
         name="Next"
         value="Next"
         id="next--button"
         class="next--button"
+        required
       />
     </form>
   </section>
-  <section class="your--request">
-    <form class="your--request">
-      <label for="number--of--pieces" class="your--request--label">Number of pieces :</label>
+  <section class="request--section">
+    <form class="your--request ">
+      <label for="number--of-pieces" class="your--request-label">Number of pieces :</label>
       <input
         type="text"
         placeholder="Enter number of pieces ... "
-        id="number--of--pieces"
-        class="number--of--pieces input"
+        id="number--of-pieces"
+        class="number--of-pieces input" 
+        name="numberOfPieces"  required
       />
       <div>
         <label for="gender">Gender :</label>
@@ -81,9 +87,10 @@
         type="submit"
         name="submit"
         value="submit"
-        class="donate--submit"
+        class="request--submit"
         id="request--submit"
       />
     </form>
   </section>
+  
 </main>
