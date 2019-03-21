@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/server.test.js | tap-spec && tape test/database.test.js | tap-spec",
+    "test": "tape test/index.js | tap-spec",
     "start": "node ./src/index.js",
     "dev": "nodemon ./src/index.js"
   },
