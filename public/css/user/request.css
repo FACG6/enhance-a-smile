@@ -1,3 +1,115 @@
-
-
-
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.main {
+  margin-top: 85px;
+}
+.nav--form {
+  display: flex;
+  justify-content: center;
+}
+.nav--form-personalDetails {
+  background: rgb(0, 131, 38);
+  border-radius: 3px 0px 0px 3px;
+  padding: 10px;
+  color: white;
+  font-family: Roboto;
+  font-size: 10px;
+  width: 230px;
+  height: 60px;
+  text-align: center;
+}
+.nav--form-yourRequest {
+  background: #ffffff;
+  border: 2px solid #c4c4c4;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  padding: 10px;
+  font-family: Roboto;
+  color: rgb(0, 131, 38, 0.9);
+  font-size: 10px;
+  width: 230px;
+  height: 60px;
+  text-align: center;
+}
+.text--taps {
+  font-size: 16px;
+  margin-top: 7px;
+}
+.pesonal--section {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.personal--details {
+  display: flex;
+  flex-direction: column;
+}
+.input::placeholder {
+  font-family: Roboto;
+  color: #bababa;
+}
+.input {
+  margin: 15px;
+  background: #ffffff;
+  border: 2px solid #cfcfcf;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  padding: 10px;
+  width: 375px;
+  height: 50px;
+}
+.label {
+  width: 300px;
+  padding-left: 30px;
+}
+.validMsg {
+  text-align: center;
+  font-size: 13px;
+  margin: 1px;
+  color: rgb(177, 37, 37);
+}
+.next--button {
+  cursor: pointer;
+  background: rgb(0, 131, 38);
+  border: 1px solid rgba(0, 131, 38, 0.9);
+  color: #fff;
+  font-family: roboto;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  letter-spacing: 1.5px;
+  width: 150px;
+  height: 50px;
+  align-self: center;
+  margin-top: 20px;
+}
+.request--section {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.your--request {
+  display: flex;
+  flex-direction: column;
+}
+.gender-check-box,
+.season--check-box {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px;
+  background: #ffffff;
+  border: 2px solid #cfcfcf;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  padding: 10px;
+  width: 375px;
+  height: 50px;
+}
+.hide {
+  display: none;
+}
+.request--section {
+  display: none;
+}

@@ -1,85 +1,74 @@
-<main>
+<main class="main">
   <section class="nav--form">
-    <div class="nav--form--sections">Personal Details</div>
-    <div class="nav--form--sections">Your Request</div>
+    <div class="nav--form-personalDetails">
+      <h2 class="text--taps">Personal Details</h2>
+    </div>
+    <div class="nav--form-yourRequest">
+      <h2 class="text--taps">Your Request</h2>
+    </div>
   </section>
-  <section class="personal--details">
-    <form>
-      <label for="full--name" class="personal--details--label">Full Name :</label>
-      <input
-        type="text"
-        placeholder="Enter Your Full Name ... "
-        id="full--name"
-        class="full--name--form input"
-      />
+  <section class="pesonal--section">
+    <form class="personal--details">
+      <label for="full--name" class="label">Full Name :</label>
+      <input type="text" placeholder="Enter Your Full Name ... " id="full--name" class="full--name-form input"
+        name="fullName" required /><span class="full--name-span validMsg"></span>
 
-      <label for="phone--number" class="personal--details--label">Phone Number :</label>
-      <input
-        type="text"
-        placeholder="Enter Your Phone Nmuber ... "
-        id="phone--number"
-        class="phone--number--form input"
-      />
+      <label for="phone--number" class="label">Phone Number :</label>
+      <input type="text" placeholder="Enter Your Phone Nmuber ... " id="phone--number" class="phone--number-form input"
+        name="phoneNumber" required /><span class="phone--number-span validMsg"></span>
 
-      <label for="city--name" class="personal--details--label">City Name :</label>
-      <input
-        type="text"
-        placeholder="Enter Your City Name ... "
-        id="city--name"
-        class="city--nam--form input"
-      />
+      <label for="city--name" class="label">City Name :</label>
+      <input type="text" placeholder="Enter Your City Name ... " id="city--name" class="city--nam-form input"
+        name="cityName" required /><span class="city--name-span validMsg"></span>
 
-      <label for="street--name" class="personal--details--label">Street Name :</label>
-      <input
-        type="text"
-        placeholder="Enter Your City Name ... "
-        id="street--name"
-        class="street--name--form input"
-      />
-      <input
-        type="button"
-        name="Next"
-        value="Next"
-        id="next--button"
-        class="next--button"
-      />
+      <label for="street--name" class="label">Street Name :</label>
+      <input type="text" placeholder="Enter Your City Name ... " id="street--name" class="street--name-form input"
+        name="streetName" required /> <span class="street--name-span validMsg"></span>
+      <input type="button" name="Next" value="Next" id="next--button" class="next--button" required />
     </form>
   </section>
-  <section class="your--request">
-    <form>
-      <label for="number--of--pieces" class="your--request--label">Number of pieces :</label>
-      <input
-        type="text"
-        placeholder="Enter number of pieces ... "
-        id="number--of--pieces"
-        class="number--of--pieces input"
-      />
-      <div>
-        <label for="gender">Gender :</label>
-        <input type="checkbox" name="genderWomen" class="gender" id="women" /><lable for="women">Women</lable>
-        <input type="checkbox" name="genderMen" class="gender" id="men"/> <lable for="men">Men</lable>
-        <input type="checkbox" name="genderKids" class="gender" id="kids"/><label for="kids">Kids</label>
+  <section class="request--section">
+    <form class="your--request ">
+      <label for="number--of-pieces" class="your--request-label">Number of pieces :</label>
+      <input type="number" placeholder="Enter number of pieces ... " id="number--of-pieces"
+        class="number--of-pieces input" name="numberOfPieces" required />
+      <label for="gender">Gender :</label>
+      <div class="gender--check-box">
+        <div>
+          <input type="checkbox" name="women" class="gender" id="women" />
+          <lable for="women">Women</lable>
+        </div>
+        <div>
+          <input type="checkbox" name="men" class="gender" id="men" />
+          <lable for="men">Men</lable>
+        </div>
+        <div>
+          <input type="checkbox" name="kids" class="gender" id="kids" />
+          <label for="kids">Kids</label>
+        </div>
       </div>
-      <div>
-          <label for="season">Season :</label>
-          <input type="checkbox" name="seasonWinter" class="season" id="winter"/><label for="winter">Winter</label>
-          <input type="checkbox" name="seasonSummer" class="season" id="summer"/><label for="summer">Summer</label>
-          <input type="checkbox" name="seasonSpring" class="season" id="spring"/><label for="spring">Spring</label>
-          <input type="checkbox" name="seasonAutumn" class="season" id="autumn"/><label for="autumn">Autumn</label>
-      </div>
-      <div>
-          <label for="description">Description <span class="optional">(opthional)</span> :</label >
-          <textarea
-            name="descrption"
-            placeholder="Enter description about your request" ></textarea>
-      </div>
-      <input
-        type="submit"
-        name="submit"
-        value="submit"
-        class="donate--submit"
-        id="request--submit"
-      />
+      <label for="season">Season :</label>
+      <div class="season--check-box">
+        <div>
+          <input type="checkbox" name="winter" class="season" id="winter"  /><label
+            for="winter">Winter</label>
+        </div>
+        <div>
+          <input type="checkbox" name="summer" class="season" id="summer"  /><label
+            for="summer">Summer</label>
+        </div>
+        <div>
+          <input type="checkbox" name="spring" class="season" id="spring" /><label
+            for="spring">Spring</label>
+        </div>
+        <div>
+          <input type="checkbox" name="autumn" class="season" id="autumn" value="autumn" />
+          <label for="autumn">Autumn</label> </div> 
+          </div>
+           <div>
+            <label for="description">Description <span class="optional">(opthional)</span> :</label>
+            <textarea name="descrption" placeholder="Enter description about your request"></textarea>
+        </div>
+        <input type="submit" name="submit" value="submit" class="request--submit" id="request--submit" />
     </form>
   </section>
-</main>
