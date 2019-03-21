@@ -15,7 +15,7 @@ exports.post = (req, res) => {
       fullName: joi
         .string()
         .alphanum()
-        .min(3)
+        .min(6)
         .max(30)
         .required(),
       phoneNumber: joi
