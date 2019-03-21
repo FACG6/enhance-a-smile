@@ -20,6 +20,7 @@
   width: 230px;
   height: 60px;
   text-align: center;
+  cursor: pointer;
 }
 .taps .request-info {
   background: #ffffff;
@@ -33,6 +34,7 @@
   width: 230px;
   height: 60px;
   text-align: center;
+  cursor: pointer;
 }
 .taps-text {
   font-size: 1.5rem;
