@@ -3,19 +3,16 @@ const {
 } = require('path');
 const Joi = require('joi');
 
-const {
-  insertDonation
-} = require('../../database/queries/user/insertDonate');
+const insertDonation = require('../../database/queries/user/insertDonate');
 
 exports.getDonate = (request, response) => {
   response.render(join('main', 'donate'), {
-    js: ['selectorFuction', join('user', 'donateDom')],
+    js: ['domUyils', join('user', 'donateDom')],
     css: [join('user', 'donate'), join('partials', 'homeNav')],
   });
 };
 
 exports.postDonate = (request, response) => {
-  console.log(request.body);
   const schema = Joi.object().keys({
     fullName: Joi.string().alphanum().min(6).max(30)
       .required(),
