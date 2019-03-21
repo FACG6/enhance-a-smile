@@ -29,25 +29,27 @@ const runDatabaseBuild = () => {
       season: ['autum', 'winter'],
     });
 
-    database.collection('admins').insertMany([{
-      full_name: 'Ahmed Abdellatif',
-      email: 'ahmed@gmail.com',
-      password: '$2a$08$UScJCp.8EzjH24297R4r2eoarSyI7ZbvSMkrnEjlJ4seeduxJbilC',
-    },
-    {
-      full_name: 'Abdallah Ammar',
-      email: 'abdallah@gmail.com',
-      password: '$2a$08$UScJCp.8EzjH24297R4r2eoarSyI7ZbvSMkrnEjlJ4seeduxJbilC',
-    },
+    database.collection('admins').insertMany([
+      {
+        full_name: 'Ahmed Abdellatif',
+        email: 'ahmed@gmail.com',
+        password: '$2a$08$UScJCp.8EzjH24297R4r2eoarSyI7ZbvSMkrnEjlJ4seeduxJbilC',
+      },
+      {
+        full_name: 'Abdallah Ammar',
+        email: 'abdallah@gmail.com',
+        password: '$2a$08$UScJCp.8EzjH24297R4r2eoarSyI7ZbvSMkrnEjlJ4seeduxJbilC',
+      },
     ]);
 
-    database
-      .collection('registers')
-      .insertMany([{
+    database.collection('registers').insertMany([
+      {
         email: 'ahmed@gmail.com',
-      }, {
+      },
+      {
         email: 'amin@gmail.com',
-      }]);
+      },
+    ]);
 
     client
       .close()
@@ -57,3 +59,5 @@ const runDatabaseBuild = () => {
 };
 
 runDatabaseBuild();
+
+module.exports = { runDatabaseBuild };
