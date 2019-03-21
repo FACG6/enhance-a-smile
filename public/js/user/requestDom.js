@@ -31,17 +31,26 @@ next.addEventListener('click', (e) => {
 });
 requestSubmit.addEventListener('click', (e) => {
   e.preventDefault();
+
   const personalDetailsForm = new FormData(personalDetails);
   const personalInformation = {};
   personalDetailsForm.forEach((value, key) => {
     personalInformation[key] = value.trim();
   });
   const yourRequestForm = new FormData(yourRequest);
-  // const requestInformation
+  const genders = [];
+  const seasons = [];
   yourRequestForm.forEach((value, key) => {
-    requestInformation[key] = value;
+    if (key === 'kids' || key === 'women' || key === 'men') {
+      genders.push(key);
+      personalInformation.gender = genders;
+    } else if (key === 'winter' || key === 'summer' || key === 'spring' || key === 'autumn') {
+      seasons.push(key);
+      personalInformation.season = seasons;
+    } else {
+      personalInformation[key] = value;
+    }
   });
-  console.log(requestInformation);
   fetch('/request', {
     method: 'POST',
     body: JSON.stringify(personalInformation),
@@ -50,6 +59,5 @@ requestSubmit.addEventListener('click', (e) => {
       'Content-Type': 'application/json',
     },
   });
-
-  window.location = '/';
+  // window.location = '/';
 });
