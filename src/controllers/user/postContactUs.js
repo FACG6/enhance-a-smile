@@ -6,12 +6,10 @@ exports.postContactUs = (request, response) => {
     email: joi.string().email({ minDomainAtoms: 2 }),
     fullName: joi
       .string()
-      .alphanum()
       .max(30)
       .required(),
     message: joi
       .string()
-      .alphanum()
       .required(),
   });
   const { email, fullName, message } = request.body;
@@ -22,11 +20,11 @@ exports.postContactUs = (request, response) => {
   };
   const result = joi.validate({ email, fullName, message }, schema);
   if (result.error === null) {
-    insertQuery('registers', data)
+    insertQuery('contacts', data)
       .then(() => {
         response.send({ msg: 'done' });
       })
-      .catch(() => response.send({ msg: 'done' }));
+      .catch(() => response.send({ msg: 'Not done' }));
   } else {
     response.send({ msg: 'inputs not validate' });
   }
