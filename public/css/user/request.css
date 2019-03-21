@@ -40,7 +40,6 @@
     font-size: 16PX;
     margin-top: 7px;
   }
-
   .pesonal--section {
     margin-top: 30px;
     display: flex;
@@ -97,8 +96,6 @@
     display: flex;
     flex-direction: column;
   }
-
-
 .gender-check-box,
 .season--check-box{
   display: flex;
@@ -118,4 +115,3 @@
 .request--section{
     display: none;
 }
-

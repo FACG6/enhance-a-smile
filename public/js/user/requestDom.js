@@ -6,23 +6,23 @@ const {
 next.addEventListener('click', (e) => {
   e.preventDefault();
   const formData = new FormData(personalDetails);
-  const personalInformation = {};
+  const personalInformation = { 'personal-data': {}, 'request-data': {} };
   formData.forEach((value, key) => {
-    personalInformation[key] = value.trim();
+    personalInformation['personal-data'][key] = value.trim();
   });
-  if (!personalInformation.fullName) {
+  if (!personalInformation['personal-data'].fullName) {
     fullNameSpan.textContent = 'must not empty';
     return false;
-  } if (!personalInformation.phoneNumber) {
+  } if (!personalInformation['personal-data'].phoneNumber) {
     phoneNumberSpan.textContent = 'must not empty';
     return false;
-  } if (!personalInformation.phoneNumber.match(/^[0-9]+$/)) {
+  } if (!personalInformation['personal-data'].phoneNumber.match(/^[0-9]+$/)) {
     phoneNumberSpan.textContent = 'Your phone number not valid';
     return false;
-  } if (!personalInformation.cityName) {
+  } if (!personalInformation['personal-data'].cityName) {
     cityNameSpan.textContent = 'must not empty';
     return false;
-  } if (!personalInformation.streetName) {
+  } if (!personalInformation['personal-data'].streetName) {
     streetNameSpan.textContent = 'must not empty';
     return false;
   }
@@ -33,9 +33,9 @@ requestSubmit.addEventListener('click', (e) => {
   e.preventDefault();
 
   const personalDetailsForm = new FormData(personalDetails);
-  const personalInformation = {};
+  const personalInformation = { 'personal-data': {}, 'request-data': {} };
   personalDetailsForm.forEach((value, key) => {
-    personalInformation[key] = value.trim();
+    personalInformation['personal-data'][key] = value.trim();
   });
   const yourRequestForm = new FormData(yourRequest);
   const genders = [];
@@ -43,12 +43,12 @@ requestSubmit.addEventListener('click', (e) => {
   yourRequestForm.forEach((value, key) => {
     if (key === 'kids' || key === 'women' || key === 'men') {
       genders.push(key);
-      personalInformation.gender = genders;
+      personalInformation['request-data'].gender = genders;
     } else if (key === 'winter' || key === 'summer' || key === 'spring' || key === 'autumn') {
       seasons.push(key);
-      personalInformation.season = seasons;
+      personalInformation['request-data'].season = seasons;
     } else {
-      personalInformation[key] = value;
+      personalInformation['request-data'][key] = value;
     }
   });
   fetch('/request', {
