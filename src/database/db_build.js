@@ -35,7 +35,10 @@ const runDatabaseBuild = () => {
       .collection('registers')
       .insertMany([{ email: 'ahmed@gmail.com' }, { email: 'amin@gmail.com' }]);
 
-    client.close();
+    client
+      .close()
+      .then(() => console.log('done build'))
+      .catch(() => console.log('error in build'));
   });
 };
 

@@ -133,12 +133,13 @@ section {
 .main--header-ourVision {
   background-image: linear-gradient(
       to left bottom,
-      rgba(1, 1, 1, 0.5),
-      rgba(1, 1, 1, 0.5)
+      #00832532,
+      #00832532
     ),
     url("../../images/donation.jpg");
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -153,7 +154,7 @@ section {
 }
 
 .main--header-ourVision p {
-  color: #c7c7c7;
+  color: rgb(0, 0, 0);
   font-size: 1.7rem;
   text-align: justify;
   font-family: roboto;
