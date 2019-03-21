@@ -66,17 +66,16 @@ registerEmail.addEventListener('submit', (e) => {
   })
     .then(res => res.json())
     .then((res) => {
-      if (res.status === 200) {
-        if (res.msg === 'inserted sucssfully') {
-          popup.classList.add('popup-show');
-          popupMassage.innerText = 'We received your Email, we will send you our news.';
-          innerTextRemove(Array.from(emailRegisterInput));
-        } else {
-          popup.classList.add('popup-show');
-          popupMassage.innerText = res.msg;
-        }
+      if (res.msg.msg === 'inserted sucssfully') {
+        popup.classList.add('popup-show');
+        popupMassage.innerText = 'We received your Email, we will send you our news.';
+        innerTextRemove(Array.from(emailRegisterInput));
+      } else if (res.msg.msg === 'there is some error in server please try again later') {
+        popup.classList.add('popup-show');
+        popupMassage.innerText = res.msg.msg;
       } else {
-        popupMassage.innerText = res.msg;
+        popup.classList.add('popup-show');
+        popupMassage.innerText = res.msg.msg;
       }
     })
     .catch(() => {
