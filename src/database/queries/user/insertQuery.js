@@ -1,6 +1,6 @@
 const client = require('../../db_connection');
 
-const insertEmailRegister = (collectionName, objData) => new Promise((resolve, reject) => {
+const insertQuery = (collectionName, objData) => new Promise((resolve, reject) => {
   client.connect((error) => {
     if (error) reject(error);
     const database = client.db('enhance-a-smile-db');
@@ -18,4 +18,4 @@ const insertEmailRegister = (collectionName, objData) => new Promise((resolve, r
   });
 });
 
-module.exports = insertEmailRegister;
+module.exports = insertQuery;

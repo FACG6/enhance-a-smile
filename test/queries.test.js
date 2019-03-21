@@ -1,9 +1,9 @@
 const test = require('tape');
-const insertEmailRegister = require('../src/database/queries/user/insertQuery');
+const insertQuery = require('../src/database/queries/user/insertQuery');
 
 test('test insert query for registers collection', (t) => {
   const email = { email: 'mail.com' };
-  insertEmailRegister('registers', email)
+  insertQuery('registers', email)
     .then((res) => {
       t.equal(
         res.msg.includes('inserted sucssfully'),
