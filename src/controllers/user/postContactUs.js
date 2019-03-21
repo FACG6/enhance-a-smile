@@ -22,9 +22,11 @@ exports.postContactUs = (request, response) => {
   };
   const result = joi.validate({ email, fullName, message }, schema);
   if (result.error === null) {
-    insertQuery('registers', data).then(() => {
-      response.send({ msg: 'done' });
-    });
+    insertQuery('registers', data)
+      .then(() => {
+        response.send({ msg: 'done' });
+      })
+      .catch(() => response.send({ msg: 'done' }));
   } else {
     response.send({ msg: 'inputs not validate' });
   }
