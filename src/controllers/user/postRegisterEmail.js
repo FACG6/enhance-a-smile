@@ -1,5 +1,5 @@
 const joi = require('joi');
-const insertEmailRegister = require('./../../database/queries/user/insertEmailRegister');
+const insertQuery = require('./../../database/queries/user/insertQuery');
 
 exports.postRegisterEmail = (request, response) => {
   const schema = joi.object().keys({
@@ -8,7 +8,7 @@ exports.postRegisterEmail = (request, response) => {
   const { email } = request.body;
   const result = joi.validate({ email }, schema);
   if (result.error === null) {
-    insertEmailRegister(email)
+    insertQuery('registers', email)
       .then()
       .catch();
     response.send({ msg: 'done' });
