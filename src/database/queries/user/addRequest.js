@@ -7,7 +7,6 @@ const insertRequest = requestInformation => new Promise((resolve, reject) => {
     database
       .collection('requests')
       .insertOne(requestInformation);
-    // .catch(err => console.log('err', err));
     resolve({ msg: 'Request added sucssfully' });
     client.close();
   });
