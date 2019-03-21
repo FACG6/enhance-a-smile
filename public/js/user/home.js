@@ -12,7 +12,13 @@ const {
   ],
 );
 
-const inputs = document.querySelectorAll('.footer-inputs');
+const { inputsContactUs, emailRegisterInput } = querySelectorsAll(
+  ['inputsContactUs', 'emailRegisterInput'],
+  ['.footer-inputs', '.footer--form-registerEmail.footer-inputs'],
+);
+
+// const inputsContactUs = document.querySelectorAll('.footer-inputs');
+// const emailRegisterInput = document.querySelectorAll('.footer--form-registerEmail.footer-inputs');
 
 formContactUs.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -24,7 +30,7 @@ formContactUs.addEventListener('submit', (e) => {
   const { email, fullName, message } = dataContactUs;
   if (!email || !validateEamil(email) || !fullName || !message) {
     popup.classList.add('popup-show');
-    popupMassage.innerText = 'Please enter validation values in inputes';
+    popupMassage.innerText = 'Please enter a valid values';
     return false;
   }
   fetch('/contact-us', {
@@ -37,7 +43,7 @@ formContactUs.addEventListener('submit', (e) => {
       if (res.msg === 'done') {
         popup.classList.add('popup-show');
         popupMassage.innerText = 'We received your message, we will send you our response soon.';
-        innerTextRemove(Array.from(inputs).slice(0, 3));
+        innerTextRemove(Array.from(inputsContactUs).slice(0, 3));
       }
     });
   return true;
@@ -66,7 +72,7 @@ registerEmail.addEventListener('submit', (e) => {
       if (res.msg === 'done') {
         popup.classList.add('popup-show');
         popupMassage.innerText = 'We received your Email, we will send you our news.';
-        innerTextRemove(Array.from(inputs).slice(3, 4));
+        innerTextRemove(Array.from(emailRegisterInput));
       }
     });
   return true;
