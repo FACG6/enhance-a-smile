@@ -52,6 +52,8 @@ next.addEventListener('click', (e) => {
   } = personalInformation;
   if (!fullName) {
     valditMsg.textContent = 'Please enter your full name';
+  } else if (fullName.length < 5) {
+    valditMsg.textContent = 'Full name must be at least 6 characters';
   } else if (!phoneNumber) {
     valditMsg.textContent = 'Please enter your phone number';
   } else if ((!/^[0-9]{10}$/.test(phoneNumber))) {
