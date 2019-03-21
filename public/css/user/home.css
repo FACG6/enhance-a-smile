@@ -108,7 +108,7 @@ section {
   width: 50%;
   font-family: rubik;
   font-size: 1.2rem;
-  padding-left: 30px;
+  padding-left: 50px;
   text-align: justify;
 }
 
@@ -154,7 +154,7 @@ section {
 
 .main--header-ourVision p {
   color: #c7c7c7;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   text-align: justify;
   font-family: roboto;
   font-weight: normal;
