@@ -11,31 +11,36 @@ const {
   secundtTap,
   valditMsg,
   validMsgDonation,
-} = querySelectors(['personalSection',
-  'personalForm',
-  'next',
-  'donatSection',
-  'donationForm',
-  'done',
-  'popUpSection',
-  'back',
-  'firstTap',
-  'secundtTap',
-  'valditMsg',
-  'validMsgDonation',
-], ['.personal',
-  '.personal--form',
-  '.next',
-  '.donation',
-  '.donation--form',
-  '.submit',
-  '.popUpBack',
-  '.back',
-  '.taps--peronalInfo',
-  '.taps--donationInfo',
-  '.validMsg',
-  '.validMsgDonation',
-]);
+} = querySelectors(
+  [
+    'personalSection',
+    'personalForm',
+    'next',
+    'donatSection',
+    'donationForm',
+    'done',
+    'popUpSection',
+    'back',
+    'firstTap',
+    'secundtTap',
+    'valditMsg',
+    'validMsgDonation',
+  ],
+  [
+    '.personal',
+    '.personal--form',
+    '.next',
+    '.donation',
+    '.donation--form',
+    '.submit',
+    '.popUpBack',
+    '.back',
+    '.taps--peronalInfo',
+    '.taps--donationInfo',
+    '.validMsg',
+    '.validMsgDonation',
+  ],
+);
 
 next.addEventListener('click', (e) => {
   e.preventDefault();
@@ -45,19 +50,18 @@ next.addEventListener('click', (e) => {
     personalInformation[key] = value;
   });
   const {
-    fullName,
-    phoneNumber,
-    cityName,
-    email,
+    fullName, phoneNumber, cityName, email,
   } = personalInformation;
   if (!fullName) {
     valditMsg.textContent = 'Please enter your full name';
   } else if (!phoneNumber) {
     valditMsg.textContent = 'Please enter your phone number';
-  } else if ((!/^[0-9]{10}$/.test(phoneNumber))) {
+  } else if (!/^[0-9]{10}$/.test(phoneNumber)) {
     valditMsg.textContent = 'Please enter a valid phone number';
   } else if (!cityName) {
     valditMsg.textContent = 'Please enter your city name';
+  } else if (cityName.length < 2) {
+    valditMsg.textContent = 'City name must be at least 3 characters';
   } else if (!email) {
     valditMsg.textContent = 'Please enter your email';
   } else if (!email) {
@@ -89,19 +93,24 @@ done.addEventListener('click', (e) => {
   });
   const {
     numberOfClothes,
-    veryGood,
-    medium,
-    low,
-    men,
-    women,
-    kids,
-    summer,
-    spring,
-    winter,
-    autum,
+    qualityVeryGood,
+    qualityMedium,
+    qualityLow,
+    genderMen,
+    genderWomen,
+    genderKids,
+    seasonSummer,
+    seasonSpring,
+    seasonWinter,
+    seasonAutum,
   } = personalInformationq;
-  if (!numberOfClothes || !(veryGood || medium || low) || !(men || women || kids) || !(summer || spring || winter || autum)) {
-    validMsgDonation.textContent = 'All fiels rqured';
+  if (
+    !numberOfClothes
+    || !(qualityVeryGood || qualityMedium || qualityLow)
+    || !(genderMen || genderWomen || genderKids)
+    || !(seasonSummer || seasonSpring || seasonWinter || seasonAutum)
+  ) {
+    validMsgDonation.textContent = 'All fields are required';
   } else {
     const formData2 = new FormData(personalForm);
     const personalInformation = {};
