@@ -10,6 +10,4 @@ const insertDonation = donateInfo => new Promise((resolve, reject) => {
   });
 });
 
-module.exports = {
-  insertDonation,
-};
+module.exports = insertDonation;
