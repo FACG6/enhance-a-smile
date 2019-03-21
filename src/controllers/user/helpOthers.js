@@ -1,6 +1,6 @@
 const { join } = require('path');
 const joi = require('joi');
-const insertHelpOther = require('./../../database/queries/user/addHelpOthers.js');
+const insertQuery = require('./../../database/queries/user/insertQuery.js');
 
 exports.get = (req, res) => {
   res.render(join('main', 'helpOthers'), {
@@ -50,7 +50,7 @@ exports.post = (req, res) => {
       msg: valid.error.details[0].message,
     });
   } else {
-    insertHelpOther(req.body)
+    insertQuery('help-others', req.body)
       .then(() => {
         res.status(200).end();
       })
