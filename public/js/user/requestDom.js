@@ -2,7 +2,7 @@ const {
   pesonalSection, requestSection,
   personalDetails, yourRequest, fullNameSpan, phoneNumberSpan, cityNameSpan, streetNameSpan, requestSubmit, popUpSection, next,
 } = querySelectors(['pesonalSection', 'requestSection', 'personalDetails', 'yourRequest', 'fullNameSpan', 'phoneNumberSpan', 'cityNameSpan', 'streetNameSpan', 'requestSubmit', 'popUpSection', 'next'], ['.pesonal--section', '.request--section', '.personal--details', '.your--request', '.full--name-span', '.phone--number-span', '.city--name-span', '.street--name-span', '.request--submit', '.popUpBack', '.next--button']);
-const season = document.querySelector('[name = season]');
+// const season = document.querySelector('[name = season]');
 next.addEventListener('click', (e) => {
   e.preventDefault();
   const formData = new FormData(personalDetails);
@@ -37,9 +37,11 @@ requestSubmit.addEventListener('click', (e) => {
     personalInformation[key] = value.trim();
   });
   const yourRequestForm = new FormData(yourRequest);
+  // const requestInformation
   yourRequestForm.forEach((value, key) => {
-    personalInformation[key] = value;
+    requestInformation[key] = value;
   });
+  console.log(requestInformation);
   fetch('/request', {
     method: 'POST',
     body: JSON.stringify(personalInformation),

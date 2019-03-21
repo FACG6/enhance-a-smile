@@ -8,7 +8,7 @@ const { postRequest } = require('./user/postRequest');
 
 const router = express.Router();
 router.get('/request', request);
-router.get('/donate', donate);
+router.get('/donate', getDonate);
 router.get('/', getHomePage);
 router.post('/contact-us', postContactUs);
 router.post('/register', postRegisterEmail);
