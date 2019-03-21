@@ -59,5 +59,4 @@ requestSubmit.addEventListener('click', (e) => {
       'Content-Type': 'application/json',
     },
   });
-  // window.location = '/';
 });
