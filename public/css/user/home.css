@@ -60,18 +60,7 @@ section {
 
 .main--header-starGreen {
   position: absolute;
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
+  clip-path: polygon( 50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
   width: 350px;
   height: 350px;
   background: rgba(0, 131, 38, 0.9);
@@ -80,18 +69,7 @@ section {
 
 .main--header-starGray {
   position: absolute;
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
+  clip-path: polygon( 50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
   transform: matrix(0.97, -0.23, 0.23, 0.97, 0, 0);
   width: 350px;
   height: 350px;
@@ -131,14 +109,10 @@ section {
 }
 
 .main--header-ourVision {
-  background-image: linear-gradient(
-      to left bottom,
-      rgba(1, 1, 1, 0.5),
-      rgba(1, 1, 1, 0.5)
-    ),
-    url("../../images/donation.jpg");
+  background-image: linear-gradient( to left bottom, #00832544, #00832544), url("https://www.qcharity.org/Exportpath/WebStoryMasterBanner/2019/2/0-Photo2019-02-10_11-46-46-AM.jpg");
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -153,7 +127,7 @@ section {
 }
 
 .main--header-ourVision p {
-  color: #c7c7c7;
+  color: black;
   font-size: 1.7rem;
   text-align: justify;
   font-family: roboto;
@@ -224,6 +198,7 @@ section {
   margin-bottom: 0;
   margin-top: 30px;
 }
+
 .contactUs--formMessage {
   height: 150px;
   resize: none;
