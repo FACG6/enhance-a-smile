@@ -13,8 +13,5 @@ router.get('/', getHomePage);
 router.post('/contact-us', postContactUs);
 router.post('/register', postRegisterEmail);
 router.post('/request', postRequest);
-router.route('/donate')
-  .get(getDonate)
-  .post(postDonate);
-
+router.route('/donate');
 module.exports = { router };
