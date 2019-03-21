@@ -109,7 +109,7 @@ section {
 }
 
 .main--header-ourVision {
-  background-image: linear-gradient( to left bottom, #00832532, #00832532), url("../../images/donation.jpg");
+  background-image: linear-gradient( to left bottom, #00832532, #00832532), url('https://www.qcharity.org/Exportpath/WebStoryMasterBanner/2019/2/0-Photo2019-02-10_11-46-46-AM.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
