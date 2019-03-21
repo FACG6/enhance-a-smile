@@ -29,20 +29,20 @@ exports.postDonate = (request, response) => {
   });
   const result = Joi.validate(request.body, schema);
   if (result.error) {
-    response.send({
+    response.status(400).send({
       msg: result.error.details[0].message,
     });
   } else {
     insertDonation(request.body)
       .then((dataRes) => {
         if (dataRes.msg === 'donate added sucssfully') {
-          response.send({
+          response.status(200).send({
             msg: 'donation added sucsesfully',
           });
         }
       })
       .catch((error) => {
-        response.send({
+        response.status(500).send({
           msg: 'error in add the donation information',
         });
       });
