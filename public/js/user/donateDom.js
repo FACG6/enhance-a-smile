@@ -108,7 +108,7 @@ done.addEventListener('click', (e) => {
     seasonAutum,
   } = personalInformationq;
   if (!numberOfClothes || !(qualityVeryGood || qualityMedium || qualityLow) || !(genderMen || genderWomen || genderKids) || !(seasonSummer || seasonSpring || seasonWinter || seasonAutum)) {
-    validMsgDonation.textContent = 'All fiels rqured';
+    validMsgDonation.textContent = 'All fields are required';
   } else {
     const formData2 = new FormData(personalForm);
     const personalInformation = {};
