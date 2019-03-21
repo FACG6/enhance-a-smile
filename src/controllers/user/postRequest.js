@@ -1,4 +1,4 @@
 exports.postRequest = (request, response) => {
   const requestInformation = request.body;
-  console.log(requestInformation);
+  response.send({ msg: 'Your request added sucsesfully' });
 };
