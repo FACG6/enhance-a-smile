@@ -36,13 +36,13 @@ exports.postDonate = (request, response) => {
     insertDonation(request.body)
       .then((dataRes) => {
         if (dataRes.msg === 'donate added sucssfully') {
-          response.send({
+          response.status(200).send({
             msg: 'donation added sucsesfully',
           });
         }
       })
       .catch((error) => {
-        response.send({
+        response.status(500).send({
           msg: 'error in add the donation information',
         });
       });
