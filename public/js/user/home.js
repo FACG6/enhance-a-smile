@@ -17,9 +17,6 @@ const { inputsContactUs, emailRegisterInput } = querySelectorsAll(
   ['.footer-inputs', '.footer--form-registerEmail.footer-inputs'],
 );
 
-// const inputsContactUs = document.querySelectorAll('.footer-inputs');
-// const emailRegisterInput = document.querySelectorAll('.footer--form-registerEmail.footer-inputs');
-
 formContactUs.addEventListener('submit', (e) => {
   e.preventDefault();
   const formData = new FormData(formContactUs);
@@ -69,11 +66,21 @@ registerEmail.addEventListener('submit', (e) => {
   })
     .then(res => res.json())
     .then((res) => {
-      if (res.msg === 'done') {
-        popup.classList.add('popup-show');
-        popupMassage.innerText = 'We received your Email, we will send you our news.';
-        innerTextRemove(Array.from(emailRegisterInput));
+      if (res.status === 200) {
+        if (res.msg === 'inserted sucssfully') {
+          popup.classList.add('popup-show');
+          popupMassage.innerText = 'We received your Email, we will send you our news.';
+          innerTextRemove(Array.from(emailRegisterInput));
+        } else {
+          popup.classList.add('popup-show');
+          popupMassage.innerText = res.msg;
+        }
+      } else {
+        popupMassage.innerText = res.msg;
       }
+    })
+    .catch(() => {
+      popupMassage.innerText = 'There was an error with the server please check your internet connection and try again later';
     });
   return true;
 });

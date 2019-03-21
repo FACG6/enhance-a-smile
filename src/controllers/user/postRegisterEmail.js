@@ -8,11 +8,12 @@ exports.postRegisterEmail = (request, response) => {
   const { email } = request.body;
   const result = joi.validate({ email }, schema);
   if (result.error === null) {
-    insertQuery('registers', email)
-      .then()
-      .catch();
-    response.send({ msg: 'done' });
+    insertQuery('registers', { email })
+      .then((res) => {
+        response.status(200).send({ msg: res });
+      })
+      .catch(() => response.status(500).end({ msg: 'there is some error in server please try again later' }));
   } else {
-    response.send({ msg: 'email not validate' });
+    response.status(200).send({ msg: 'email not validate' });
   }
 };
