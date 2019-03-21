@@ -8,7 +8,10 @@ const helpOthers = require('./user/helpOthers.js');
 const router = express.Router();
 
 router.get('/', getHomePage);
-router.get('/help-others', helpOthers.get);
+router
+  .route('/help-others')
+  .get(helpOthers.get)
+  .post(helpOthers.post);
 router.post('/contact-us', postContactUs);
 router.post('/register', postRegisterEmail);
 router

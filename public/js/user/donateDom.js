@@ -58,6 +58,8 @@ next.addEventListener('click', (e) => {
     valditMsg.textContent = 'Please enter a valid phone number';
   } else if (!cityName) {
     valditMsg.textContent = 'Please enter your city name';
+  } else if (cityName.length < 2) {
+    valditMsg.textContent = 'City name must be at least 3 characters';
   } else if (!email) {
     valditMsg.textContent = 'Please enter your email';
   } else if (!email) {
