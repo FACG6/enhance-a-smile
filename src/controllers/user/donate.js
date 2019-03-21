@@ -29,7 +29,7 @@ exports.postDonate = (request, response) => {
   });
   const result = Joi.validate(request.body, schema);
   if (result.error) {
-    response.status(400)send({
+    response.status(400).send({
       msg: result.error.details[0].message,
     });
   } else {
