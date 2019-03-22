@@ -1,7 +1,6 @@
 /* eslint-disable global-require */
 const testFolder = './test';
 const fs = require('fs');
-require('dotenv').config();
 
 fs.readdir(testFolder, (err, files) => {
   if (err) {

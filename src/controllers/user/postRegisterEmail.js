@@ -12,7 +12,7 @@ exports.postRegisterEmail = (request, response) => {
       .then((res) => {
         response.status(200).send({ msg: res });
       })
-      .catch(() => response.status(500).end({ msg: 'there is some error in server please try again later' }));
+      .catch(() => response.status(500).send({ msg: 'there is some error in server please try again later' }));
   } else {
     response.status(200).send({ msg: 'email not validate' });
   }
