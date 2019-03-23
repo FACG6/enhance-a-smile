@@ -1,7 +1,7 @@
 const client = require('../../db_connection');
 
 const insertQuery = (collectionName, objData) => new Promise((resolve, reject) => {
-  client.connect((error) => {
+  client.connect((error, db) => {
     if (error) reject(error);
     const database = client.db('enhance-a-smile-db');
     database
@@ -9,7 +9,6 @@ const insertQuery = (collectionName, objData) => new Promise((resolve, reject) =
       .insertOne(objData)
       .then(() => {
         resolve({ msg: 'inserted sucssfully' });
-  
       })
       .catch((err) => {
         reject(err);
