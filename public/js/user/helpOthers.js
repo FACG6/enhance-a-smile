@@ -48,6 +48,10 @@ const showErrorMsg = (form, button, msg) => {
 
 // this function sends the data to the server
 const sendData = () => {
+  // check for the optional fields
+  if (!requestInfo.phoneNumber) requestInfo.phoneNumber = undefined;
+  if (!requestInfo.description) requestInfo.description = undefined;
+
   // combine the steps data
   const formData = {
     'personal-details': { ...personalInfo },
@@ -112,7 +116,15 @@ const doneEvent = (e) => {
   else if (phoneNumber && !/^[0-9]{10}$/.test(phoneNumber)) showErrorMsg(requestForm, doneBtn, 'Please provide a valid phone number');
   else {
     sendData()
-      .then(() => popUpSection.classList.remove('hide'))
+      .then((res) => {
+        if (res.status !== 200) {
+          const msg = document.querySelector('.popUp .mainParagraph');
+          msg.textContent = 'There was an error with the server please check your internet connection and try again later';
+          msg.classList.add('error');
+          popUpSection.classList.remove('hide');
+        }
+        popUpSection.classList.remove('hide');
+      })
       .catch((err) => {
         const msg = document.querySelector('.popUp .mainParagraph');
         msg.textContent = 'There was an error with the server please check your internet connection and try again later';
@@ -124,6 +136,8 @@ const doneEvent = (e) => {
 
 // personal tab event listener
 personalTab.addEventListener('click', (e) => {
+  const personalFormError = document.querySelector('.error');
+  if (personalFormError) requestForm.removeChild(personalFormError);
   personalTab.classList.replace('request-info', 'personal-info');
   requestTab.classList.replace('personal-info', 'request-info');
   if (personalSection.classList.contains('hide')) {

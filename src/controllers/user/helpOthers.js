@@ -14,7 +14,6 @@ exports.post = (req, res) => {
     'personal-details': {
       fullName: joi
         .string()
-        .alphanum()
         .min(6)
         .max(30)
         .required(),
@@ -29,19 +28,18 @@ exports.post = (req, res) => {
       numOfPeople: joi
         .number()
         .min(1)
-        .max(5),
+        .max(5)
+        .required(),
       phoneNumber: joi
         .string()
         .regex(/^[0-9]{10}$/)
-        .length(10)
-        .required(),
+        .length(10),
       location: joi
         .string()
-        .alphanum()
-        .min(3)
+        .min(0)
         .max(30)
         .required(),
-      description: join.string().min(1),
+      description: joi.string(),
     },
   });
   const valid = joi.validate(req.body, schema);

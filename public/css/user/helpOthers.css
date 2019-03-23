@@ -100,6 +100,10 @@
   padding-top: 0;
   color: #333;
 }
+.user-restrictions{
+  color: #333;
+  font-family: rubik;
+}
 .error {
   color: rgb(107, 0, 0);
   font-family: roboto;
