@@ -30,7 +30,7 @@ test('post in /register (with Not valid email)', (t) => {
     .send({
       email: 'amin',
     })
-    .expect(200)
+    .expect(400)
     .expect('Content-Type', /json/)
     .end((err, res) => {
       if (err) {
