@@ -9,6 +9,7 @@ const {
   personalTab,
   requestTab,
   popUpSection,
+  backToHome,
 } = querySelectors(
   [
     'nextBtn',
@@ -20,6 +21,7 @@ const {
     'personalTab',
     'requestTab',
     'popUpSection',
+    'backToHome',
   ],
   [
     '.next',
@@ -31,6 +33,7 @@ const {
     '.personal-info',
     '.request-info',
     '.popUpBack',
+    '.back',
   ],
 );
 
@@ -72,7 +75,7 @@ const sendData = () => {
 // the event for going to the request step
 const nextEvent = (e) => {
   // checks for the error message and removes it
-  const personalFormError = document.querySelector('.personal-err');
+  const personalFormError = document.querySelector('.error');
   if (personalFormError) personalForm.removeChild(personalFormError);
 
   // collect the data from the form
@@ -112,6 +115,7 @@ const doneEvent = (e) => {
 
   // validate the fields
   if (!numOfPeople) showErrorMsg(requestForm, doneBtn, 'Please provide the number of people');
+  else if (Number(numOfPeople) > 5 || Number(numOfPeople) < 1) showErrorMsg(requestForm, doneBtn, 'Please provide a valid number of people');
   else if (!location) showErrorMsg(requestForm, doneBtn, 'Please provide a location');
   else if (phoneNumber && !/^[0-9]{10}$/.test(phoneNumber)) showErrorMsg(requestForm, doneBtn, 'Please provide a valid phone number');
   else {
@@ -154,3 +158,6 @@ nextBtn.addEventListener('click', nextEvent);
 
 // done button event listener
 doneBtn.addEventListener('click', doneEvent);
+
+// back to home button
+backToHome.addEventListener('click', (e) => { window.location.href = '/'; });
