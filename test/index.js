@@ -7,10 +7,8 @@ fs.readdir(testFolder, (err, files) => {
     console.log(err);
   } else {
     files.forEach((file) => {
-      if (file !== 'testRoutes.js') {
-        // eslint-disable-next-line import/no-dynamic-require
-        require(`./${file}`);
-      }
+      // eslint-disable-next-line import/no-dynamic-require
+      require(`./${file}`);
     });
   }
 });
