@@ -44,7 +44,6 @@ exports.post = (req, res) => {
   });
   const valid = joi.validate(req.body, schema);
   if (valid.error) {
-    console.log(valid.error);
     res.status(400).send({
       msg: valid.error.details[0].message,
     });
