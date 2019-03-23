@@ -9,11 +9,10 @@ const insertQuery = (collectionName, objData) => new Promise((resolve, reject) =
       .insertOne(objData)
       .then(() => {
         resolve({ msg: 'inserted sucssfully' });
-        client.close();
+  
       })
       .catch((err) => {
         reject(err);
-        client.close();
       });
   });
 });
