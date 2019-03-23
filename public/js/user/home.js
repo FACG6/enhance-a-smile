@@ -27,7 +27,7 @@ formContactUs.addEventListener('submit', (e) => {
   const { email, fullName, message } = dataContactUs;
   if (!email || !validateEamil(email) || !fullName || !message) {
     popup.classList.add('popup-show');
-    popupMassage.innerText = 'Please enter a valid values';
+    popupMassage.textContent = 'Please enter a valid values';
     return false;
   }
   fetch('/contact-us', {
@@ -43,14 +43,14 @@ formContactUs.addEventListener('submit', (e) => {
         innerTextRemove(Array.from(inputsContactUs).slice(0, 3));
       } else if (res.msg === 'inputs not validate') {
         popup.classList.add('popup-show');
-        popupMassage.innerText = 'Please enter a valid values';
+        popupMassage.textContent = 'Please enter a valid values';
       } else {
         popup.classList.add('popup-show');
-        popupMassage.innerText = res.msg;
+        popupMassage.textContent = res.msg;
       }
     })
     .catch(() => {
-      popupMassage.innerText = 'There was an error with the server please check your internet connection and try again later';
+      popupMassage.textContent = 'There was an error with the server please check your internet connection and try again later';
     });
   return true;
 });
