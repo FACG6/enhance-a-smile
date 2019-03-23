@@ -22,10 +22,10 @@ exports.postContactUs = (request, response) => {
   if (result.error === null) {
     insertQuery('contacts', data)
       .then(() => {
-        response.send({ msg: 'done' });
+        response.status(200).send({ msg: 'done' });
       })
-      .catch(() => response.send({ msg: 'Not done' }));
+      .catch(() => response.status(500).send({ msg: 'Not done' }));
   } else {
-    response.send({ msg: 'inputs not validate' });
+    response.status(400).send({ msg: 'inputs not validate' });
   }
 };
