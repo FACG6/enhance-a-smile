@@ -34,7 +34,7 @@ test('post in /contact-us (with Not valid data)', (t) => {
       fullName: '',
       message: 'i need help,there is some error in donate',
     })
-    .expect(200)
+    .expect(400)
     .expect('Content-Type', /json/)
     .end((err, res) => {
       if (err) {
