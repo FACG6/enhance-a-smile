@@ -37,6 +37,7 @@
 .taps--text{
   font-size: 16PX;
   margin-top: 7px;
+  font-family: roboto;
 }
 .personal {
   margin-top: 30px;
@@ -60,21 +61,24 @@
   padding: 10px;
   width: 375px;
   height: 50px;
+  font-family: roboto;
 }
 .label {
   width: 300px;
   padding-left: 30px;
+  font-family: roboto;
 }
 .validMsg {
   text-align: center;
   font-size: 13px;
   margin: 1px;
   color: rgb(177, 37, 37);
+  font-family: roboto;
 }
 .next {
   cursor: pointer;
-  background: rgba(0, 131, 38, 0.9);
-  border: 1px solid rgba(0, 131, 38, 0.9);
+  background: rgba(0, 131, 38);
+  border: 1px solid rgba(0, 131, 38);
   color: #fff;
   font-family: roboto;
   font-size: 1.5rem;
@@ -84,6 +88,9 @@
   height: 50px;
   align-self: center;
   margin-top: 20px;
+}
+.next:hover{
+  background: rgba(0, 131, 38, 0.9);
 }
 .donation {
   margin-top: 30px;
@@ -113,11 +120,12 @@
   font-size: 13px;
   margin: 1px;
   color: rgb(177, 37, 37);
+  font-family: roboto;
 }
 .submit {
   cursor: pointer;
-  background: rgba(0, 131, 38, 0.9);
-  border: 1px solid rgba(0, 131, 38, 0.9);
+  background: rgba(0, 131, 38);
+  border: 1px solid rgba(0, 131, 38);
   color: #fff;
   font-family: roboto;
   font-size: 1.5rem;
@@ -127,6 +135,9 @@
   height: 50px;
   align-self: center;
   margin-top: 10px;
+}
+.submit:hover{
+  background: rgba(0, 131, 38, 0.9);
 }
 .popUp {
   text-align: center;
@@ -142,17 +153,25 @@
 }
 .mainParagraph {
   width: 310px;
+  font-family: roboto;
 }
 .secondryParagraph {
   width: 310px;
   font-size: 12px;
+  font-family: roboto;
 }
 .back {
-  background: rgba(0, 131, 38, 0.9);
+  background: rgba(0, 131, 38);
+  border: 1px solid rgba(0, 131, 38);
+  color: white;
+  font-family: roboto;
   border-radius: 5px;
   width: 130px;
   height: 35px;
   align-self: center;
+}
+.back:hover{
+  background: rgba(0, 131, 38, 0.9);
 }
 .popUpBack{
   position: fixed;
