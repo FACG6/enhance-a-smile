@@ -1,7 +1,6 @@
 const {
-  pesonalSection, requestSection,
-  personalDetails, yourRequest, fullNameSpan, phoneNumberSpan, cityNameSpan, streetNameSpan, requestSubmit, popUpSection, next,
-} = querySelectors(['pesonalSection', 'requestSection', 'personalDetails', 'yourRequest', 'fullNameSpan', 'phoneNumberSpan', 'cityNameSpan', 'streetNameSpan', 'requestSubmit', 'popUpSection', 'next'], ['.pesonal--section', '.request--section', '.personal--details', '.your--request', '.full--name-span', '.phone--number-span', '.city--name-span', '.street--name-span', '.request--submit', '.popUpBack', '.next--button']);
+  pesonalSection, requestSection, personalDetails, yourRequest, streetNameSpan, requestSubmit, popUpSection, next, numberOfPiecesSpan, genderSpan, seasonSpan,
+} = querySelectors(['pesonalSection', 'requestSection', 'personalDetails', 'yourRequest', 'streetNameSpan', 'requestSubmit', 'popUpSection', 'next', 'numberOfPiecesSpan', 'genderSpan', 'seasonSpan'], ['.pesonal--section', '.request--section', '.personal--details', '.your--request', '.street--name-span', '.request--submit', '.popUpBack', '.next--button', '.numberOfPiecesSpan', '.genderSpan', '.seasonSpan']);
 next.addEventListener('click', (e) => {
   e.preventDefault();
   const formData = new FormData(personalDetails);
@@ -10,19 +9,19 @@ next.addEventListener('click', (e) => {
     personalInformation['personal-data'][key] = value.trim();
   });
   if (!personalInformation['personal-data'].fullName) {
-    fullNameSpan.textContent = 'must not empty';
+    streetNameSpan.textContent = 'Full Name must not empty';
     return false;
   } if (!personalInformation['personal-data'].phoneNumber) {
-    phoneNumberSpan.textContent = 'must not empty';
+    streetNameSpan.textContent = 'Phone number must not empty';
     return false;
   } if (!personalInformation['personal-data'].phoneNumber.match(/^[0-9]+$/)) {
-    phoneNumberSpan.textContent = 'Your phone number not valid';
+    streetNameSpan.textContent = 'Your phone number must number';
     return false;
   } if (!personalInformation['personal-data'].cityName) {
-    cityNameSpan.textContent = 'must not empty';
+    streetNameSpan.textContent = 'City must not empty';
     return false;
   } if (!personalInformation['personal-data'].streetName) {
-    streetNameSpan.textContent = 'must not empty';
+    streetNameSpan.textContent = 'Street must not empty';
     return false;
   }
   pesonalSection.classList.add('hide');
@@ -50,12 +49,20 @@ requestSubmit.addEventListener('click', (e) => {
       personalInformation['request-data'][key] = value;
     }
   });
-  fetch('/request', {
-    method: 'POST',
-    body: JSON.stringify(personalInformation),
-    credentials: 'same-origin',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  if (!personalInformation['request-data'].numberOfPieces) {
+    numberOfPiecesSpan.textContent = 'add number of pieces';
+  } else if (!personalInformation['request-data'].gender) {
+    genderSpan.textContent = 'select one at least 1 ';
+  } else if (!personalInformation['request-data'].season) {
+    seasonSpan.textContent = 'select one at least 2 ';
+  } else {
+    fetch('/request', {
+      method: 'POST',
+      body: JSON.stringify(personalInformation),
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
 });
