@@ -50,7 +50,7 @@ tape('Testing Help-Others Route', (t) => {
     .end((err, res) => {
       if (err) t.error(err);
       t.equal(res.text.includes('email'), true, 'PASS 3');
-      t.equal(JSON.parse(res.text).msg, '"email" must be a valid email', 'PASS 4');
+      t.equal(JSON.parse(res.text).msg, '"email" must be a valid email', 'PASS 5');
     });
   supertest(app)
     .post('/help-others')
@@ -69,7 +69,7 @@ tape('Testing Help-Others Route', (t) => {
     .expect('content-type', /json/)
     .end((err, res) => {
       if (err) t.error(err);
-      t.equal(JSON.parse(res.text).msg, 'Added successfully', 'PASS 5');
+      t.equal(JSON.parse(res.text).msg, 'Added successfully', 'PASS 6');
       t.end();
     });
 });
