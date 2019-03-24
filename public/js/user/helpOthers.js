@@ -9,6 +9,7 @@ const {
   personalTab,
   requestTab,
   popUpSection,
+  backToHome,
 } = querySelectors(
   [
     'nextBtn',
@@ -20,6 +21,7 @@ const {
     'personalTab',
     'requestTab',
     'popUpSection',
+    'backToHome',
   ],
   [
     '.next',
@@ -31,6 +33,7 @@ const {
     '.personal-info',
     '.request-info',
     '.popUpBack',
+    '.back',
   ],
 );
 
@@ -48,6 +51,10 @@ const showErrorMsg = (form, button, msg) => {
 
 // this function sends the data to the server
 const sendData = () => {
+  // check for the optional fields
+  if (!requestInfo.phoneNumber) requestInfo.phoneNumber = undefined;
+  if (!requestInfo.description) requestInfo.description = undefined;
+
   // combine the steps data
   const formData = {
     'personal-details': { ...personalInfo },
@@ -68,7 +75,7 @@ const sendData = () => {
 // the event for going to the request step
 const nextEvent = (e) => {
   // checks for the error message and removes it
-  const personalFormError = document.querySelector('.personal-err');
+  const personalFormError = document.querySelector('.error');
   if (personalFormError) personalForm.removeChild(personalFormError);
 
   // collect the data from the form
@@ -108,11 +115,20 @@ const doneEvent = (e) => {
 
   // validate the fields
   if (!numOfPeople) showErrorMsg(requestForm, doneBtn, 'Please provide the number of people');
+  else if (Number(numOfPeople) > 5 || Number(numOfPeople) < 1) showErrorMsg(requestForm, doneBtn, 'Please provide a valid number of people');
   else if (!location) showErrorMsg(requestForm, doneBtn, 'Please provide a location');
   else if (phoneNumber && !/^[0-9]{10}$/.test(phoneNumber)) showErrorMsg(requestForm, doneBtn, 'Please provide a valid phone number');
   else {
     sendData()
-      .then(() => popUpSection.classList.remove('hide'))
+      .then((res) => {
+        if (res.status !== 200) {
+          const msg = document.querySelector('.popUp .mainParagraph');
+          msg.textContent = 'There was an error with the server please check your internet connection and try again later';
+          msg.classList.add('error');
+          popUpSection.classList.remove('hide');
+        }
+        popUpSection.classList.remove('hide');
+      })
       .catch((err) => {
         const msg = document.querySelector('.popUp .mainParagraph');
         msg.textContent = 'There was an error with the server please check your internet connection and try again later';
@@ -124,6 +140,8 @@ const doneEvent = (e) => {
 
 // personal tab event listener
 personalTab.addEventListener('click', (e) => {
+  const personalFormError = document.querySelector('.error');
+  if (personalFormError) requestForm.removeChild(personalFormError);
   personalTab.classList.replace('request-info', 'personal-info');
   requestTab.classList.replace('personal-info', 'request-info');
   if (personalSection.classList.contains('hide')) {
@@ -140,3 +158,6 @@ nextBtn.addEventListener('click', nextEvent);
 
 // done button event listener
 doneBtn.addEventListener('click', doneEvent);
+
+// back to home button
+backToHome.addEventListener('click', (e) => { window.location.href = '/'; });
