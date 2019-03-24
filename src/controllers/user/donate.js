@@ -1,9 +1,10 @@
 const { join } = require('path');
 const Joi = require('joi');
+const insertDonation = require('./../../database/queries/user/insertQuery');
 
 exports.getDonate = (req, res) => {
   res.render(join('main', 'donate'), {
-    js: ['selectorFuction', join('user', 'donateDom')],
+    js: ['domUyils', join('user', 'donateDom')],
     css: [join('user', 'donate'), join('partials', 'homeNav')],
   });
 };
@@ -16,8 +17,8 @@ exports.postDonate = (request, response) => {
       .max(30)
       .required(),
     phoneNumber: Joi.string()
-      .min(10)
-      .max(10)
+      .length(10)
+      .regex(/^[0-9]{10}$/)
       .required(),
     cityName: Joi.string()
       .alphanum()
@@ -48,17 +49,15 @@ exports.postDonate = (request, response) => {
   });
   const result = Joi.validate(request.body, schema);
   if (result.error) {
-    response.status(400).send({
+    response.send({
       msg: result.error.details[0].message,
     });
   } else {
-    insertDonation(request.body)
+    insertDonation('donates', request.body)
       .then((dataRes) => {
-        if (dataRes.msg === 'donate added sucssfully') {
-          response.status(200).send({
-            msg: 'donation added sucsesfully',
-          });
-        }
+        response.status(200).send({
+          msg: 'donation added sucsesfully',
+        });
       })
       .catch((error) => {
         response.status(500).send({
