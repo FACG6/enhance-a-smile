@@ -53,7 +53,7 @@ exports.post = (req, res) => {
         res.status(200).send({ msg: 'Added successfully' });
       })
       .catch((err) => {
-        res.status(500).end({ msg: 'Internal server error' });
+        res.status(500).send({ msg: 'Internal server error' });
       });
   }
 };
