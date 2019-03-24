@@ -50,10 +50,10 @@ exports.post = (req, res) => {
   } else {
     insertQuery('help-others', req.body)
       .then(() => {
-        res.status(200).end();
+        res.status(200).send({ msg: 'Added successfully' });
       })
       .catch((err) => {
-        res.status(500).end();
+        res.status(500).end({ msg: 'Internal server error' });
       });
   }
 };
