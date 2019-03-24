@@ -11,7 +11,6 @@ const adminProfile = require('./admin/profile.js');
 
 const router = express.Router();
 router.get('/', getHomePage);
-router.get('/donate', getDonate);
 router.get('/request', request);
 router
   .route('/help-others')
