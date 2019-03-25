@@ -1,0 +1,18 @@
+<main class="main">
+  <section class="main--section">
+    <div class="main--tabs">
+      <input type="submit" value="Registers" class="main--inputs">
+      <input type="submit" value="Send Mails" class="main--inputs">
+    </div>
+    <div class="main--emails">
+      <h3 class="main-tital">Email :</h3>
+      <ol class="main-ol">
+        {{#each registersEmail}}
+        <li class="main-li">
+          <h3 class="main-li-h3">{{this}}</h3><i class="fas fa-plus-circle"></i>
+        </li>
+        {{/each}}
+      </ol>
+    </div>
+  </section>
+</main>
