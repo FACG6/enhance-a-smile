@@ -30,11 +30,8 @@ router
   .post(postDonate);
 router.get('/admin', (req, res) => res.redirect('/admin/login'));
 router.get('/admin/login', adminLogin.get);
-<<<<<<< HEAD
 router.get('/admin/contact-us', getAdminContactUs);
-=======
 router.get('/admin/registers', getAdminRegisters);
->>>>>>> ac8f28d3933089d423a21d972ce2809df57e6cdd
 // use the auth middleware
 router.get('/admin/profile', adminProfile.get);
 module.exports = { router };
