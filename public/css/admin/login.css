@@ -6,7 +6,6 @@
 }
 body {
   font-family: Roboto;
-  /* background: linear-gradient(to left bottom, #00832532, #00832532); */
   display: flex;
   flex-direction: column;
   align-items: center;
