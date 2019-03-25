@@ -1,9 +1,14 @@
-const { insertRequest } = require('../../database/queries/user/addRequest');
+const insertQuery = require('../../database/queries/user/insertQuery');
 
 exports.postRequest = (request, response) => {
   const requestInformation = request.body;
-  insertRequest(requestInformation).then(re => console.log(re)).catch(re => console.log(re));
-
-
-  response.send({ msg: 'Your request added sucsesfully' });
+  insertQuery('requests', requestInformation)
+    .then(() => {
+      response.status(200).send({
+        msg: 'Your request added sucsesfully',
+      });
+    })
+    .catch(() => response.status(500).send({
+      msg: 'internal server error',
+    }));
 };
