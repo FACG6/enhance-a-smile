@@ -5,6 +5,7 @@ const { getDonate, postDonate } = require('./user/donate');
 const { postContactUs } = require('./user/postContactUs');
 const { postRegisterEmail } = require('./user/postRegisterEmail');
 const { postRequest } = require('./user/postRequest');
+const { getAdminContactUs } = require('./admin/contactUs/adminContactUs');
 const { getAdminRegisters } = require('./admin/registers/getAdminRegisters');
 const helpOthers = require('./user/helpOthers.js');
 const adminLogin = require('./admin/login.js');
