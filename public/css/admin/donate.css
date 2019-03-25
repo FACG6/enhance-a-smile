@@ -1,0 +1,18 @@
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+.taps{
+  display: flex;
+}
+.cards--info{
+  border: 2px solid red;
+}
+.cards--new{
+  display: flex;
+  flex-direction: column;
+}
+.hide{
+  display: none;
+}
