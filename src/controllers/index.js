@@ -5,11 +5,7 @@ const { getDonate, postDonate } = require('./user/donate');
 const { postContactUs } = require('./user/postContactUs');
 const { postRegisterEmail } = require('./user/postRegisterEmail');
 const { postRequest } = require('./user/postRequest');
-<<<<<<< HEAD
-const { getAdminContactUs } = require('./admin/contactUs/adminContactUs');
-=======
 const { getAdminRegisters } = require('./admin/registers/getAdminRegisters');
->>>>>>> ac8f28d3933089d423a21d972ce2809df57e6cdd
 const helpOthers = require('./user/helpOthers.js');
 const adminLogin = require('./admin/login.js');
 const adminProfile = require('./admin/profile.js');
