@@ -1,38 +1,56 @@
 const {
-  pesonalSection, requestSection,
-  personalDetails, yourRequest, fullNameSpan, phoneNumberSpan, cityNameSpan, streetNameSpan, requestSubmit, popUpSection, next,
-} = querySelectors(['pesonalSection', 'requestSection', 'personalDetails', 'yourRequest', 'fullNameSpan', 'phoneNumberSpan', 'cityNameSpan', 'streetNameSpan', 'requestSubmit', 'popUpSection', 'next'], ['.pesonal--section', '.request--section', '.personal--details', '.your--request', '.full--name-span', '.phone--number-span', '.city--name-span', '.street--name-span', '.request--submit', '.popUpBack', '.next--button']);
+  pesonalSection,
+  requestSection,
+  personalDetails,
+  yourRequest,
+  streetNameSpan,
+  requestSubmit,
+  popUpSection,
+  next,
+  validMsgSpan,
+  back,
+} = querySelectors(['pesonalSection', 'requestSection', 'personalDetails', 'yourRequest', 'streetNameSpan', 'requestSubmit', 'popUpSection', 'next', 'validMsgSpan', 'back'], ['.pesonal--section', '.request--section', '.personal--details', '.your--request', '.street--name-span', '.request--submit', '.popUpBack', '.next--button', '.valid--msg-span', '.back']);
 next.addEventListener('click', (e) => {
   e.preventDefault();
   const formData = new FormData(personalDetails);
-  const personalInformation = { 'personal-data': {}, 'request-data': {} };
+  const personalInformation = {
+    'personal-data': {},
+    'request-data': {},
+  };
   formData.forEach((value, key) => {
     personalInformation['personal-data'][key] = value.trim();
   });
   if (!personalInformation['personal-data'].fullName) {
-    fullNameSpan.textContent = 'must not empty';
+    streetNameSpan.textContent = 'Full Name must not empty';
     return false;
-  } if (!personalInformation['personal-data'].phoneNumber) {
-    phoneNumberSpan.textContent = 'must not empty';
+  }
+  if (!personalInformation['personal-data'].phoneNumber) {
+    streetNameSpan.textContent = 'Phone number must not empty';
     return false;
-  } if (!personalInformation['personal-data'].phoneNumber.match(/^[0-9]+$/)) {
-    phoneNumberSpan.textContent = 'Your phone number not valid';
+  }
+  if (!personalInformation['personal-data'].phoneNumber.match(/^[0-9]+$/)) {
+    streetNameSpan.textContent = 'Your phone number must number';
     return false;
-  } if (!personalInformation['personal-data'].cityName) {
-    cityNameSpan.textContent = 'must not empty';
+  }
+  if (!personalInformation['personal-data'].cityName) {
+    streetNameSpan.textContent = 'City must not empty';
     return false;
-  } if (!personalInformation['personal-data'].streetName) {
-    streetNameSpan.textContent = 'must not empty';
+  }
+  if (!personalInformation['personal-data'].streetName) {
+    streetNameSpan.textContent = 'Street must not empty';
     return false;
   }
   pesonalSection.classList.add('hide');
-  requestSection.classList.remove('request--section');
+  requestSection.classList.remove('hide');
 });
 requestSubmit.addEventListener('click', (e) => {
   e.preventDefault();
-
+  validMsgSpan.textContent = '';
   const personalDetailsForm = new FormData(personalDetails);
-  const personalInformation = { 'personal-data': {}, 'request-data': {} };
+  const personalInformation = {
+    'personal-data': {},
+    'request-data': {},
+  };
   personalDetailsForm.forEach((value, key) => {
     personalInformation['personal-data'][key] = value.trim();
   });
@@ -50,12 +68,38 @@ requestSubmit.addEventListener('click', (e) => {
       personalInformation['request-data'][key] = value;
     }
   });
-  fetch('/request', {
-    method: 'POST',
-    body: JSON.stringify(personalInformation),
-    credentials: 'same-origin',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  if (!personalInformation['request-data'].numberOfPieces) {
+    validMsgSpan.textContent = 'add number of pieces';
+  } else if (!personalInformation['request-data'].gender) {
+    validMsgSpan.textContent = 'select one at least from gender ';
+  } else if (!personalInformation['request-data'].season) {
+    validMsgSpan.textContent = 'select one at least from season ';
+  } else {
+    fetch('/request', {
+      method: 'POST',
+      body: JSON.stringify(personalInformation),
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(result => result.json())
+      .then((res) => {
+        if (res.msg === 'Your request added sucsesfully') {
+          popUpSection.classList.remove('hide');
+        } else if (res.msg === 'error in add the request information') {
+          document.querySelector('.mainParagraph').textContent = 'There was an error with the server please check your internet connection and try again later';
+          popUpSection.classList.remove('hide');
+        } else {
+          validMsgSpan.textContent = res.msg;
+        }
+      })
+      .catch((err) => {
+        document.querySelector('.mainParagraph').textContent = 'There was an error with the server please check your internet connection and try again later';
+        popUpSection.classList.remove('hide');
+      });
+  }
+});
+back.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.location = '/';
 });
