@@ -4,8 +4,9 @@
     <input type="button" value="Current Donations" class="current">
     <input type="button" value="Done Donations" class="done">
   </section>
+  {{#each card}}
+  {{#unless card.state}}
   <section class="cards--new">
-    {{#each card}}
     <div class="card--taps">
       <input type="button" value="Personal Info" class="tap--personal">
       <input type="button" value="Donation" class="tap--donation">
@@ -26,6 +27,7 @@
         <h4 class="season">Season(s): {{season}}</h4>
       </div>
     </div>
+    {{/unless}}
     {{/each}}
   </section>
 
