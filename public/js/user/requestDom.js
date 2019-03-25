@@ -1,38 +1,56 @@
 const {
-  pesonalSection, requestSection, personalDetails, yourRequest, streetNameSpan, requestSubmit, popUpSection, next, numberOfPiecesSpan, genderSpan, seasonSpan,
-} = querySelectors(['pesonalSection', 'requestSection', 'personalDetails', 'yourRequest', 'streetNameSpan', 'requestSubmit', 'popUpSection', 'next', 'numberOfPiecesSpan', 'genderSpan', 'seasonSpan'], ['.pesonal--section', '.request--section', '.personal--details', '.your--request', '.street--name-span', '.request--submit', '.popUpBack', '.next--button', '.numberOfPiecesSpan', '.genderSpan', '.seasonSpan']);
+  pesonalSection,
+  requestSection,
+  personalDetails,
+  yourRequest,
+  streetNameSpan,
+  requestSubmit,
+  popUpSection,
+  next,
+  validMsgSpan,
+  back,
+} = querySelectors(['pesonalSection', 'requestSection', 'personalDetails', 'yourRequest', 'streetNameSpan', 'requestSubmit', 'popUpSection', 'next', 'validMsgSpan', 'back'], ['.pesonal--section', '.request--section', '.personal--details', '.your--request', '.street--name-span', '.request--submit', '.popUpBack', '.next--button', '.valid--msg-span', '.back']);
 next.addEventListener('click', (e) => {
   e.preventDefault();
   const formData = new FormData(personalDetails);
-  const personalInformation = { 'personal-data': {}, 'request-data': {} };
+  const personalInformation = {
+    'personal-data': {},
+    'request-data': {},
+  };
   formData.forEach((value, key) => {
     personalInformation['personal-data'][key] = value.trim();
   });
   if (!personalInformation['personal-data'].fullName) {
     streetNameSpan.textContent = 'Full Name must not empty';
     return false;
-  } if (!personalInformation['personal-data'].phoneNumber) {
+  }
+  if (!personalInformation['personal-data'].phoneNumber) {
     streetNameSpan.textContent = 'Phone number must not empty';
     return false;
-  } if (!personalInformation['personal-data'].phoneNumber.match(/^[0-9]+$/)) {
+  }
+  if (!personalInformation['personal-data'].phoneNumber.match(/^[0-9]+$/)) {
     streetNameSpan.textContent = 'Your phone number must number';
     return false;
-  } if (!personalInformation['personal-data'].cityName) {
+  }
+  if (!personalInformation['personal-data'].cityName) {
     streetNameSpan.textContent = 'City must not empty';
     return false;
-  } if (!personalInformation['personal-data'].streetName) {
+  }
+  if (!personalInformation['personal-data'].streetName) {
     streetNameSpan.textContent = 'Street must not empty';
     return false;
   }
   pesonalSection.classList.add('hide');
-  requestSection.classList.remove('request--section');
+  requestSection.classList.remove('hide');
 });
 requestSubmit.addEventListener('click', (e) => {
   e.preventDefault();
-  seasonSpan.textContent = '';
-  genderSpan.textContent = '';
+  validMsgSpan.textContent = '';
   const personalDetailsForm = new FormData(personalDetails);
-  const personalInformation = { 'personal-data': {}, 'request-data': {} };
+  const personalInformation = {
+    'personal-data': {},
+    'request-data': {},
+  };
   personalDetailsForm.forEach((value, key) => {
     personalInformation['personal-data'][key] = value.trim();
   });
@@ -51,11 +69,11 @@ requestSubmit.addEventListener('click', (e) => {
     }
   });
   if (!personalInformation['request-data'].numberOfPieces) {
-    numberOfPiecesSpan.textContent = 'add number of pieces';
+    validMsgSpan.textContent = 'add number of pieces';
   } else if (!personalInformation['request-data'].gender) {
-    genderSpan.textContent = 'select one at least  ';
+    validMsgSpan.textContent = 'select one at least from gender ';
   } else if (!personalInformation['request-data'].season) {
-    seasonSpan.textContent = 'select one at least  ';
+    validMsgSpan.textContent = 'select one at least from season ';
   } else {
     fetch('/request', {
       method: 'POST',
@@ -64,6 +82,24 @@ requestSubmit.addEventListener('click', (e) => {
       headers: {
         'Content-Type': 'application/json',
       },
-    });
+    }).then(result => result.json())
+      .then((res) => {
+        if (res.msg === 'Your request added sucsesfully') {
+          popUpSection.classList.remove('hide');
+        } else if (res.msg === 'error in add the request information') {
+          document.querySelector('.mainParagraph').textContent = 'There was an error with the server please check your internet connection and try again later';
+          popUpSection.classList.remove('hide');
+        } else {
+          validMsgSpan.textContent = res.msg;
+        }
+      })
+      .catch((err) => {
+        document.querySelector('.mainParagraph').textContent = 'There was an error with the server please check your internet connection and try again later';
+        popUpSection.classList.remove('hide');
+      });
   }
+});
+back.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.location = '/';
 });
