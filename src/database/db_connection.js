@@ -18,10 +18,3 @@ module.exports = async () => {
     test: databases[1],
   };
 };
-
-// con().then(dbs => dbs.test
-//   .collection('admins')
-//   .find({})
-//   .toArray((err, docs) => {
-//     console.log(docs);
-//   }));
