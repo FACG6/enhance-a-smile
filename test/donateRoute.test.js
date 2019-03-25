@@ -69,7 +69,6 @@ test('post in /donate (with Not valid numberOfClothes)', (t) => {
       if (err) {
         t.error(err);
       } else {
-        console.log(res.text);
         t.equal(
           JSON.parse(res.text).msg.includes('must be a string'),
           true,
