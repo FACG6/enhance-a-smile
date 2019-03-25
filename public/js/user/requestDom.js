@@ -29,7 +29,8 @@ next.addEventListener('click', (e) => {
 });
 requestSubmit.addEventListener('click', (e) => {
   e.preventDefault();
-
+  seasonSpan.textContent = '';
+  genderSpan.textContent = '';
   const personalDetailsForm = new FormData(personalDetails);
   const personalInformation = { 'personal-data': {}, 'request-data': {} };
   personalDetailsForm.forEach((value, key) => {
@@ -52,9 +53,9 @@ requestSubmit.addEventListener('click', (e) => {
   if (!personalInformation['request-data'].numberOfPieces) {
     numberOfPiecesSpan.textContent = 'add number of pieces';
   } else if (!personalInformation['request-data'].gender) {
-    genderSpan.textContent = 'select one at least 1 ';
+    genderSpan.textContent = 'select one at least  ';
   } else if (!personalInformation['request-data'].season) {
-    seasonSpan.textContent = 'select one at least 2 ';
+    seasonSpan.textContent = 'select one at least  ';
   } else {
     fetch('/request', {
       method: 'POST',
