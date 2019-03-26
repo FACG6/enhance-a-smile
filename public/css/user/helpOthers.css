@@ -3,7 +3,7 @@
   margin: 0;
   box-sizing: border-box;
 }
-body{
+body {
   font-family: Roboto;
 }
 .container {
@@ -97,13 +97,14 @@ body{
   padding-top: 0;
   color: #333;
 }
-.user-restrictions{
+.user-restrictions {
   color: #333;
   font-family: rubik;
 }
 .error {
-  color: rgb(107, 0, 0);
   text-align: center;
+  color: rgb(107, 0, 0);
+  font-weight: bold;
 }
 .popUp {
   text-align: center;

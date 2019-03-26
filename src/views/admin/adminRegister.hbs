@@ -1,18 +1,43 @@
 <main class="main">
-  <section class="main--section">
-    <div class="main--tabs">
-      <input type="submit" value="Registers" class="main--inputs">
-      <input type="submit" value="Send Mails" class="main--inputs">
+  <section class="main--header">
+    <div class="main-tabs">
+      <input type="submit" value="Registers" class="main-emails">
+      <input type="submit" value="Send Mails" class="main-send">
     </div>
-    <div class="main--emails">
+  </section>
+
+  <section class="main--emails">
+    <div class="main--mails">
       <h3 class="main-tital">Email :</h3>
       <ol class="main-ol">
+        {{#if registersEmail}}
         {{#each registersEmail}}
         <li class="main-li">
-          <h3 class="main-li-h3">{{this}}</h3><i class="fas fa-plus-circle"></i>
+          <h3 class="main-li-h3">{{email}}</h3><button value="{{email}}" class="addEmail"><i
+              class="fas fa-plus-circle"></i></button>
         </li>
         {{/each}}
+        {{else}}
+        <li class="main-li">
+          <h3 class="main-li-h3">No Registers Email</h3><i class="fas fa-plus-circle"></i>
+        </li>
+        {{/if}}
       </ol>
+    </div>
+  </section>
+
+  <section class="main--sendEmail  hide">
+    <div class="main--sendMail">
+      <form class="main--form">
+        <label for="to" class="main-label">To :</label>
+        <input name="to" id="to" class="main-inputs toEmails" required>
+        <label for="subject" class="main-label">Subject :</label>
+        <input name="subject" id="to" class="main-inputs" required>
+        <label for="message" class="main-label">Message :</label>
+        <textarea name="message" id="message" class="main-inputs main-textarea" required></textarea>
+        <input class="" type="submit" class="main-send">
+      </form>
+      <span class="from-msg"></span>
     </div>
   </section>
 </main>
