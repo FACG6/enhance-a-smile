@@ -8,13 +8,14 @@ const doneDonatesSection = document.querySelector('.cards--done');
 const newBtn = document.querySelector('.new');
 const currentBtn = document.querySelector('.current');
 const doneBtn = document.querySelector('.done');
-
-const doneBtnCheck = document.querySelector('.doneBtn'); // the btn for the done to convert from current to done
+const popUpSection = document.querySelector('.popUpsection');
+const mainParagraph = document.querySelector('.mainParagraph');
+const back = document.querySelector('.back');
+const doneBtnCheck = document.querySelector('.doneBtn');
 
 doneBtnCheck.addEventListener('click', (e) => {
   e.preventDefault();
-  const checkBoxes = document.querySelectorAll('.checkBox'); // select all checkbox input as nodelist
-  // const doneBtnCheckValue = checkBoxes.value; // take the value of the checkboxes
+  const checkBoxes = document.querySelectorAll('.checkBox');
   const checkBoxesArray = Array.from(checkBoxes);
   const values = [];
   checkBoxesArray.forEach((element) => {
@@ -36,11 +37,21 @@ doneBtnCheck.addEventListener('click', (e) => {
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then(res => console.log(res))
-      .catch(er => console.log(er));
+    })
+      .then((result) => {
+        if (result.status === 200) {
+          popUpSection.classList.remove('hide');
+        } else {
+          popUpSection.classList.remove('hide');
+          mainParagraph.textContent = 'Something went wrong try againe';
+        }
+      })
+      .catch(() => {
+        popUpSection.classList.remove('hide');
+        mainParagraph.textContent = 'Something went wrong try againe';
+      });
   });
 });
-
 
 newBtn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -62,7 +73,6 @@ doneBtn.addEventListener('click', (e) => {
   newDonatesSection.classList.add('hide');
   currentDonatesSection.classList.add('hide');
 });
-
 
 const infoBtnArray = Array.from(infoBtn);
 const donateBtnArray = Array.from(donateBtn);
@@ -88,7 +98,6 @@ donateBtnArray.forEach((element, index) => {
         current: 'current',
       },
     };
-    console.log(11111111111111, cardInfo);
     fetch('/admin/donates', {
       method: 'POST',
       body: JSON.stringify(cardInfo),
@@ -97,8 +106,20 @@ donateBtnArray.forEach((element, index) => {
         'Content-Type': 'application/json',
       },
     })
-      .then(result => result.json)
-      .then(res => console.log(99999999999999, res))
-      .catch(Er => console.log(888888888888, Er));
+      .then((result) => {
+        if (result.status !== 200) {
+          popUpSection.classList.remove('hide');
+          mainParagraph.textContent = 'Something went wrong try againe';
+        }
+      })
+      .catch(() => {
+        popUpSection.classList.remove('hide');
+        mainParagraph.textContent = 'Something went wrong try againe';
+      });
   });
+});
+
+back.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.location = '/admin/donates';
 });
