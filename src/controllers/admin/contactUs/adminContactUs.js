@@ -6,7 +6,7 @@ exports.getAdminContactUs = (request, response) => {
   } else {
     response.render(join('admin', 'adminContactUs'), {
       layout: 'admin',
-      css: [join('admin', 'contactUs')],
+      css: [join('partials', 'sidebar'), join('partials', 'adminNav'), join('admin', 'contactUs')],
       js: ['domUyils', join('admin', 'contactUs')],
     });
   }
