@@ -3,7 +3,7 @@ const getQuery = require('./../../../database/queries/admin/getQuery');
 
 exports.getAdminRegisters = (request, response) => {
   if (request.token) {
-    response.render();
+    response.redirect('/admin/login');
   } else {
     getQuery('registers', {})
       .then((res) => {
