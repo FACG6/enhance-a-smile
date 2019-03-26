@@ -1,4 +1,6 @@
-const { join } = require('path');
+const {
+  join
+} = require('path');
 const donates = require('../../../database/queries/admin/getQuery');
 const insertOne = require('../../../database/queries/admin/insertOne');
 
@@ -7,7 +9,11 @@ exports.getDonates = (request, response) => {
     .then((card) => {
       response.status(200).render('admin/donates', {
         js: ['domUyils', join('admin', 'donateDom')],
-        css: [join('admin', 'donate')],
+        css: [
+          join('partials', 'adminSidebar'),
+          join('partials', 'adminNav'),
+          join('admin', 'donate'),
+        ],
         layout: 'admin',
         card,
       });
