@@ -1,8 +1,20 @@
 require('dotenv').config();
 const { MongoClient } = require('mongodb');
 
-const client = new MongoClient(process.env.DATABASE_URL, {
-  useNewUrlParser: true,
-});
+const connect = url => MongoClient.connect(url, { useNewUrlParser: true, poolSize: 5 })
+  .then(client => client.db())
+  .catch((connectionError) => {
+    throw connectionError;
+  });
 
-module.exports = client;
+module.exports = async () => {
+  const databases = await Promise.all([
+    connect(process.env.DATABASE_URL),
+    connect(process.env.TEST_DATABASE_URL),
+  ]);
+
+  return {
+    production: databases[0],
+    test: databases[1],
+  };
+};
