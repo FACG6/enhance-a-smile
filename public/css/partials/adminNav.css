@@ -3,10 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
-  background: #fff;
-  overflow: hidden;
-}
+
 a {
   text-decoration: none;
   color: #fff;
@@ -22,6 +19,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  left: 0;
 }
 .nav .logo {
   font-family: Lily Script One;
