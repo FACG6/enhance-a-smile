@@ -11,8 +11,12 @@ const { postSendEmails } = require('./admin/registers/postSendEmails');
 const helpOthers = require('./user/helpOthers.js');
 const adminLogin = require('./admin/login.js');
 const adminProfile = require('./admin/profile.js');
+const auth = require('./../middlewars/auth.js');
+const { getDonates } = require('./admin/donate/donate');
+const { postDonates } = require('./admin/donate/donate');
 
 const router = express.Router();
+// user routes
 router.get('/', getHomePage);
 router.get('/request', request);
 router
@@ -26,11 +30,20 @@ router
   .route('/donate')
   .get(getDonate)
   .post(postDonate);
+
+// admin routes
 router.get('/admin', (req, res) => res.redirect('/admin/login'));
-router.get('/admin/login', adminLogin.get);
+router
+  .route('/admin/login')
+  .get(adminLogin.get)
+  .post(adminLogin.post);
+router.use(auth);
+router.get('/admin/profile', adminProfile.get);
+router
+  .route('/admin/donates')
+  .get(getDonates)
+  .post(postDonates);
 router.get('/admin/contact-us', getAdminContactUs);
 router.get('/admin/registers', getAdminRegisters);
 router.post('/admin/registers', postSendEmails);
-// use the auth middleware
-router.get('/admin/profile', adminProfile.get);
 module.exports = { router };

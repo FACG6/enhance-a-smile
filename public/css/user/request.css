@@ -3,17 +3,18 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+body {
+  font-family: Roboto;
+}
 .main {
   margin-top: 85px;
 }
-
 .nav--form {
   display: flex;
   justify-content: center;
 }
-
 .nav--form-personalDetails {
+  cursor: pointer;
   background: rgb(0, 131, 38);
   border-radius: 3px 0px 0px 3px;
   padding: 10px;
@@ -24,8 +25,8 @@
   height: 60px;
   text-align: center;
 }
-
 .nav--form-yourRequest {
+  cursor: pointer;
   background: #ffffff;
   border: 2px solid #c4c4c4;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
@@ -38,28 +39,23 @@
   height: 60px;
   text-align: center;
 }
-
 .text--taps {
   font-size: 16px;
   margin-top: 7px;
 }
-
 .pesonal--section {
   margin-top: 30px;
   display: flex;
   justify-content: center;
 }
-
 .personal--details {
   display: flex;
   flex-direction: column;
 }
-
 .input::placeholder {
   font-family: Roboto;
   color: #bababa;
 }
-
 .input {
   margin: 15px;
   background: #ffffff;
@@ -70,19 +66,16 @@
   width: 375px;
   height: 50px;
 }
-
 .label {
   width: 300px;
   padding-left: 30px;
 }
-
 .validMsg {
   text-align: center;
   font-size: 13px;
   margin: 1px;
   color: rgb(177, 37, 37);
 }
-
 .next--button {
   cursor: pointer;
   background: rgb(0, 131, 38);
@@ -97,26 +90,21 @@
   align-self: center;
   margin-top: 20px;
 }
-
 .request--section {
   margin-top: 30px;
   display: flex;
   justify-content: center;
 }
-
 .your--request {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .number--of-pieces {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-
 }
-
 .gender--check-box,
 .season--check-box {
   display: flex;
@@ -130,18 +118,14 @@
   width: 375px;
   height: 50px;
 }
-
-
 .description--container {
   display: flex;
   flex-direction: column;
 }
-
 .description {
   resize: none;
   height: 150px;
 }
-
 .request--submit {
   cursor: pointer;
   background: rgba(0, 131, 38);
@@ -155,7 +139,6 @@
   align-self: center;
   margin-top: 10px;
 }
-
 .popUp {
   text-align: center;
   background-color: white;
@@ -166,18 +149,14 @@
   height: 230px;
   border-radius: 5px;
   padding: 20px;
-
 }
-
 .mainParagraph {
   width: 310px;
 }
-
 .secondryParagraph {
   width: 310px;
   font-size: 12px;
 }
-
 .back {
   background: rgba(0, 131, 38);
   border: 1px solid rgba(0, 131, 38);
@@ -187,11 +166,9 @@
   height: 35px;
   align-self: center;
 }
-
 .back:hover {
   background: rgba(0, 131, 38, 0.9);
 }
-
 .popUpBack {
   position: fixed;
   display: flex;
@@ -201,9 +178,8 @@
   top: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.4)
+  background-color: rgba(0, 0, 0, 0.4);
 }
-
 .hide {
   display: none;
 }
