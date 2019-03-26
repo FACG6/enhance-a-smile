@@ -55,9 +55,12 @@ const loginEvent = (e) => {
   } else {
     sendData(email, password)
       .then((res) => {
-        if (res.status === 302) window.location.href = '/admin/profile';
+        if (res.status !== 200) showErrorMsg(form, loginBtn, 'Please check your email or password');
+        else window.location.href = '/admin/profile';
       })
-      .catch((e) => {});
+      .catch((e) => {
+        showErrorMsg(form, loginBtn, 'Please checkout your internet connection');
+      });
   }
 };
 
