@@ -1,0 +1,1 @@
+alert('Admin Help Others');
