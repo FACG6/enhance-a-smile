@@ -15,14 +15,13 @@ const { doneContactUs } = querySelectorsAll(['doneContactUs'], ['.done']);
 doneContactUs.forEach((element) => {
   element.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log(element.value);
     fetch('/admin/contact-us', {
       method: 'POST',
-      body: JSON.stringify(element.value),
+      body: JSON.stringify({ id: element.value }),
       headers: { 'Content-Type': 'application/json' },
     })
       .then((res) => {
-        console.log(res.json());
+        res.json();
       })
       .catch((error) => {
         console.log(error);

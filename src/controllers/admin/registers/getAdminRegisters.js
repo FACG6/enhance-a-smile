@@ -10,7 +10,7 @@ exports.getAdminRegisters = (request, response) => {
         response.render(join('admin', 'adminRegister'), {
           layout: 'admin',
           css: [
-            join('partials', 'sidebar'),
+            join('partials', 'adminSidebar'),
             join('partials', 'adminNav'),
             join('admin', 'registers'),
           ],

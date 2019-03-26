@@ -1,25 +1,20 @@
-const { join } = require('path');
-const getQuery = require('./../../../database/queries/admin/getQuery');
+const insertOne = require('../../../database/queries/admin/insertOne');
 
-exports.getAdminRegisters = (request, response) => {
+exports.postAdminContactUs = (request, response) => {
   if (request.token) {
     response.redirect('/admin/login');
   } else {
-    // getQuery('registers', {})
-    //   .then((res) => {
-    //     response.render(join('admin', 'adminRegister'), {
-    //       layout: 'admin',
-    //       css: [
-    //         join('partials', 'sidebar'),
-    //         join('partials', 'adminNav'),
-    //         join('admin', 'registers'),
-    //       ],
-    //       js: ['domUyils', join('admin', 'registers')],
-    //       registersEmail: res,
-    //     });
-    //   })
-    //   .catch(() => {
-    //     response.status(500).send('Server Error');
-    //   });
+    const { id } = request.body;
+    insertOne('contacts', id, { done: 'done' })
+      .then(() => {
+        response.status(200).send({
+          msg: 'convert from cerrent to done',
+        });
+      })
+      .catch(() => {
+        response.status(500).send({
+          msg: 'server error',
+        });
+      });
   }
 };
