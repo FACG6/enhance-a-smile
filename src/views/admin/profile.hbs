@@ -1,0 +1,14 @@
+{{#each result}}
+<div class="admin--information">
+ <i class="far fa-user-circle"></i>
+    <div class ="admin--information-name">
+        <div class="full--name-label">Full Name :</div>
+      <div class="full--name">{{this.full_name}}  </div>  
+    </div>
+    <div>Email :{{this.email}}</div>
+    <div>
+        Password:<input type="password" value={{this.password}} disabled>
+    </div>
+
+</div>
+{{/each}}
