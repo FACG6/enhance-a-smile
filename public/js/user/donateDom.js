@@ -42,7 +42,7 @@ const {
   ],
 );
 
-next.addEventListener('click', (e) => {
+const nextEvent = (e) => {
   e.preventDefault();
   const formData = new FormData(personalForm);
   const personalInformation = {};
@@ -78,7 +78,9 @@ next.addEventListener('click', (e) => {
     valditMsg.textContent = '';
     validMsgDonation.textContent = '';
   }
-});
+};
+
+next.addEventListener('click', nextEvent);
 firstTap.addEventListener('click', (e) => {
   e.preventDefault();
   personalSection.classList.remove('hide');
@@ -88,7 +90,7 @@ firstTap.addEventListener('click', (e) => {
   valditMsg.textContent = '';
   validMsgDonation.textContent = '';
 });
-
+secundtTap.addEventListener('click', nextEvent);
 done.addEventListener('click', (e) => {
   e.preventDefault();
   const formDatavalid = new FormData(donationForm);

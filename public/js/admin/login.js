@@ -15,7 +15,7 @@ const showErrorMsg = (form, button, msg) => {
 };
 
 // this function sends the data to the server and log's the admin in
-const sendData = (email, password) => fetch('/login', {
+const sendData = (email, password) => fetch('/admin/login', {
   method: 'POST',
   credentials: 'same-origin',
   redirect: 'follow',
@@ -53,7 +53,14 @@ const loginEvent = (e) => {
     passwordInput.classList.add('input-error');
     showErrorMsg(form, loginBtn, 'Special characters are not allowed !!');
   } else {
-    sendData(email, password);
+    sendData(email, password)
+      .then((res) => {
+        if (res.status !== 200) showErrorMsg(form, loginBtn, 'Please check your email or password');
+        else window.location.href = '/admin/profile';
+      })
+      .catch((e) => {
+        showErrorMsg(form, loginBtn, 'Please checkout your internet connection');
+      });
   }
 };
 
