@@ -1,17 +1,34 @@
 <main class="main">
   <section class="main--section">
     <div class="main--tabs">
-      <input type="submit" value="Registers" class="main--tabs">
-      <input type="submit" value="Send Mails" class="main--tabs">
+      <input type="submit" value="New Messages" class="main-contactUs">
+      <input type="submit" value="Done Messages" class="main-contactUsDone">
     </div>
-    <div class="main--sendMail">
-      <label for="to" class="main-label">To :</label>
-      <input id="to" class="main-inputs">
-      <label for="subject" class="main-label">Subject :</label>
-      <input id="to" class="main-inputs">
-      <label for="message" class="main-label">Message :</label>
-      <textarea id="message" class="main-inputs main-textarea"></textarea>
-      <input class="" type="submit" class="main-send">
+  </section>
+  <section class="main--contactUs">
+    <h3 class="main--tital">Contact Us :</h3>
+    <div class="main--contact">
+      {{#each res}}
+      {{#unless done}}
+      <div class="main--message">
+        <h4 class="main-info">Full Name : {{fullName}}</h4>
+        <h4 class="main-info">Email : {{email}}</h4>
+        <h4 class="main-info">Message : {{Messages}}</h4>
+        <button value="{{_id}}" class="done"><i class="fas fa-plus-circle"></i></button>
+      </div>
+      {{/unless}}
+      {{/each}}
+    </div>
+    <div class="main--contactDone hide">
+      {{#each res}}
+      {{#if done}}
+      <div class="main--message">
+        <h4 class="main-info">Full Name : {{fullName}}</h4>
+        <h4 class="main-info">Email : {{email}}</h4>
+        <h4 class="main-info">Message : {{Messages}}</h4>
+      </div>
+      {{/if}}
+      {{/each}}
     </div>
   </section>
 </main>

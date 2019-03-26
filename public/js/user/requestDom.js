@@ -9,8 +9,40 @@ const {
   next,
   validMsgSpan,
   back,
-} = querySelectors(['pesonalSection', 'requestSection', 'personalDetails', 'yourRequest', 'streetNameSpan', 'requestSubmit', 'popUpSection', 'next', 'validMsgSpan', 'back'], ['.pesonal--section', '.request--section', '.personal--details', '.your--request', '.street--name-span', '.request--submit', '.popUpBack', '.next--button', '.valid--msg-span', '.back']);
-next.addEventListener('click', (e) => {
+  firstTab,
+  secondTab,
+} = querySelectors(
+  [
+    'pesonalSection',
+    'requestSection',
+    'personalDetails',
+    'yourRequest',
+    'streetNameSpan',
+    'requestSubmit',
+    'popUpSection',
+    'next',
+    'validMsgSpan',
+    'back',
+    'firstTab',
+    'secondTab',
+  ],
+  [
+    '.pesonal--section',
+    '.request--section',
+    '.personal--details',
+    '.your--request',
+    '.street--name-span',
+    '.request--submit',
+    '.popUpBack',
+    '.next--button',
+    '.valid--msg-span',
+    '.back',
+    '.nav--form-personalDetails',
+    '.nav--form-yourRequest',
+  ],
+);
+
+const nextEvent = (e) => {
   e.preventDefault();
   const formData = new FormData(personalDetails);
   const personalInformation = {
@@ -28,8 +60,8 @@ next.addEventListener('click', (e) => {
     streetNameSpan.textContent = 'Phone number must not empty';
     return false;
   }
-  if (!personalInformation['personal-data'].phoneNumber.match(/^[0-9]+$/)) {
-    streetNameSpan.textContent = 'Your phone number must number';
+  if (!personalInformation['personal-data'].phoneNumber.match(/^[0-9]{10}$/)) {
+    streetNameSpan.textContent = 'Please enter a valid phone number';
     return false;
   }
   if (!personalInformation['personal-data'].cityName) {
@@ -42,7 +74,18 @@ next.addEventListener('click', (e) => {
   }
   pesonalSection.classList.add('hide');
   requestSection.classList.remove('hide');
+  firstTab.classList.replace('nav--form-personalDetails', 'nav--form-yourRequest');
+  secondTab.classList.replace('nav--form-yourRequest', 'nav--form-personalDetails');
+};
+next.addEventListener('click', nextEvent);
+firstTab.addEventListener('click', (e) => {
+  pesonalSection.classList.remove('hide');
+  requestSection.classList.add('hide');
+  firstTab.classList.replace('nav--form-yourRequest', 'nav--form-personalDetails');
+  secondTab.classList.replace('nav--form-personalDetails', 'nav--form-yourRequest');
 });
+secondTab.addEventListener('click', nextEvent);
+
 requestSubmit.addEventListener('click', (e) => {
   e.preventDefault();
   validMsgSpan.textContent = '';
@@ -82,7 +125,8 @@ requestSubmit.addEventListener('click', (e) => {
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then(result => result.json())
+    })
+      .then(result => result.json())
       .then((res) => {
         if (res.msg === 'Your request added sucsesfully') {
           popUpSection.classList.remove('hide');
@@ -99,6 +143,7 @@ requestSubmit.addEventListener('click', (e) => {
       });
   }
 });
+
 back.addEventListener('click', (e) => {
   e.preventDefault();
   window.location = '/';
