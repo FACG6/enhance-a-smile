@@ -11,11 +11,7 @@ test('get in /donate (donate page)', (t) => {
       if (err) {
         t.error(err);
       } else {
-        t.equal(
-          res.text.includes('Enhance A Smile'),
-          true,
-          'get donate page sucsesfully',
-        );
+        t.equal(res.text.includes('Enhance A Smile'), true, 'get donate page sucsesfully');
         t.end();
       }
     });

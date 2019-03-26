@@ -1,18 +1,16 @@
-const client = require('../../db_connection');
+const connection = require('../../db_connection');
 
 module.exports = (collectionName, obj) => new Promise((resolve, reject) => {
-  client.connect((error) => {
-    if (error) reject(error);
-    const dataBase = client.db('enhance-a-smile-db');
+  connection().then((dbs) => {
+    const dataBase = dbs.production;
     dataBase
       .collection(collectionName)
-      .find(obj).toArray()
+      .find(obj)
+      .toArray()
       .then((res) => {
-        client.close();
         resolve(res);
       })
       .catch((err) => {
-        client.close();
         reject(err);
       });
   });

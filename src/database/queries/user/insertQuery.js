@@ -1,9 +1,8 @@
-const client = require('../../db_connection');
+const connection = require('../../db_connection');
 
-const insertQuery = (collectionName, objData) => new Promise((resolve, reject) => {
-  client.connect((error, db) => {
-    if (error) reject(error);
-    const database = client.db('enhance-a-smile-db');
+module.exports = (collectionName, objData) => new Promise((resolve, reject) => {
+  connection().then((dbs) => {
+    const database = dbs.production;
     database
       .collection(collectionName)
       .insertOne(objData)
@@ -15,5 +14,3 @@ const insertQuery = (collectionName, objData) => new Promise((resolve, reject) =
       });
   });
 });
-
-module.exports = insertQuery;
