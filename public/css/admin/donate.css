@@ -16,3 +16,73 @@
 .hide{
   display: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.popUpsection {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4)
+}
+
+.popUp {
+  text-align: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 230px;
+  border-radius: 5px;
+  padding: 20px;
+
+}
+
+.mainParagraph {
+  width: 310px;
+}
+
+.secondryParagraph {
+  width: 310px;
+  font-size: 12px;
+}
+
+.back {
+  background: rgba(0, 131, 38);
+  border: 1px solid rgba(0, 131, 38);
+  color: white;
+  border-radius: 5px;
+  width: 130px;
+  height: 35px;
+  align-self: center;
+}
+
+.back:hover {
+  background: rgba(0, 131, 38, 0.9);
+}
+
+.hide {
+  display: none;
+}
