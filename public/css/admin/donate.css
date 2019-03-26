@@ -1,39 +1,25 @@
-*{
+* {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
 }
-.taps{
+
+.taps {
   display: flex;
 }
-.cards--info{
+
+.cards--info {
   border: 2px solid red;
 }
-.cards--new{
+
+.cards--new {
   display: flex;
   flex-direction: column;
 }
-.hide{
+
+.hide {
   display: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .popUpsection {
   position: fixed;
