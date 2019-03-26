@@ -1,6 +1,8 @@
-const { join } = require('path');
+const {
+  join
+} = require('path');
 const donates = require('../../../database/queries/admin/getQuery');
-// const update = require('');
+const insertOne = require('../../../database/queries/admin/insertOne');
 
 exports.getDonates = (request, response) => {
   donates('donates', {})
@@ -11,13 +13,31 @@ exports.getDonates = (request, response) => {
         layout: 'admin',
         card,
       });
-    }).catch((err) => console.log(err))
+    }).catch(err => console.log(err));
 };
 
-// exports.postCurrent = (request, response) => {
+exports.postDonates = (request, response) => {
+  const {
+    id,
+    obj,
+  } = request.body;
+  if (obj.current) {
+    insertOne('donates', id, obj)
+      .then(() => {
+        console.log('response from the the insert query');
+        response.send({
+          msg: 'sfignsfingisfngoinsfoignsoiffngoi',
+        });
+      })
+      .catch(er => console.log('error from catch database', er));
+  } else if (obj.done) {
+    insertOne('donates', id, obj)
+      .then(res => console.log(res))
+      .catch(er => console.log(er))
+  }
+};
 
-// }
 
-// exports.postDone = (request, response) => {
-
-// }
+// insertOne('donates', '5c9a33d41825e40420839561', {
+//   current: 'current',
+// }).then(res => console.log(res)).catch(er => console.log(er));

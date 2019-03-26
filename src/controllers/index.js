@@ -11,6 +11,7 @@ const helpOthers = require('./user/helpOthers.js');
 const adminLogin = require('./admin/login.js');
 const adminProfile = require('./admin/profile.js');
 const { getDonates } = require('./admin/donate/donate');
+const { postDonates } = require('./admin/donate/donate');
 
 const router = express.Router();
 router.get('/', getHomePage);
@@ -28,7 +29,10 @@ router
   .post(postDonate);
 router.get('/admin', (req, res) => res.redirect('/admin/login'));
 router.get('/admin/login', adminLogin.get);
-router.get('/admin/donates', getDonates);
+router
+  .route('/admin/donates')
+  .get(getDonates)
+  .post(postDonates);
 router.get('/admin/contact-us', getAdminContactUs);
 router.get('/admin/registers', getAdminRegisters);
 // use the auth middleware

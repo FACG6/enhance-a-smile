@@ -4,21 +4,20 @@
     <input type="button" value="Current Donations" class="current">
     <input type="button" value="Done Donations" class="done">
   </section>
-  {{#each card}}
-  {{#unless card.state}}
   <section class="cards--new">
+    {{#each card}}
+    {{#unless current}}
+    {{#unless done}}
     <div class="card--taps">
       <input type="button" value="Personal Info" class="tap--personal">
-      <input type="button" value="Donation" class="tap--donation">
+      <input type="button" value="Donation" class="tap--donation" id={{_id}}>
     </div>
-    {{!-- {{#if !card.state}} --}}
     <div class="cards--info">
       <div class="cards--info-personal">
         <h4 class="fullName">Full Name: {{fullName}}</h4>
         <h4 class="phoneNumber">Phone Number: {{phoneNumber}}</h4>
         <h4 class="email">Email: {{email}}</h4>
         <h4 class="city">City: {{cityName}}</h4>
-        {{!-- <h4 class="steet">Steet{{streetName}}:</h4> --}}
       </div>
       <div class="cards--info-donation hide">
         <h4 class="piecesNumber">Number Of Pieces: {{numberOfPieces}}</h4>
@@ -28,7 +27,62 @@
       </div>
     </div>
     {{/unless}}
+    {{/unless}}
     {{/each}}
   </section>
 
+  <section class="cards--current hide">
+    {{#each card}}
+    {{#if current}}
+    {{#unless done}}
+    <div class="card--taps">
+      <input type="button" value="Personal Info" class="tap--personal">
+      <input type="button" value="Donation" class="tap--donation">
+    </div>
+    <div class="cards--info">
+      <div class="cards--info-personal">
+        <h4 class="fullName">Full Name: {{fullName}}</h4>
+        <h4 class="phoneNumber">Phone Number: {{phoneNumber}}</h4>
+        <h4 class="email">Email: {{email}}</h4>
+        <h4 class="city">City: {{cityName}}</h4>
+      </div>
+      <div class="cards--info-donation hide">
+        <h4 class="piecesNumber">Number Of Pieces: {{numberOfPieces}}</h4>
+        <h4 class="gender">Quality(s): {{quality}}</h4>
+        <h4 class="quality">Gender(s): {{gender}}</h4>
+        <h4 class="season">Season(s): {{season}}</h4>
+      </div>
+    </div>
+    <input type="checkbox" name="checked" id={{_id}} class="checkBox">
+    {{/unless}}
+    {{/if}}
+    {{/each}}
+    <input type="button" value="Done" class="doneBtn">
+  </section>
+
+
+  <section class="cards--done hide">
+    {{#each card}}
+    {{#if done}}
+    <div class="card--taps">
+      <input type="button" value="Personal Info" class="tap--personal">
+      <input type="button" value="Donation" class="tap--donation">
+    </div>
+    <div class="cards--info">
+      <div class="cards--info-personal">
+        <h4 class="fullName">Full Name: {{fullName}}</h4>
+        <h4 class="phoneNumber">Phone Number: {{phoneNumber}}</h4>
+        <h4 class="email">Email: {{email}}</h4>
+        <h4 class="city">City: {{cityName}}</h4>
+      </div>
+      <div class="cards--info-donation hide">
+        <h4 class="piecesNumber">Number Of Pieces: {{numberOfPieces}}</h4>
+        <h4 class="gender">Quality(s): {{quality}}</h4>
+        <h4 class="quality">Gender(s): {{gender}}</h4>
+        <h4 class="season">Season(s): {{season}}</h4>
+      </div>
+    </div>
+    {{/if}}
+    {{/each}}
+  </section>
 </main>
