@@ -46,4 +46,8 @@ router
 router.get('/admin/contact-us', getAdminContactUs);
 router.get('/admin/registers', getAdminRegisters);
 router.post('/admin/registers', postSendEmails);
+router.get('/admin/logout', (req, res) => {
+  Object.keys(req.cookies).forEach(key => res.clearCookie(key));
+  res.redirect('/admin/login');
+});
 module.exports = { router };
