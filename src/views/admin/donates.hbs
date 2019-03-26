@@ -30,7 +30,6 @@
     {{/unless}}
     {{/each}}
   </section>
-
   <section class="cards--current hide">
     {{#each card}}
     {{#if this.current}}
@@ -59,8 +58,6 @@
     {{/each}}
     <input type="button" value="Done" class="doneBtn">
   </section>
-
-
   <section class="cards--done hide">
     {{#each card}}
     {{#if this.done}}
@@ -84,5 +81,11 @@
     </div>
     {{/if}}
     {{/each}}
+  </section>
+  <section class="popUpsection hide">
+    <div class="popUp">
+      <p class="mainParagraph">ALl selected cards convert to the done state</p>
+      <input type="button" value="OK" class="back">
+    </div>
   </section>
 </main>
