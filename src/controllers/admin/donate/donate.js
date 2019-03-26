@@ -1,19 +1,21 @@
-const {
-  join
-} = require('path');
+const { join } = require('path');
 const donates = require('../../../database/queries/admin/getQuery');
 const insertOne = require('../../../database/queries/admin/insertOne');
 
 exports.getDonates = (request, response) => {
   donates('donates', {})
     .then((card) => {
-      response.render('admin/donates', {
+      response.status(200).render('admin/donates', {
         js: ['domUyils', join('admin', 'donateDom')],
         css: [join('admin', 'donate')],
         layout: 'admin',
         card,
       });
-    }).catch(err => console.log(err));
+    }).catch(() => {
+      response.status(500).send({
+        msg: 'server error',
+      });
+    });
 };
 
 exports.postDonates = (request, response) => {
@@ -24,20 +26,26 @@ exports.postDonates = (request, response) => {
   if (obj.current) {
     insertOne('donates', id, obj)
       .then(() => {
-        console.log('response from the the insert query');
-        response.send({
-          msg: 'sfignsfingisfngoinsfoignsoiffngoi',
+        response.status(200).send({
+          msg: 'convert from cerrent to done',
         });
       })
-      .catch(er => console.log('error from catch database', er));
+      .catch(() => {
+        response.status(500).send({
+          msg: 'server error',
+        });
+      });
   } else if (obj.done) {
     insertOne('donates', id, obj)
-      .then(res => console.log(res))
-      .catch(er => console.log(er))
+      .then(() => {
+        response.status(200).send({
+          msg: 'card convert from current to done',
+        });
+      })
+      .catch(() => {
+        response.status(500).send({
+          msg: 'server error',
+        });
+      });
   }
 };
-
-
-// insertOne('donates', '5c9a33d41825e40420839561', {
-//   current: 'current',
-// }).then(res => console.log(res)).catch(er => console.log(er));
