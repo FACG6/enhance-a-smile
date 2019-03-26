@@ -3,8 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  margin-left: 250px;
+}
 .sidebar {
-  position: relative;
+  position: fixed;
   left: 0;
   top: 50px;
   width: 250px;
