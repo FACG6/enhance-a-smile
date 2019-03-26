@@ -2,7 +2,7 @@ const connection = require('./db_connection.js');
 
 const runDatabaseBuild = (db) => {
   connection().then((dbs) => {
-    const database = dbs[db];
+    const database = dbs.production;
     const collections = [
       'admins',
       'donates',
@@ -48,10 +48,10 @@ const runDatabaseBuild = (db) => {
     setTimeout(() => {
       console.log('Database was built successfully');
       process.exit(0);
-    }, 1000);
+    }, 10000);
   });
 };
 
-runDatabaseBuild('test');
+runDatabaseBuild();
 
 module.exports = { runDatabaseBuild };
