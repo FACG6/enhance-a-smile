@@ -1,9 +1,8 @@
-const client = require('./db_connection.js');
+const connection = require('./db_connection.js');
 
-const runDatabaseBuild = () => {
-  client.connect((connectionError) => {
-    if (connectionError) throw connectionError;
-    const database = client.db('enhance-a-smile-db');
+const runDatabaseBuild = (db) => {
+  connection().then((dbs) => {
+    const database = dbs[db];
     const collections = [
       'admins',
       'donates',
@@ -46,13 +45,13 @@ const runDatabaseBuild = () => {
       .collection('registers')
       .insertMany([{ email: 'ahmed@gmail.com' }, { email: 'amin@gmail.com' }]);
 
-    client
-      .close()
-      .then(() => console.log('done build'))
-      .catch(() => console.log('error in build'));
+    setTimeout(() => {
+      console.log('Database was built successfully');
+      process.exit(0);
+    }, 1000);
   });
 };
 
-runDatabaseBuild();
+runDatabaseBuild('test');
 
 module.exports = { runDatabaseBuild };
