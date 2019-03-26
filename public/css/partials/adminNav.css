@@ -15,6 +15,7 @@ a {
   background: rgba(0, 131, 38, 0.9);
   position: fixed;
   top: 0;
+  left: 0;
   color: #fff;
   display: flex;
   align-items: center;
