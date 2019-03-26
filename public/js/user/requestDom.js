@@ -9,6 +9,8 @@ const {
   next,
   validMsgSpan,
   back,
+  firstTab,
+  secondTab,
 } = querySelectors(
   [
     'pesonalSection',
@@ -21,6 +23,8 @@ const {
     'next',
     'validMsgSpan',
     'back',
+    'firstTab',
+    'secondTab',
   ],
   [
     '.pesonal--section',
@@ -33,9 +37,12 @@ const {
     '.next--button',
     '.valid--msg-span',
     '.back',
+    '.nav--form-personalDetails',
+    '.nav--form-yourRequest',
   ],
 );
-next.addEventListener('click', (e) => {
+
+const nextEvent = (e) => {
   e.preventDefault();
   const formData = new FormData(personalDetails);
   const personalInformation = {
@@ -67,7 +74,18 @@ next.addEventListener('click', (e) => {
   }
   pesonalSection.classList.add('hide');
   requestSection.classList.remove('hide');
+  firstTab.classList.replace('nav--form-personalDetails', 'nav--form-yourRequest');
+  secondTab.classList.replace('nav--form-yourRequest', 'nav--form-personalDetails');
+};
+next.addEventListener('click', nextEvent);
+firstTab.addEventListener('click', (e) => {
+  pesonalSection.classList.remove('hide');
+  requestSection.classList.add('hide');
+  firstTab.classList.replace('nav--form-yourRequest', 'nav--form-personalDetails');
+  secondTab.classList.replace('nav--form-personalDetails', 'nav--form-yourRequest');
 });
+secondTab.addEventListener('click', nextEvent);
+
 requestSubmit.addEventListener('click', (e) => {
   e.preventDefault();
   validMsgSpan.textContent = '';
@@ -125,6 +143,7 @@ requestSubmit.addEventListener('click', (e) => {
       });
   }
 });
+
 back.addEventListener('click', (e) => {
   e.preventDefault();
   window.location = '/';
