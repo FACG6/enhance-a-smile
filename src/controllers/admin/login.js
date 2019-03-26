@@ -19,7 +19,7 @@ exports.post = (req, res) => {
       const { full_name: fullName } = result[0];
       compare(password, result[0].password)
         .then((isPass) => {
-          if (!isPass) res.status(400).end();
+          if (!isPass) res.status(401).end();
           return genCookie({ email });
         })
         .then((token) => {
