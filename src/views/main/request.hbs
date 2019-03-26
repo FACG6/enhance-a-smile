@@ -27,48 +27,62 @@
       <input type="button" name="Next" value="Next" id="next--button" class="next--button" required />
     </form>
   </section>
-  <section class="request--section">
+  <section class="request--section hide">
     <form class="your--request ">
-      <label for="number--of-pieces" class="your--request-label">Number of pieces :</label>
-      <input type="number" placeholder="Enter number of pieces ... " id="number--of-pieces"
-        class="number--of-pieces input" name="numberOfPieces" required />
-      <label for="gender">Gender :</label>
-      <div class="gender--check-box">
-        <div>
-          <input type="checkbox" name="women" class="gender" id="women" />
-          <lable for="women">Women</lable>
-        </div>
-        <div>
-          <input type="checkbox" name="men" class="gender" id="men" />
-          <lable for="men">Men</lable>
-        </div>
-        <div>
-          <input type="checkbox" name="kids" class="gender" id="kids" />
-          <label for="kids">Kids</label>
+      <div class="number--of-pieces">
+        <label for="number--of-pieces" class="label">Number of pieces :</label>
+        <input type="number" placeholder="Enter number of pieces ... " id="number--of-pieces"
+          class="number--of-pieces input" name="numberOfPieces" required />
+      </div>
+      <div>
+        <label for="gender" class="label">Gender :</label>
+        <div class="gender--check-box">
+          <div>
+            <input type="checkbox" name="women" class="gender" id="women" />
+            <lable for="women">Women</lable>
+          </div>
+          <div>
+            <input type="checkbox" name="men" class="gender" id="men" />
+            <lable for="men">Men</lable>
+          </div>
+          <div>
+            <input type="checkbox" name="kids" class="gender" id="kids" />
+            <label for="kids">Kids</label>
+          </div>
         </div>
       </div>
-      <label for="season">Season :</label>
-      <div class="season--check-box">
+      <div>
         <div>
-          <input type="checkbox" name="winter" class="season" id="winter"  /><label
-            for="winter">Winter</label>
-        </div>
-        <div>
-          <input type="checkbox" name="summer" class="season" id="summer"  /><label
-            for="summer">Summer</label>
-        </div>
-        <div>
-          <input type="checkbox" name="spring" class="season" id="spring" /><label
-            for="spring">Spring</label>
-        </div>
-        <div>
-          <input type="checkbox" name="autumn" class="season" id="autumn" value="autumn" />
-          <label for="autumn">Autumn</label> </div> 
+          <label for="season" class="label">Season :</label>
+          <div class="season--check-box">
+            <div>
+              <input type="checkbox" name="winter" class="season" id="winter" /><label for="winter">Winter</label>
+            </div>
+            <div>
+              <input type="checkbox" name="summer" class="season" id="summer" /><label for="summer">Summer</label>
+            </div>
+            <div>
+              <input type="checkbox" name="spring" class="season" id="spring" /><label for="spring">Spring</label>
+            </div>
+            <div>
+              <input type="checkbox" name="autumn" class="season" id="autumn" value="autumn" />
+              <label for="autumn">Autumn</label> </div>
           </div>
-           <div>
-            <label for="description">Description <span class="optional">(opthional)</span> :</label>
-            <textarea name="descrption" placeholder="Enter description about your request"></textarea>
         </div>
-        <input type="submit" name="submit" value="submit" class="request--submit" id="request--submit" />
+      </div>
+      <div class="description--container">
+        <label for="description" class="label">Description <span class="optional">(opthional)</span> :</label>
+        <textarea name="descrption" placeholder="Enter description about your request"
+          class="description input"></textarea>
+        <span class="valid--msg-span validMsg"></span>
+      </div>
+      <input type="submit" name="submit" value="submit" class="request--submit" id="request--submit" />
     </form>
+  </section>
+  <section class="popUpBack hide">
+    <div class="popUp ">
+      <p class="mainParagraph">Thank you for your request, we will look at what you request today</p>
+      <input type="button" value="Back To Home" class="back">
+      <p class="secondryParagraph">By using our service you push us a step forward to achieving our vision</p>
+    </div>
   </section>
