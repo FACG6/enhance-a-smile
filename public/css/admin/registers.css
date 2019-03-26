@@ -1,3 +1,8 @@
-.hide{
+.hide {
   display: none;
+}
+
+.main {
+  text-align: center;
+  margin-top: 40px;
 }

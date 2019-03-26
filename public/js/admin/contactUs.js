@@ -3,11 +3,38 @@ const {
   doneContact,
   contacterShow,
   contacterDoneShow,
+  profile,
+  profileA,
+  contactUs,
+  contactUsA,
   // eslint-disable-next-line no-undef
 } = querySelectors(
-  ['contacter', 'doneContact', 'contacterShow', 'contacterDoneShow'],
-  ['.main-contactUs', '.main-contactUsDone', '.main--contact', '.main--contactDone'],
+  [
+    'contacter',
+    'doneContact',
+    'contacterShow',
+    'contacterDoneShow',
+    'profile',
+    'profileA',
+    'contactUs',
+    'contactUsA',
+  ],
+  [
+    '.main-contactUs',
+    '.main-contactUsDone',
+    '.main--contact',
+    '.main--contactDone',
+    '.profile',
+    '.profile-a',
+    '.contactUs',
+    '.contactUs-a',
+  ],
 );
+
+profile.classList.remove('focus');
+profileA.classList.remove('black');
+contactUs.classList.add('focus');
+contactUsA.classList.add('black');
 
 // eslint-disable-next-line no-undef
 const { doneContactUs } = querySelectorsAll(['doneContactUs'], ['.done']);
