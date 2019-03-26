@@ -7,7 +7,8 @@ exports.get = (request, response) => {
     response.render(join('admin', 'profile'), {
       layout: 'admin',
       result: res,
-      css: [join('admin', 'profileAdmin')],
+      css: [join('admin', 'profileAdmin'), join('partials', 'adminNav'), join('partials', 'adminSidebar')],
+      js: ['domUyils', join('admin', 'sidebar')],
     });
   }).catch((error) => {
     response.send(error);
