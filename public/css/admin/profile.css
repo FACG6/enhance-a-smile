@@ -3,28 +3,59 @@
     padding: 0;
     box-sizing: border-box;
     outline: none;
-}
-
-.body {
     font-family: Roboto;
-    display: flex;
-    flex-direction: column;
 }
 
 .admin--information {
+    position: fixed;
+    left: 296px;
+    top: 50px;
+    height: 100vh;
+    padding-top: 60px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     width: 70%;
-    background-color: aqua;
     align-items: center
 }
 
-.admin--information-name {
+.information--container {
     display: flex;
+    flex-direction: column;
 }
 
-.full--name {
+.admin--information-email,
+.admin--information-name,
+.admin--information-password {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.email--label,
+.full--name-label,
+.password--label {
+    font-size: 25px;
+    letter-spacing: 4px;
+}
+
+.email,
+.full--name ,
+.password{
     color: #333;
-    font-size: 28px
+    font-size: 25px;
+    letter-spacing: 4px;
+    margin-left: 10px
+}
+
+.fa-user-circle {
+    font-size: 120px;
+    margin-bottom: 25px;
+}
+.fa-eye{
+    font-size: 30px;
+    margin-left: 12px
+}
+.total--donations{
+    position: fixed;
+    left: 296px;
+    top: 100px;
 }
