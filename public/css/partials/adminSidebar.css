@@ -3,13 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-<<<<<<< HEAD
-
-=======
 body {
   margin-left: 250px;
 }
->>>>>>> ede2723ac114919373556d5efb0fc7241865cbc1
 .sidebar {
   position: fixed;
   left: 0;
