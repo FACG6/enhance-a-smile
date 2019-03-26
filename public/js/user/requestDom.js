@@ -9,7 +9,32 @@ const {
   next,
   validMsgSpan,
   back,
-} = querySelectors(['pesonalSection', 'requestSection', 'personalDetails', 'yourRequest', 'streetNameSpan', 'requestSubmit', 'popUpSection', 'next', 'validMsgSpan', 'back'], ['.pesonal--section', '.request--section', '.personal--details', '.your--request', '.street--name-span', '.request--submit', '.popUpBack', '.next--button', '.valid--msg-span', '.back']);
+} = querySelectors(
+  [
+    'pesonalSection',
+    'requestSection',
+    'personalDetails',
+    'yourRequest',
+    'streetNameSpan',
+    'requestSubmit',
+    'popUpSection',
+    'next',
+    'validMsgSpan',
+    'back',
+  ],
+  [
+    '.pesonal--section',
+    '.request--section',
+    '.personal--details',
+    '.your--request',
+    '.street--name-span',
+    '.request--submit',
+    '.popUpBack',
+    '.next--button',
+    '.valid--msg-span',
+    '.back',
+  ],
+);
 next.addEventListener('click', (e) => {
   e.preventDefault();
   const formData = new FormData(personalDetails);
@@ -28,8 +53,8 @@ next.addEventListener('click', (e) => {
     streetNameSpan.textContent = 'Phone number must not empty';
     return false;
   }
-  if (!personalInformation['personal-data'].phoneNumber.match(/^[0-9]+$/)) {
-    streetNameSpan.textContent = 'Your phone number must number';
+  if (!personalInformation['personal-data'].phoneNumber.match(/^[0-9]{10}$/)) {
+    streetNameSpan.textContent = 'Please enter a valid phone number';
     return false;
   }
   if (!personalInformation['personal-data'].cityName) {
@@ -82,7 +107,8 @@ requestSubmit.addEventListener('click', (e) => {
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then(result => result.json())
+    })
+      .then(result => result.json())
       .then((res) => {
         if (res.msg === 'Your request added sucsesfully') {
           popUpSection.classList.remove('hide');
