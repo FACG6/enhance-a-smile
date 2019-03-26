@@ -9,7 +9,11 @@ exports.getAdminRegisters = (request, response) => {
       .then((res) => {
         response.render(join('admin', 'adminRegister'), {
           layout: 'admin',
-          css: [join('admin', 'registers')],
+          css: [
+            join('partials', 'sidebar'),
+            join('partials', 'adminNav'),
+            join('admin', 'registers'),
+          ],
           js: ['domUyils', join('admin', 'registers')],
           registersEmail: res,
         });
