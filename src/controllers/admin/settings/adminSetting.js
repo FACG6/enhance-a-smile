@@ -117,7 +117,7 @@ exports.postAdminSettings = (request, response, next) => {
                     email: request.body.email,
                   };
                   updateAdmin('admins', request.cookies.name, obj)
-                    .then(() => {
+                    .then((res) => {
                       const {
                         email,
                       } = obj;
@@ -184,7 +184,9 @@ exports.postAdminSettings = (request, response, next) => {
             }
           });
       }).catch(() => {
-        next(new Error('Error'));
+        response.status(500).send({
+          msg: 'server error',
+        });
       });
   }
 };
