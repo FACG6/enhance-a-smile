@@ -1,34 +1,42 @@
 <main class="main">
   <section class="main--section">
     <div class="main--tabs">
-      <input type="submit" value="New Messages" class="main-contactUs">
-      <input type="submit" value="Done Messages" class="main-contactUsDone">
+      <input type="submit" value="New Messages" class="main-contactUs tabs active">
+      <input type="submit" value="Done Messages" class="main-contactUsDone tabs">
     </div>
   </section>
   <section class="main--contactUs">
     <h3 class="main--tital">Contact Us :</h3>
-    <div class="main--contact">
+    <div class="main--contact contact">
       {{#each res}}
       {{#unless done}}
       <div class="main--message">
         <h4 class="main-info">Full Name : {{fullName}}</h4>
         <h4 class="main-info">Email : {{email}}</h4>
-        <h4 class="main-info">Message : {{Messages}}</h4>
-        <button value="{{_id}}" class="done"><i class="fas fa-plus-circle"></i></button>
+        <h4 class="main-info">Message : {{message}}</h4>
+        <button value="{{_id}}" class="done"><i class="icon fas fa-plus-circle"></i></button>
       </div>
       {{/unless}}
       {{/each}}
     </div>
-    <div class="main--contactDone hide">
+    <div class="main--contactDone contact hide">
       {{#each res}}
       {{#if done}}
       <div class="main--message">
         <h4 class="main-info">Full Name : {{fullName}}</h4>
         <h4 class="main-info">Email : {{email}}</h4>
-        <h4 class="main-info">Message : {{Messages}}</h4>
+        <h4 class="main-info">Message : {{message}}</h4>
       </div>
       {{/if}}
       {{/each}}
     </div>
   </section>
 </main>
+{{!-- pop-up --}}
+<div class="popup">
+  <div class="popup--content">
+    <h2 class="popup--content-message"></h2>
+    <input class="popup--content-Done" value="OK !" type="button">
+  </div>
+
+</div>

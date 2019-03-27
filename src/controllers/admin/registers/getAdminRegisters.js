@@ -12,7 +12,7 @@ exports.getAdminRegisters = (request, response) => {
           join('admin', 'registers'),
         ],
         js: ['domUyils', join('admin', 'registers')],
-        registersEmail: res,
+        res,
       });
     })
     .catch(() => {
