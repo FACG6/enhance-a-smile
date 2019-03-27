@@ -10,6 +10,7 @@ const { getAdminRegisters } = require('./admin/registers/getAdminRegisters');
 const { postSendEmails } = require('./admin/registers/postSendEmails');
 const { postAdminContactUs } = require('./admin/contactUs/postAdminContactUs');
 const helpOthers = require('./user/helpOthers.js');
+const adminHelpOthers = require('./admin/help-others/helpOthers.js');
 const adminLogin = require('./admin/login.js');
 const adminProfile = require('./admin/profile.js');
 const auth = require('./../middlewars/auth.js');
@@ -50,6 +51,10 @@ router
   .route('/admin/settings')
   .get(getAdminSetting)
   .post(postAdminSettings);
+router
+  .route('/admin/help-others')
+  .get(adminHelpOthers.get)
+  .post(adminHelpOthers.post);
 router.get('/admin/contact-us', getAdminContactUs);
 router.post('/admin/contact-us', postAdminContactUs);
 router.get('/admin/registers', getAdminRegisters);
