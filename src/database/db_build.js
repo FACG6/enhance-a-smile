@@ -1,8 +1,8 @@
 const connection = require('./db_connection.js');
 
-const runDatabaseBuild = (db) => {
+const runDatabaseBuild = () => {
   connection().then((dbs) => {
-    const database = dbs.production;
+    const { database } = dbs;
     const collections = [
       'admins',
       'donates',

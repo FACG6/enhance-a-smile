@@ -10,12 +10,15 @@ const { getAdminRegisters } = require('./admin/registers/getAdminRegisters');
 const { postSendEmails } = require('./admin/registers/postSendEmails');
 const { postAdminContactUs } = require('./admin/contactUs/postAdminContactUs');
 const helpOthers = require('./user/helpOthers.js');
+const adminHelpOthers = require('./admin/help-others/helpOthers.js');
 const adminLogin = require('./admin/login.js');
 const adminProfile = require('./admin/profile.js');
 const auth = require('./../middlewars/auth.js');
 const { getDonates } = require('./admin/donate/donate');
 const { postDonates } = require('./admin/donate/donate');
+const { getAdminSetting, postAdminSettings } = require('./admin/settings/adminSetting');
 const error = require('./error.js');
+const adminRequests = require('./admin/request/request.js');
 
 const router = express.Router();
 // user routes
@@ -45,10 +48,26 @@ router
   .route('/admin/donates')
   .get(getDonates)
   .post(postDonates);
+router
+  .route('/admin/requests')
+  .get(adminRequests.get)
+  .post(adminRequests.post);
+router
+  .route('/admin/settings')
+  .get(getAdminSetting)
+  .post(postAdminSettings);
+router
+  .route('/admin/help-others')
+  .get(adminHelpOthers.get)
+  .post(adminHelpOthers.post);
 router.get('/admin/contact-us', getAdminContactUs);
 router.post('/admin/contact-us', postAdminContactUs);
 router.get('/admin/registers', getAdminRegisters);
 router.post('/admin/registers', postSendEmails);
+router.get('/admin/logout', (req, res) => {
+  Object.keys(req.cookies).forEach(key => res.clearCookie(key));
+  res.redirect('/admin/login');
+});
 router.use(error.client);
 router.use(error.server);
 module.exports = { router };

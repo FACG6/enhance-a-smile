@@ -1,16 +1,16 @@
 const { join } = require('path');
-const donates = require('../../../database/queries/admin/getQuery');
+const getQuery = require('../../../database/queries/admin/getQuery');
 const insertOne = require('../../../database/queries/admin/insertOne');
 
-exports.getDonates = (request, response) => {
-  donates('donates', {})
+exports.get = (request, response) => {
+  getQuery('help-others', {})
     .then((card) => {
-      response.status(200).render('admin/donates', {
-        js: ['domUyils', join('admin', 'donateDom')],
+      response.status(200).render('admin/helpOthers', {
+        js: ['domUyils', join('admin', 'helpOthersDom')],
         css: [
-          join('partials', 'adminNav'),
           join('partials', 'adminSidebar'),
-          join('admin', 'donate'),
+          join('partials', 'adminNav'),
+          join('admin', 'helpOthers'),
         ],
         layout: 'admin',
         card,
@@ -23,10 +23,10 @@ exports.getDonates = (request, response) => {
     });
 };
 
-exports.postDonates = (request, response) => {
+exports.post = (request, response) => {
   const { id, obj } = request.body;
   if (obj.current) {
-    insertOne('donates', id, obj)
+    insertOne('help-others', id, obj)
       .then(() => {
         response.status(200).send({
           msg: 'convert from cerrent to done',
@@ -38,7 +38,7 @@ exports.postDonates = (request, response) => {
         });
       });
   } else if (obj.done) {
-    insertOne('donates', id, obj)
+    insertOne('help-others', id, obj)
       .then(() => {
         response.status(200).send({
           msg: 'card convert from current to done',

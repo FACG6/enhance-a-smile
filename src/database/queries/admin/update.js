@@ -1,12 +1,17 @@
 const connection = require('../../db_connection');
 
-module.exports = (collectionName, obj) => new Promise((resolve, reject) => {
+module.exports = (collectionName, name, obj) => new Promise((resolve, reject) => {
   connection().then((dbs) => {
     const dataBase = dbs.database;
     dataBase
       .collection(collectionName)
-      .find(obj)
-      .toArray()
+      .findOneAndUpdate({
+        full_name: name,
+      }, {
+        $set: obj,
+      }, {
+        returnNewDocument: true,
+      })
       .then((res) => {
         resolve(res);
       })

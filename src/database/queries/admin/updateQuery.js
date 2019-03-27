@@ -3,7 +3,7 @@ const connection = require('../../db_connection');
 
 module.exports = (collectionName, id, newstatus) => new Promise((resolve, reject) => {
   connection().then((dbs) => {
-    const dataBase = dbs.production;
+    const dataBase = dbs.database;
     dataBase
       .collection(collectionName)
       .updateOne(
