@@ -1,25 +1,53 @@
 const { join } = require('path');
 const getQuery = require('../../../database/queries/admin/getQuery');
+const insertOne = require('../../../database/queries/admin/insertOne');
 
 exports.get = (request, response) => {
-  let totalrequests = 0;
-  getQuery('requests', {
-    status: 'new',
-  })
-    .then((res) => {
-      getQuery('requests', { }).then((totalRquests) => {
-        if (Object.keys(totalRquests).length !== 0) {
-          totalrequests = Object.keys(totalRquests).length;
-        }
-        response.render(join('admin', 'requests'), {
-          layout: 'admin',
-          result: res,
-          totalrequests,
-          css: [join('admin', 'request'), join('partials', 'adminNav'), join('partials', 'adminSidebar')],
-          js: ['domUyils', join('admin', 'requestDom'), join('admin', 'sidebar')],
+  getQuery('requests', {})
+    .then((card) => {
+      response.status(200).render('admin/requests', {
+        js: ['domUyils', join('admin', 'requestsDom')],
+        css: [
+          join('partials', 'adminSidebar'),
+          join('partials', 'adminNav'),
+          join('admin', 'requests'),
+        ],
+        layout: 'admin',
+        card,
+      });
+    })
+    .catch(() => {
+      response.status(500).send({
+        msg: 'server error',
+      });
+    });
+};
+
+exports.post = (request, response) => {
+  const { id, obj } = request.body;
+  if (obj.current) {
+    insertOne('requests', id, obj)
+      .then(() => {
+        response.status(200).send({
+          msg: 'convert from cerrent to done',
+        });
+      })
+      .catch(() => {
+        response.status(500).send({
+          msg: 'server error',
         });
       });
-    }).catch((error) => {
-      response.send(error);
-    });
+  } else if (obj.done) {
+    insertOne('requests', id, obj)
+      .then(() => {
+        response.status(200).send({
+          msg: 'card convert from current to done',
+        });
+      })
+      .catch(() => {
+        response.status(500).send({
+          msg: 'server error',
+        });
+      });
+  }
 };

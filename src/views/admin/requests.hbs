@@ -1,38 +1,97 @@
-<div class="container">
-    <div class="request--taps">
-        <a class="request--tap selected-tap">New Requestes </a>
-        <a class="request--tap">Current Requestes </a>
-        <a class="request--tap">Done Requestes </a>
-    </div>
-    <div class="new--request">
-        {{#each result}}
-        <div class="new--request-taps">
-            <a class="personal--information-tap selected-tap">Personal Info</a>
-            <a class="request--details-tap">Request Details</a>
+<main class="main">
+    <section class="taps">
+        <input type="button" value="New Requests" class="new">
+        <input type="button" value="Current Requests" class="current">
+        <input type="button" value="Done Requests" class="done">
+    </section>
+    <section class="cards--new">
+        {{#each card}}
+        {{#unless this.current}}
+        {{#unless this.done}}
+        <div class="card--taps">
+            <input type="button" value="Personal Info" class="tap--personal">
+            <input type="button" value="Request Info" class="tap--request" id={{this._id}}>
         </div>
-        <div class="personal--information">
-
-            <div class="personal--information-sectionone">
-                <div> Full Name :{{this.personal-data.fullName}}</div>
-                <div>Phone No. : {{this.personal-data.phoneNumber}}</div>
+        <div class="cards--info">
+            <div class="cards--info-personal">
+                <h4 class="fullName">Full Name: {{this.personal-data.fullName}}</h4>
+                <h4 class="phoneNumber">Phone Number: {{this.personal-data.phoneNumber}}</h4>
+                <h4 class="city">City: {{this.personal-data.cityName}}</h4>
+                <h4 class="street">Street: {{this.personal-data.streetName}}</h4>
             </div>
-            <div class="personal--information-sectiontwo">
-                <div> Full Name :{{this.personal-data.cityName}}</div>
-                <div>Phone No. : {{this.personal-data.streetName}}</div>
-            </div>
-        </div>
-        <div class="request--details hiden">
-
-            <div class="request--details-sectionone">
-                <div> Pieces No. :{{this.request-data.numberOfPieces}}</div>
-                <div>Gender(s) : {{this.request-data.gender}}</div>
-            </div>
-            <div class="request--details-sectiontwo">
-                <div> Season(s) :{{this.request-data.season}}</div>
-                <div>Description: {{this.request-data.descrption}}</div>
+            <div class="cards--info-request hide">
+                <h4 class="piecesNumber">Number Of Pieces: {{this.request-data.numberOfPieces}}</h4>
+                <h4 class="quality">Gender(s): {{this.request-data.location}}</h4>
+                <h4 class="season">Season(s): {{this.request-data.season}}</h4>
+                {{#if this.request-data.description}}
+                <h4 class="season">Description: {{this.request-data.description}}</h4>
+                {{/if}}
             </div>
         </div>
+        {{/unless}}
+        {{/unless}}
         {{/each}}
-    </div>
-    <div>{{totalrequests}}</div>
-</div>
+    </section>
+    <section class="cards--current hide">
+        {{#each card}}
+        {{#if this.current}}
+        {{#unless this.done}}
+        <div class="card--taps">
+            <input type="button" value="Personal Info" class="tap--personal">
+            <input type="button" value="Request" class="tap--request">
+        </div>
+        <div class="cards--info">
+            <div class="cards--info-personal">
+                <h4 class="fullName">Full Name: {{this.personal-data.fullName}}</h4>
+                <h4 class="phoneNumber">Phone Number: {{this.personal-data.phoneNumber}}</h4>
+                <h4 class="city">City: {{this.personal-data.cityName}}</h4>
+                <h4 class="street">Street: {{this.personal-data.streetName}}</h4>
+            </div>
+            <div class="cards--info-request hide">
+                <h4 class="piecesNumber">Number Of Pieces: {{this.request-data.numberOfPieces}}</h4>
+                <h4 class="quality">Gender(s): {{this.request-data.location}}</h4>
+                <h4 class="season">Season(s): {{this.request-data.season}}</h4>
+                {{#if this.request-data.description}}
+                <h4 class="season">Description: {{this.request-data.description}}</h4>
+                {{/if}}
+            </div>
+        </div>
+        <input type="checkbox" name="checked" id={{this._id}} class="checkBox">
+        {{/unless}}
+        {{/if}}
+        {{/each}}
+        <input type="button" value="Done" class="doneBtn">
+    </section>
+    <section class="cards--done hide">
+        {{#each card}}
+        {{#if this.done}}
+        <div class="card--taps">
+            <input type="button" value="Personal Info" class="tap--personal">
+            <input type="button" value="Request" class="tap--request">
+        </div>
+        <div class="cards--info">
+            <div class="cards--info-personal">
+                <h4 class="fullName">Full Name: {{this.personal-data.fullName}}</h4>
+                <h4 class="phoneNumber">Phone Number: {{this.personal-data.phoneNumber}}</h4>
+                <h4 class="city">City: {{this.personal-data.cityName}}</h4>
+                <h4 class="street">Street: {{this.personal-data.streetName}}</h4>
+            </div>
+            <div class="cards--info-request hide">
+                <h4 class="piecesNumber">Number Of Pieces: {{this.request-data.numberOfPieces}}</h4>
+                <h4 class="quality">Gender(s): {{this.request-data.location}}</h4>
+                <h4 class="season">Season(s): {{this.request-data.season}}</h4>
+                {{#if this.request-data.description}}
+                <h4 class="season">Description: {{this.request-data.description}}</h4>
+                {{/if}}
+            </div>
+        </div>
+        {{/if}}
+        {{/each}}
+    </section>
+    <section class="popUpsection hide">
+        <div class="popUp">
+            <p class="mainParagraph">ALl selected cards convert to the done state</p>
+            <input type="button" value="OK" class="back">
+        </div>
+    </section>
+</main>
