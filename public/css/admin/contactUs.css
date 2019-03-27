@@ -19,7 +19,8 @@
 .tabs {
   width: 50%;
   height: 50px;
-  font-size: 100%;
+  font-size: 20px;
+  font-weight: 600;
   margin-bottom: 20px;
   border: none;
   background: #E2E2E2;
@@ -67,8 +68,12 @@
   color: white;
 }
 
-.icon {
-  color: rgb(200, 166, 55);
+.main--message .icon {
+  color: black;
+}
+
+.main--message:nth-child(2n) .icon {
+  color: white;
 }
 
 .done {
@@ -130,4 +135,5 @@
   background: rgba(0, 131, 38, 0.9);
   border-radius: 5px;
   border: none;
+  width: 50%
 }
