@@ -12,7 +12,6 @@ exports.getDonate = (req, res) => {
 exports.postDonate = (request, response) => {
   const schema = Joi.object().keys({
     fullName: Joi.string()
-      .alphanum()
       .min(6)
       .max(30)
       .required(),
