@@ -1,0 +1,19 @@
+<main class="main">
+  {{#each adminInfo}}
+  <section>
+    <img src="" alt="Admin IMG" class="adminImg">
+  </section>
+  <section>
+    <form class="form">
+    <h3> name: <input type="text" name="full_name" value="{{this.full_name}}" class="full_name"></h3>
+    <h3>Email: <input type="email" name="email" value="{{this.email}}" class="email"></h3>
+    <h3>New Password: <input type="password" name="newPassword"  class="newPassword"></h3>
+    <h3>Confirm Password: <input type="password" name="confirmPassword"  class="confirmPassword"></h3>
+    <h3>Old Password <input type="password" name="oldPassword" class="oldPassword"></h3>
+    <input type="button" value="Show Password" class="showPassword">
+    </form>
+    <h4 class="valditMsg"></h4>
+    <input type="button" value="Save Settings" class="save">
+  </section>
+  {{/each}}
+</main>

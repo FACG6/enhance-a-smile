@@ -15,8 +15,8 @@ a {
   height: 40px;
   background: #008326;
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   color: #fff;
   display: flex;
   align-items: center;
