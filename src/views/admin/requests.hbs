@@ -1,15 +1,38 @@
-<div class ="container">
-<div class="request--taps">
-    <a class="new--requests request--tap">New Requestes </a>
-    <a class="new--requests request--tap">Current Requestes </a>
-    <a class="new--requests request--tap">Done Requestes </a>
-</div>
-<div class ="new--request">
-<div class="new--request-taps">
-    <a class="personal--information">Personal Info</a>
-    <div></div>
-    <a class ="request--details">Request Details</a>
-</div>
+<div class="container">
+    <div class="request--taps">
+        <a class="request--tap selected-tap">New Requestes </a>
+        <a class="request--tap">Current Requestes </a>
+        <a class="request--tap">Done Requestes </a>
+    </div>
+    <div class="new--request">
+        {{#each result}}
+        <div class="new--request-taps">
+            <a class="personal--information-tap selected-tap">Personal Info</a>
+            <a class="request--details-tap">Request Details</a>
+        </div>
+        <div class="personal--information">
 
-</div>
+            <div class="personal--information-sectionone">
+                <div> Full Name :{{this.personal-data.fullName}}</div>
+                <div>Phone No. : {{this.personal-data.phoneNumber}}</div>
+            </div>
+            <div class="personal--information-sectiontwo">
+                <div> Full Name :{{this.personal-data.cityName}}</div>
+                <div>Phone No. : {{this.personal-data.streetName}}</div>
+            </div>
+        </div>
+        <div class="request--details hiden">
+
+            <div class="request--details-sectionone">
+                <div> Pieces No. :{{this.request-data.numberOfPieces}}</div>
+                <div>Gender(s) : {{this.request-data.gender}}</div>
+            </div>
+            <div class="request--details-sectiontwo">
+                <div> Season(s) :{{this.request-data.season}}</div>
+                <div>Description: {{this.request-data.descrption}}</div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div>{{totalrequests}}</div>
 </div>
