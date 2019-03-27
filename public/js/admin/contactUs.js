@@ -7,6 +7,9 @@ const {
   profileA,
   contactUs,
   contactUsA,
+  popup,
+  poppUpDone,
+  message,
   // eslint-disable-next-line no-undef
 } = querySelectors(
   [
@@ -18,6 +21,9 @@ const {
     'profileA',
     'contactUs',
     'contactUsA',
+    'popup',
+    'poppUpDone',
+    'message',
   ],
   [
     '.main-contactUs',
@@ -28,6 +34,9 @@ const {
     '.profile-a',
     '.contactUs',
     '.contactUs-a',
+    '.popup',
+    '.popup--content-Done',
+    '.popup--content-message',
   ],
 );
 
@@ -48,22 +57,38 @@ doneContactUs.forEach((element) => {
       headers: { 'Content-Type': 'application/json' },
     })
       .then((res) => {
-        res.json();
+        if (res.status === 500) {
+          message.textContent = 'There some error , please try again .';
+          popup.classList.add('popup-show');
+        } else {
+          message.textContent = 'finished add contact to done :)';
+          popup.classList.add('popup-show');
+        }
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        message.textContent = 'There some error , please try again .';
+        popup.classList.add('popup-show');
       });
   });
 });
 
 contacter.addEventListener('click', (e) => {
   e.preventDefault();
+  doneContact.classList.remove('active');
+  contacter.classList.add('active');
   contacterDoneShow.classList.add('hide');
   contacterShow.classList.remove('hide');
 });
 
 doneContact.addEventListener('click', (e) => {
   e.preventDefault();
+  contacter.classList.remove('active');
+  doneContact.classList.add('active');
   contacterShow.classList.add('hide');
   contacterDoneShow.classList.remove('hide');
+});
+
+poppUpDone.addEventListener('click', (e) => {
+  e.preventDefault();
+  popup.classList.remove('popup-show');
 });
