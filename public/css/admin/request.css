@@ -1,0 +1,20 @@
+.container {
+    position: relative;
+    left: 200px;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    background-color: aquamarine;
+    width: 70%;
+}
+
+.request--taps {
+    background-color: #333;
+    display: flex;
+    justify-content: space-around;
+}
+
+.new--request-taps {
+    display: flex;
+    color: black;
+}

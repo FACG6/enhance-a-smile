@@ -1,5 +1,5 @@
 const {
-  join
+  join,
 } = require('path');
 const donates = require('../../../database/queries/admin/getQuery');
 const insertOne = require('../../../database/queries/admin/insertOne');
@@ -10,8 +10,8 @@ exports.getDonates = (request, response) => {
       response.status(200).render('admin/donates', {
         js: ['domUyils', join('admin', 'donateDom')],
         css: [
-          join('partials', 'adminSidebar'),
           join('partials', 'adminNav'),
+          join('partials', 'adminSidebar'),
           join('admin', 'donate'),
         ],
         layout: 'admin',

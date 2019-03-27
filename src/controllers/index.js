@@ -15,6 +15,7 @@ const adminProfile = require('./admin/profile.js');
 const auth = require('./../middlewars/auth.js');
 const { getDonates } = require('./admin/donate/donate');
 const { postDonates } = require('./admin/donate/donate');
+const adminRequests = require('./admin/request/request');
 
 const router = express.Router();
 // user routes
@@ -48,4 +49,5 @@ router.get('/admin/contact-us', getAdminContactUs);
 router.post('/admin/contact-us', postAdminContactUs);
 router.get('/admin/registers', getAdminRegisters);
 router.post('/admin/registers', postSendEmails);
+router.get('/admin/request', adminRequests.get);
 module.exports = { router };
