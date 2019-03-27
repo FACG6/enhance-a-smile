@@ -51,7 +51,7 @@ router
   .route('/admin/requests')
   .get(adminRequests.get)
   .post(adminRequests.post);
-  .route('/admin/help-others')
+route('/admin/help-others')
   .get(adminHelpOthers.get)
   .post(adminHelpOthers.post);
 router.get('/admin/contact-us', getAdminContactUs);
