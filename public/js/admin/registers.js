@@ -56,12 +56,16 @@ addEmail.forEach((element) => {
 
 send.addEventListener('click', (e) => {
   e.preventDefault();
+  send.classList.add('active');
+  email.classList.remove('active');
   sendEmailSection.classList.remove('hide');
   emailSection.classList.add('hide');
 });
 
 email.addEventListener('click', (e) => {
   e.preventDefault();
+  send.classList.remove('active');
+  email.classList.add('active');
   sendEmailSection.classList.add('hide');
   emailSection.classList.remove('hide');
 });
