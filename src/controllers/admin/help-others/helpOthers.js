@@ -26,7 +26,7 @@ exports.get = (request, response) => {
 exports.post = (request, response) => {
   const { id, obj } = request.body;
   if (obj.current) {
-    insertOne('donates', id, obj)
+    insertOne('help-others', id, obj)
       .then(() => {
         response.status(200).send({
           msg: 'convert from cerrent to done',
@@ -38,7 +38,7 @@ exports.post = (request, response) => {
         });
       });
   } else if (obj.done) {
-    insertOne('donates', id, obj)
+    insertOne('help-others', id, obj)
       .then(() => {
         response.status(200).send({
           msg: 'card convert from current to done',
