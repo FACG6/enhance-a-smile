@@ -16,6 +16,7 @@ const adminProfile = require('./admin/profile.js');
 const auth = require('./../middlewars/auth.js');
 const { getDonates } = require('./admin/donate/donate');
 const { postDonates } = require('./admin/donate/donate');
+const { getAdminSetting, postAdminSettings } = require('./admin/settings/adminSetting');
 const error = require('./error.js');
 
 const router = express.Router();
@@ -46,6 +47,10 @@ router
   .route('/admin/donates')
   .get(getDonates)
   .post(postDonates);
+router
+  .route('/admin/settings')
+  .get(getAdminSetting)
+  .post(postAdminSettings);
 router
   .route('/admin/help-others')
   .get(adminHelpOthers.get)
