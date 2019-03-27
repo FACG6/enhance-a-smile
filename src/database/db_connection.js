@@ -9,6 +9,7 @@ const connect = url => MongoClient.connect(url, { useNewUrlParser: true, poolSiz
 
 let DB_URL = process.env.DATABASE_URL;
 if (process.env.NODE_ENV === 'test') DB_URL = process.env.TEST_DATABASE_URL;
+
 if (!DB_URL) throw new Error('Database Url must be set');
 
 module.exports = async () => {
