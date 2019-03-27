@@ -84,7 +84,7 @@ form.addEventListener('submit', (e) => {
   })
     .then((res) => {
       if (res.status === 200) {
-        msg.textContent = 'done';
+        msg.textContent = 'done send Emails !!';
       } else {
         msg.textContent = 'server error';
       }
