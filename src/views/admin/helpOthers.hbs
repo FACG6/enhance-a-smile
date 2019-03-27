@@ -1,0 +1,100 @@
+<main class="main">
+    <section class="taps">
+        <input type="button" value="New Help-Others" class="new">
+        <input type="button" value="Current Help-Others" class="current">
+        <input type="button" value="Done Help-Others" class="done">
+    </section>
+    <section class="cards--new">
+        {{#each card}}
+        {{#unless this.current}}
+        {{#unless this.done}}
+        <div class="card--taps">
+            <input type="button" value="Personal Info" class="tap--personal">
+            <input type="button" value="Request Info" class="tap--request" id={{this._id}}>
+        </div>
+        <div class="cards--info">
+            <div class="cards--info-personal">
+                <h4 class="fullName">Full Name: {{this.personal-details.fullName}}</h4>
+                <h4 class="phoneNumber">Phone Number: {{this.personal-details.phoneNumber}}</h4>
+                <h4 class="email">Email: {{this.personal-details.email}}</h4>
+            </div>
+            <div class="cards--info-request hide">
+                <h4 class="piecesNumber">Number Of People: {{this.request-details.numOfPeople}}</h4>
+                <h4 class="gender">Location: {{this.request-details.location}}</h4>
+                {{#if this.request-details.phoneNumber}}
+                <h4 class="quality">Phone Number: {{this.request-details.phoneNumber}}</h4>
+                {{/if}}
+                {{#if this.request-details.description}}
+                <h4 class="season">Description: {{this.request-details.description}}</h4>
+                {{/if}}
+            </div>
+        </div>
+        {{/unless}}
+        {{/unless}}
+        {{/each}}
+    </section>
+    <section class="cards--current hide">
+        {{#each card}}
+        {{#if this.current}}
+        {{#unless this.done}}
+        <div class="card--taps">
+            <input type="button" value="Personal Info" class="tap--personal">
+            <input type="button" value="Request" class="tap--request">
+        </div>
+        <div class="cards--info">
+            <div class="cards--info-personal">
+                <h4 class="fullName">Full Name: {{this.personal-details.fullName}}</h4>
+                <h4 class="phoneNumber">Phone Number: {{this.personal-details.phoneNumber}}</h4>
+                <h4 class="email">Email: {{this.personal-details.email}}</h4>
+            </div>
+            <div class="cards--info-request hide">
+                <h4 class="piecesNumber">Number Of People: {{this.request-details.numOfPeople}}</h4>
+                <h4 class="gender">Location: {{this.request-details.location}}</h4>
+                {{#if this.request-details.phoneNumber}}
+                <h4 class="quality">Phone Number: {{this.request-details.phoneNumber}}</h4>
+                {{/if}}
+                {{#if this.request-details.description}}
+                <h4 class="season">Description: {{this.request-details.description}}</h4>
+                {{/if}}
+            </div>
+        </div>
+        <input type="checkbox" name="checked" id={{this._id}} class="checkBox">
+        {{/unless}}
+        {{/if}}
+        {{/each}}
+        <input type="button" value="Done" class="doneBtn">
+    </section>
+    <section class="cards--done hide">
+        {{#each card}}
+        {{#if this.done}}
+        <div class="card--taps">
+            <input type="button" value="Personal Info" class="tap--personal">
+            <input type="button" value="Request" class="tap--request">
+        </div>
+        <div class="cards--info">
+            <div class="cards--info-personal">
+                <h4 class="fullName">Full Name: {{this.personal-details.fullName}}</h4>
+                <h4 class="phoneNumber">Phone Number: {{this.personal-details.phoneNumber}}</h4>
+                <h4 class="email">Email: {{this.personal-details.email}}</h4>
+            </div>
+            <div class="cards--info-request hide">
+                <h4 class="piecesNumber">Number Of People: {{this.request-details.numOfPeople}}</h4>
+                <h4 class="gender">Location: {{this.request-details.location}}</h4>
+                {{#if this.request-details.phoneNumber}}
+                <h4 class="quality">Phone Number: {{this.request-details.phoneNumber}}</h4>
+                {{/if}}
+                {{#if this.request-details.description}}
+                <h4 class="season">Description: {{this.request-details.description}}</h4>
+                {{/if}}
+            </div>
+        </div>
+        {{/if}}
+        {{/each}}
+    </section>
+    <section class="popUpsection hide">
+        <div class="popUp">
+            <p class="mainParagraph">ALl selected cards convert to the done state</p>
+            <input type="button" value="OK" class="back">
+        </div>
+    </section>
+</main>
