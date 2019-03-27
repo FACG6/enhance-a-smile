@@ -17,6 +17,7 @@ const auth = require('./../middlewars/auth.js');
 const { getDonates } = require('./admin/donate/donate');
 const { postDonates } = require('./admin/donate/donate');
 const error = require('./error.js');
+const adminRequests = require('./admin/request/request.js');
 
 const router = express.Router();
 // user routes
@@ -50,6 +51,10 @@ router
   .route('/admin/help-others')
   .get(adminHelpOthers.get)
   .post(adminHelpOthers.post);
+router
+  .route('/admin/requests')
+  .get(adminRequests.get)
+  .post(adminRequests.post);
 router.get('/admin/contact-us', getAdminContactUs);
 router.post('/admin/contact-us', postAdminContactUs);
 router.get('/admin/registers', getAdminRegisters);

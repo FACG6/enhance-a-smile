@@ -12,15 +12,6 @@ const popUpSection = document.querySelector('.popUpsection');
 const mainParagraph = document.querySelector('.mainParagraph');
 const back = document.querySelector('.back');
 const doneBtnCheck = document.querySelector('.doneBtn');
-const profile = document.querySelector('.profile');
-const profileA = document.querySelector('.profile-a');
-const helpOthers = document.querySelector('.helpOthers');
-const helpOthersA = document.querySelector('.helpOthers-a');
-
-profile.classList.remove('focus');
-profileA.classList.remove('black');
-helpOthers.classList.add('focus');
-helpOthersA.classList.add('black');
 
 doneBtnCheck.addEventListener('click', (e) => {
   e.preventDefault();
@@ -39,7 +30,7 @@ doneBtnCheck.addEventListener('click', (e) => {
         done: 'done',
       },
     };
-    fetch('/admin/help-others', {
+    fetch('/admin/requests', {
       method: 'POST',
       body: JSON.stringify(cardInfo),
       credentials: 'same-origin',
@@ -107,7 +98,7 @@ donateBtnArray.forEach((element, index) => {
         current: 'current',
       },
     };
-    fetch('/admin/help-others', {
+    fetch('/admin/requests', {
       method: 'POST',
       body: JSON.stringify(cardInfo),
       credentials: 'same-origin',
@@ -130,5 +121,5 @@ donateBtnArray.forEach((element, index) => {
 
 back.addEventListener('click', (e) => {
   e.preventDefault();
-  window.location = '/admin/help-others';
+  window.location = '/admin/requests';
 });
