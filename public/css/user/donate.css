@@ -115,9 +115,7 @@ body {
   flex-direction: column;
 }
 
-.qualityCheckBox,
-.genderCheckBox,
-.seasonCheckBox {
+.qualityCheckBox, .genderCheckBox, .seasonCheckBox {
   display: flex;
   justify-content: space-between;
   margin: 15px;
