@@ -1,5 +1,5 @@
-const connection = require('../../db_connection');
 const { ObjectId } = require('mongodb');
+const connection = require('../../db_connection');
 
 module.exports = (collectionName, id, obj) => new Promise((resolve, reject) => {
   connection().then((dbs) => {

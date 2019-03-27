@@ -18,6 +18,7 @@ const { getDonates } = require('./admin/donate/donate');
 const { postDonates } = require('./admin/donate/donate');
 const { getAdminSetting, postAdminSettings } = require('./admin/settings/adminSetting');
 const error = require('./error.js');
+const adminRequests = require('./admin/request/request.js');
 
 const router = express.Router();
 // user routes
@@ -47,6 +48,10 @@ router
   .route('/admin/donates')
   .get(getDonates)
   .post(postDonates);
+router
+  .route('/admin/requests')
+  .get(adminRequests.get)
+  .post(adminRequests.post);
 router
   .route('/admin/settings')
   .get(getAdminSetting)
