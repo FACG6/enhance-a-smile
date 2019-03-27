@@ -49,6 +49,10 @@ router.get('/admin/contact-us', getAdminContactUs);
 router.post('/admin/contact-us', postAdminContactUs);
 router.get('/admin/registers', getAdminRegisters);
 router.post('/admin/registers', postSendEmails);
+router.get('/admin/logout', (req, res) => {
+  Object.keys(req.cookies).forEach(key => res.clearCookie(key));
+  res.redirect('/admin/login');
+});
 router.use(error.client);
 router.use(error.server);
 module.exports = { router };
