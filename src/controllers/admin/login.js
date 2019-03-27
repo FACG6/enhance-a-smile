@@ -2,13 +2,25 @@ const { compare } = require('bcryptjs');
 const { join } = require('path');
 const genCookie = require('./../../utillity/genCookie.js');
 const getQuery = require('./../../database/queries/admin/getQuery.js');
+const checkCookie = require('./../../utillity/checkCookie.js');
 
 exports.get = (req, res) => {
-  res.render(join('admin', 'login'), {
-    layout: 'adminLogin',
-    css: [join('admin', 'login')],
-    js: ['domUyils', join('admin', 'login')],
-  });
+  if (req.cookies && req.cookies.jwt) {
+    checkCookie(req.cookies.jwt)
+      .then(() => {
+        res.redirect('/admin/profile');
+      })
+      .catch(() => {
+        res.clearCookie('jwt');
+        res.redirect('/admin/login');
+      });
+  } else {
+    res.render(join('admin', 'login'), {
+      layout: 'adminLogin',
+      css: [join('admin', 'login')],
+      js: ['domUyils', join('admin', 'login')],
+    });
+  }
 };
 
 exports.post = (req, res) => {

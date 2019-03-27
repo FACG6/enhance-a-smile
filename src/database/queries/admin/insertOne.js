@@ -3,7 +3,7 @@ const { ObjectId } = require('mongodb');
 
 module.exports = (collectionName, id, obj) => new Promise((resolve, reject) => {
   connection().then((dbs) => {
-    const dataBase = dbs.production;
+    const dataBase = dbs.database;
     dataBase
       .collection(collectionName)
       .findOneAndUpdate({

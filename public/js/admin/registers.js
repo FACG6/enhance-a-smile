@@ -6,9 +6,25 @@ const {
   toEmails,
   form,
   msg,
+  profile,
+  profileA,
+  registers,
+  registersA,
   // eslint-disable-next-line no-undef
 } = querySelectors(
-  ['send', 'email', 'emailSection', 'sendEmailSection', 'toEmails', 'form', 'msg'],
+  [
+    'send',
+    'email',
+    'emailSection',
+    'sendEmailSection',
+    'toEmails',
+    'form',
+    'msg',
+    'profile',
+    'profileA',
+    'registers',
+    'registersA',
+  ],
   [
     '.main-send',
     '.main-emails',
@@ -17,8 +33,16 @@ const {
     '.toEmails',
     '.main--form',
     '.from-msg',
+    '.profile',
+    '.profile-a',
+    '.registers',
+    '.registers-a',
   ],
 );
+profile.classList.remove('focus');
+profileA.classList.remove('black');
+registers.classList.add('focus');
+registersA.classList.add('black');
 
 // eslint-disable-next-line no-undef
 const { addEmail } = querySelectorsAll(['addEmail'], ['.addEmail']);
