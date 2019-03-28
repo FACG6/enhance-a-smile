@@ -14,6 +14,7 @@ exports.getDonates = (request, response) => {
         ],
         layout: 'admin',
         card,
+        adminName: request.token.name,
       });
     })
     .catch(() => {

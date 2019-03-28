@@ -5,6 +5,15 @@ const newPassword = document.querySelector('.newPassword');
 const confirmPassword = document.querySelector('.confirmPassword');
 const oldPassword = document.querySelector('.oldPassword');
 const valditMsg = document.querySelector('.valditMsg');
+const profile = document.querySelector('.profile');
+const profileA = document.querySelector('.profile-a');
+const settings = document.querySelector('.settings');
+const settingsA = document.querySelector('.settings-a');
+
+profile.classList.remove('focus');
+profileA.classList.remove('black');
+settings.classList.add('focus');
+settingsA.classList.add('black');
 
 showPassword.addEventListener('click', (e) => {
   e.preventDefault();

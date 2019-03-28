@@ -12,6 +12,15 @@ const popUpSection = document.querySelector('.popUpsection');
 const mainParagraph = document.querySelector('.mainParagraph');
 const back = document.querySelector('.back');
 const doneBtnCheck = document.querySelector('.doneBtn');
+const profile = document.querySelector('.profile');
+const profileA = document.querySelector('.profile-a');
+const requests = document.querySelector('.requests');
+const requestsA = document.querySelector('.requests-a');
+
+profile.classList.remove('focus');
+profileA.classList.remove('black');
+requests.classList.add('focus');
+requestsA.classList.add('black');
 
 doneBtnCheck.addEventListener('click', (e) => {
   e.preventDefault();
