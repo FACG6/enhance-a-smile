@@ -1,118 +1,93 @@
 <main class="main">
-    <section class="taps">
-        <input type="button" value="New Requests" class="new tabs-button">
-        <input type="button" value="Current Requests" class="current tabs-button">
-        <input type="button" value="Done Requests" class="done tabs-button">
-    </section>
-    <section class="cards--new">
-        {{#each card}}
-        {{#unless this.current}}
-        {{#unless this.done}}
-        <div class="card--taps">
-            <input type="button" value="Personal Info" class="tap--personal card--tabs-button selected">
-            <input type="button" value="Request Info" class="tap--request card--tabs-button" id={{this._id}}>
-        </div>
-        <div class="cards--info">
-            <div class="cards--info-personal">
-                <div class="cards--info-personal-one">
-                <h4 class="fullName">Full Name: {{this.personal-data.fullName}}</h4>
-                <h4 class="phoneNumber">Phone Number: {{this.personal-data.phoneNumber}}</h4>
-                </div>
-                <div class="cards--info-personal-two">
-                <h4 class="city">City: {{this.personal-data.cityName}}</h4>
-                <h4 class="street">Street: {{this.personal-data.streetName}}</h4>
-                </div>
-                </div>
-            </div>
-            <div class="cards--info-request hide">
-                <div class="cards--info-personal-one">
-                <h4 class="piecesNumber">Number Of Pieces: {{this.request-data.numberOfPieces}}</h4>
-                <h4 class="quality">Gender(s): {{this.request-data.gender}}</h4>
-                </div>
-                 <div class="cards--info-personal-one">
-                <h4 class="season">Season(s): {{this.request-data.season}}</h4>
-                {{#if this.request-data.description}}
-                <h4 class="season">Description: {{this.request-data.description}}</h4>
-                {{/if}}
-                </div>
-            </div>
-        </div>
-        {{/unless}}
-        {{/unless}}
-        {{/each}}
-    </section>
-    <section class="cards--current hide">
-        {{#each card}}
-        {{#if this.current}}
-        {{#unless this.done}}
-        <div class="card--taps">
-            <input type="button" value="Personal Info" class="tap--personal card--tabs-button selected">
-            <input type="button" value="Request" class="tap--request card--tabs-button">
-        </div>
-        <div class="cards--info">
-            <div class="cards--info-personal">
-                <div class ='cards--info-personal-one'>
-                <h4 class="fullName">Full Name: {{this.personal-data.fullName}}</h4>
-                <h4 class="phoneNumber">Phone Number: {{this.personal-data.phoneNumber}}</h4>
-                    </div>
-                    <div class ='cards--info-personal-two'>
-                <h4 class="city">City: {{this.personal-data.cityName}}</h4>
-                <h4 class="street">Street: {{this.personal-data.streetName}}</h4>
-                </div>
-            </div>
-            <div class="cards--info-request hide">
-                 <div class ='cards--info-personal-one'>
-                <h4 class="piecesNumber">Number Of Pieces: {{this.request-data.numberOfPieces}}</h4>
-                <h4 class="quality">Gender(s): {{this.request-data.gender}}</h4>
-                </div>
-                 <div class ='cards--info-personal-one'>
-                <h4 class="season">Season(s): {{this.request-data.season}}</h4>
-                {{#if this.request-data.description}}
-                <h4 class="season">Description: {{this.request-data.description}}</h4>
-                {{/if}}
-                </div>
-            </div>
-        <input type="checkbox" name="checked" id={{this._id}} class="checkBox"><span>Make As a Done</span>
-        </div>
-        {{/unless}}
-        {{/if}}
-        {{/each}}
-        <input type="button" value="Done" class="doneBtn">
-    </section>
-    <section class="cards--done hide">
-        {{#each card}}
-        {{#if this.done}}
-        <div class="card--taps">
-            <input type="button" value="Personal Info" class="tap--personal card--tabs-button selected">
-            <input type="button" value="Request" class="tap--request card--tabs-button">
-        </div>
-        <div class="cards--info">
-            <div class="cards--info-personal">
-                <div class ='cards--info-personal-one'>
-                <h4 class="fullName">Full Name: {{this.personal-data.fullName}}</h4>
-                <h4 class="phoneNumber">Phone Number: {{this.personal-data.phoneNumber}}</h4>
-                </div> 
-                <div class ='cards--info-personal-two' >
-                <h4 class="city">City: {{this.personal-data.cityName}}</h4>
-                <h4 class="street">Street: {{this.personal-data.streetName}}</h4>
-                </div>
-            </div>
-            <div class="cards--info-request hide">
-                <h4 class="piecesNumber">Number Of Pieces: {{this.request-data.numberOfPieces}}</h4>
-                <h4 class="quality">Gender(s): {{this.request-data.gender}}</h4>
-                <h4 class="season">Season(s): {{this.request-data.season}}</h4>
-                {{#if this.request-data.description}}
-                <h4 class="season">Description: {{this.request-data.description}}</h4>
-                {{/if}}
-            </div>
-        </div>
-        {{/if}}
-        {{/each}}
-    </section>
-    <section class="popUpsection hide">
-        <div class="popUp">
-            <p class="mainParagraph">ALl selected cards convert to the done state</p>
-            <input type="button" value="OK" class="back">
-        </div>
-    </section>
+  <section class="taps">
+    <input type="button" value="New Requests" class="new main-tap tap-focus">
+    <input type="button" value="Current Requests" class="current main-tap">
+    <input type="button" value="Done Requests" class="done main-tap">
+  </section>
+  <section class="cards--new cards-section">
+    {{#each card}}
+    {{#unless this.current}}
+    {{#unless this.done}}
+    <div class="card--taps">
+      <input type="button" value="Personal Info" class="tap--personal tap-focus">
+      <input type="button" value="Requests Info" class="tap--donation" id={{this._id}}>
+    </div>
+    <div class="cards--info">
+      <div class="cards--info-personal">
+        <h4 class="fullName">Full Name: {{this.personal-data.fullName}}</h4>
+        <h4 class="phoneNumber">Phone Number: {{this.personal-data.phoneNumber}}</h4>
+        <h4 class="email">Email: {{this.personal-data.cityName}}</h4>
+        <h4 class="city">City: {{this.personal-data.streetName}}</h4>
+      </div>
+      <div class="cards--info-donation hide">
+        <h4 class="piecesNumber">Number Of Pieces: {{this.request-data.numberOfPieces}}</h4>
+        <h4 class="quality">Gender(s): {{this.request-data.gender}}</h4>
+        <h4 class="season">Season(s): {{this.request-data.season}}</h4>
+        <h4 class="descriptio"> Description :{{this.request-data.descrption}}</h4>
+      </div>
+    </div>
+    {{/unless}}
+    {{/unless}}
+    {{/each}}
+  </section>
+  <section class="cards--current cards-section hide">
+    {{#each card}}
+    {{#if this.current}}
+    {{#unless this.done}}
+    <div class="card--taps">
+      <input type="button" value="Personal Info" class="tap--personal tap-focus">
+      <input type="button" value="Request Info " class="tap--donation">
+    </div>
+  <div class="cards--info">
+      <div class="cards--info-personal">
+        <h4 class="fullName">Full Name: {{this.personal-data.fullName}}</h4>
+        <h4 class="phoneNumber">Phone Number: {{this.personal-data.phoneNumber}}</h4>
+        <h4 class="email">Email: {{this.personal-data.cityName}}</h4>
+        <h4 class="city">City: {{this.personal-data.streetName}}</h4>
+      </div>
+      <div class="cards--info-donation hide">
+        <h4 class="piecesNumber">Number Of Pieces: {{this.request-data.numberOfPieces}}</h4>
+        <h4 class="quality">Gender(s): {{this.request-data.gender}}</h4>
+        <h4 class="season">Season(s): {{this.request-data.season}}</h4>
+        <h4 class="descriptio"> Description :{{this.request-data.descrption}}</h4>
+      </div>
+    </div>
+    <label for="{{this._id}}" class="checkBox-label"><input type="checkbox" name="checked" id={{this._id}}
+        class="checkBox checkBox-box">Mark as
+      Done</label>
+    {{/unless}}
+    {{/if}}
+    {{/each}}
+    <input type="button" value="Done" class="doneBtn">
+  </section>
+  <section class="cards--done cards-section hide">
+    {{#each card}}
+    {{#if this.done}}
+    <div class="card--taps">
+      <input type="button" value="Personal Info" class="tap--personal tap-focus">
+      <input type="button" value="Requests Info" class="tap--donation">
+    </div>
+    <div class="cards--info">
+      <div class="cards--info-personal">
+        <h4 class="fullName">Full Name: {{this.personal-data.fullName}}</h4>
+        <h4 class="phoneNumber">Phone Number: {{this.personal-data.phoneNumber}}</h4>
+        <h4 class="email">Email: {{this.personal-data.cityName}}</h4>
+        <h4 class="city">City: {{this.personal-data.streetName}}</h4>
+      </div>
+      <div class="cards--info-donation hide">
+        <h4 class="piecesNumber">Number Of Pieces: {{this.request-data.numberOfPieces}}</h4>
+        <h4 class="quality">Gender(s): {{this.request-data.gender}}</h4>
+        <h4 class="season">Season(s): {{this.request-data.season}}</h4>
+        <h4 class="descriptio"> Description :{{this.request-data.descrption}}</h4>
+      </div>
+    </div>
+    {{/if}}
+    {{/each}}
+  </section>
+  <section class="popUpsection hide">
+    <div class="popUp">
+      <p class="mainParagraph">ALl selected cards convert to the done state</p>
+      <input type="button" value="OK" class="back">
+    </div>
+  </section>
 </main>

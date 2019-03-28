@@ -1,6 +1,8 @@
+
+
 const infoBtn = document.querySelectorAll('.tap--personal');
-const donateBtn = document.querySelectorAll('.tap--request');
-const donateDiv = document.querySelectorAll('.cards--info-request');
+const donateBtn = document.querySelectorAll('.tap--donation');
+const donateDiv = document.querySelectorAll('.cards--info-donation');
 const infoDiv = document.querySelectorAll('.cards--info-personal');
 const newDonatesSection = document.querySelector('.cards--new');
 const currentDonatesSection = document.querySelector('.cards--current');
@@ -12,15 +14,38 @@ const popUpSection = document.querySelector('.popUpsection');
 const mainParagraph = document.querySelector('.mainParagraph');
 const back = document.querySelector('.back');
 const doneBtnCheck = document.querySelector('.doneBtn');
+const mainTaps = Array.from(document.querySelectorAll('.main-tap'));
 const profile = document.querySelector('.profile');
 const profileA = document.querySelector('.profile-a');
-const requests = document.querySelector('.requests');
-const requestsA = document.querySelector('.requests-a');
+const donates = document.querySelector('.requests');
+const donatesA = document.querySelector('.requests-a');
 
 profile.classList.remove('focus');
 profileA.classList.remove('black');
-requests.classList.add('focus');
-requestsA.classList.add('black');
+donates.classList.add('focus');
+donatesA.classList.add('black');
+
+mainTaps[0].addEventListener('click', () => {
+  if (!mainTaps[0].classList.contains('tap-focus')) {
+    mainTaps[0].classList.add('tap-focus');
+    mainTaps[1].classList.remove('tap-focus');
+    mainTaps[2].classList.remove('tap-focus');
+  }
+});
+mainTaps[1].addEventListener('click', () => {
+  if (!mainTaps[1].classList.contains('tap-focus')) {
+    mainTaps[1].classList.add('tap-focus');
+    mainTaps[0].classList.remove('tap-focus');
+    mainTaps[2].classList.remove('tap-focus');
+  }
+});
+mainTaps[2].addEventListener('click', () => {
+  if (!mainTaps[2].classList.contains('tap-focus')) {
+    mainTaps[2].classList.add('tap-focus');
+    mainTaps[1].classList.remove('tap-focus');
+    mainTaps[0].classList.remove('tap-focus');
+  }
+});
 
 doneBtnCheck.addEventListener('click', (e) => {
   e.preventDefault();
@@ -64,10 +89,7 @@ doneBtnCheck.addEventListener('click', (e) => {
 
 newBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  newDonatesSection.classList.remove('hide');
-  newBtn.classList.add('new');
-  currentBtn.classList.remove('new');
-  doneBtn.classList.remove('new');
+  newrequestSection.classList.remove('hide');
   currentDonatesSection.classList.add('hide');
   doneDonatesSection.classList.add('hide');
 });
@@ -75,9 +97,6 @@ newBtn.addEventListener('click', (e) => {
 currentBtn.addEventListener('click', (e) => {
   e.preventDefault();
   currentDonatesSection.classList.remove('hide');
-  currentBtn.classList.add('new');
-  newBtn.classList.remove('new');
-  doneBtn.classList.remove('new');
   newDonatesSection.classList.add('hide');
   doneDonatesSection.classList.add('hide');
 });
@@ -87,9 +106,6 @@ doneBtn.addEventListener('click', (e) => {
   doneDonatesSection.classList.remove('hide');
   newDonatesSection.classList.add('hide');
   currentDonatesSection.classList.add('hide');
-  currentBtn.classList.remove('new');
-  newBtn.classList.remove('new');
-  doneBtn.classList.add('new');
 });
 
 const infoBtnArray = Array.from(infoBtn);
@@ -100,19 +116,24 @@ const donateDivArray = Array.from(donateDiv);
 infoBtnArray.forEach((element, index) => {
   element.addEventListener('click', (e) => {
     e.preventDefault();
+    if (!element.classList.contains('tap-focus')) {
+      element.classList.add('tap-focus');
+      donateBtnArray[index].classList.remove('tap-focus');
+    }
     infoDivArray[index].classList.remove('hide');
     donateDivArray[index].classList.add('hide');
-    element.classList.add('selected');
-    donateBtnArray[index].classList.remove('selected');
   });
 });
+
 donateBtnArray.forEach((element, index) => {
   element.addEventListener('click', (e) => {
     e.preventDefault();
+    if (!element.classList.contains('tap-focus')) {
+      element.classList.add('tap-focus');
+      infoBtnArray[index].classList.remove('tap-focus');
+    }
     infoDivArray[index].classList.add('hide');
     donateDivArray[index].classList.remove('hide');
-    element.classList.add('selected');
-    infoBtnArray[index].classList.remove('selected');
     const cardInfo = {
       id: element.id,
       obj: {
