@@ -67,7 +67,7 @@ saveBtn.addEventListener('click', (e) => {
           valditMsg.textContent = 'All Settings Saved';
           window.location = '/admin/settings';
         } else {
-          valditMsg.textContent = ' 71 Try againe';
+          valditMsg.textContent = ' Try againe, Password is Wrong';
         }
       })
       .catch(() => {

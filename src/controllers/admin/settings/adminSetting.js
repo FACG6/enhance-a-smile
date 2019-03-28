@@ -46,7 +46,7 @@ exports.getAdminSetting = (request, response) => {
 
 const hashPass = password => bcrypt.hash(password, 10);
 
-exports.postAdminSettings = (request, response, next) => {
+exports.postAdminSettings = (request, response) => {
   if (!request.body.newPassword) {
     delete request.body.newPassword;
     delete request.body.confirmPassword;
@@ -90,12 +90,15 @@ exports.postAdminSettings = (request, response, next) => {
       msg: result.error.details[0].message,
     });
   } else {
-    const {
-      email,
-    } = request.body;
-    getQuery('admins', {
-      email,
-    })
+    unlookCookies(request.cookies.jwt)
+      .then((cookieObj) => {
+        const {
+          email,
+        } = cookieObj;
+        return getQuery('admins', {
+          email,
+        });
+      })
       .then((result) => {
         if (result.length === 0) {
           return response.status(400).send({
@@ -117,7 +120,7 @@ exports.postAdminSettings = (request, response, next) => {
                     email: request.body.email,
                   };
                   updateAdmin('admins', request.cookies.name, obj)
-                    .then((res) => {
+                    .then(() => {
                       const {
                         email,
                       } = obj;
@@ -137,19 +140,19 @@ exports.postAdminSettings = (request, response, next) => {
                             msg: 'settings update',
                           });
                         })
-                        .catch((err) => {
+                        .catch(() => {
                           response.status(500).send({
                             msg: 'server error',
                           });
                         });
                     })
-                    .catch((er) => {
+                    .catch(() => {
                       response.status(500).send({
                         msg: 'server error',
                       });
                     });
                 })
-                .catch((q) => {
+                .catch(() => {
                   response.status(500).send({
                     msg: 'server error',
                   });
