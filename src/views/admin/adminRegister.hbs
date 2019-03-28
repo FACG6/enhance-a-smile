@@ -1,8 +1,8 @@
 <main class="main">
   <section class="main--header">
     <div class="main-tabs">
-      <input type="submit" value="Registers" class="main-emails">
-      <input type="submit" value="Send Mails" class="main-send">
+      <input type="submit" value="Registers" class="main-emails tabs active">
+      <input type="submit" value="Send Mails" class="main-send tabs">
     </div>
   </section>
 
@@ -13,7 +13,7 @@
         {{#if res}}
         {{#each res}}
         <li class="main-li">
-          <h3 class="main-li-h3">{{email}}</h3><button value="{{email}}" class="addEmail"><i
+          <h3 class="main-li-h3">{{inc @index}} - {{email}}</h3><button value="{{email}}" class="addEmail"><i
               class="fas fa-plus-circle"></i></button>
         </li>
         {{/each}}
@@ -35,7 +35,7 @@
         <input name="subject" id="to" class="main-inputs" required>
         <label for="message" class="main-label">Message :</label>
         <textarea name="message" id="message" class="main-inputs main-textarea" required></textarea>
-        <input class="" type="submit" class="main-send">
+        <input class="submit" type="submit" value="Send Email" class="main-send">
       </form>
       <span class="from-msg"></span>
     </div>

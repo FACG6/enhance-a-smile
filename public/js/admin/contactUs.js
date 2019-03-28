@@ -91,4 +91,5 @@ doneContact.addEventListener('click', (e) => {
 poppUpDone.addEventListener('click', (e) => {
   e.preventDefault();
   popup.classList.remove('popup-show');
+  window.location = '/admin/contact-us';
 });
