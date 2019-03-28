@@ -113,8 +113,6 @@ section {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
   padding: 30px;
   padding-top: 80px;
@@ -123,22 +121,28 @@ section {
 .main--header-ourVision-h1 {
   font-weight: normal;
   font-size: 4rem;
-  color: white;
+  color: #000;
+  margin: 20px 0;
 }
 
 .main--header-ourVision p {
-  color: black;
+  color: #00250a;
   font-size: 1.6rem;
   text-align: justify;
   font-family: roboto;
   font-weight: normal;
 }
 
+.main--header-ourVisionVision {
+  margin-top: 80px;
+}
+
 .main--header-how {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 80px;
+  padding: 55px;
+  padding-top: 85px;
 }
 
 .main--header-how h1 {
@@ -268,6 +272,7 @@ section {
 .footer--connectionIcons {
   width: 250px;
   text-align: center;
+  margin: 0 auto;
 }
 
 .footer--register {
