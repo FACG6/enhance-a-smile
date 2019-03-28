@@ -22,6 +22,7 @@ exports.get = (request, response) => {
             join('partials', 'adminSidebar'),
           ],
           js: ['domUyils', join('admin', 'profile')],
+          adminName: request.token.name,
         });
       });
     })
