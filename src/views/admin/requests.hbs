@@ -1,31 +1,40 @@
 <main class="main">
     <section class="taps">
-        <input type="button" value="New Requests" class="new">
-        <input type="button" value="Current Requests" class="current">
-        <input type="button" value="Done Requests" class="done">
+        <input type="button" value="New Requests" class="new tabs-button">
+        <input type="button" value="Current Requests" class="current tabs-button">
+        <input type="button" value="Done Requests" class="done tabs-button">
     </section>
     <section class="cards--new">
         {{#each card}}
         {{#unless this.current}}
         {{#unless this.done}}
         <div class="card--taps">
-            <input type="button" value="Personal Info" class="tap--personal">
-            <input type="button" value="Request Info" class="tap--request" id={{this._id}}>
+            <input type="button" value="Personal Info" class="tap--personal card--tabs-button selected">
+            <input type="button" value="Request Info" class="tap--request card--tabs-button" id={{this._id}}>
         </div>
         <div class="cards--info">
             <div class="cards--info-personal">
+                <div class="cards--info-personal-one">
                 <h4 class="fullName">Full Name: {{this.personal-data.fullName}}</h4>
                 <h4 class="phoneNumber">Phone Number: {{this.personal-data.phoneNumber}}</h4>
+                </div>
+                <div class="cards--info-personal-two">
                 <h4 class="city">City: {{this.personal-data.cityName}}</h4>
                 <h4 class="street">Street: {{this.personal-data.streetName}}</h4>
+                </div>
+                </div>
             </div>
             <div class="cards--info-request hide">
+                <div class="cards--info-personal-one">
                 <h4 class="piecesNumber">Number Of Pieces: {{this.request-data.numberOfPieces}}</h4>
-                <h4 class="quality">Gender(s): {{this.request-data.location}}</h4>
+                <h4 class="quality">Gender(s): {{this.request-data.gender}}</h4>
+                </div>
+                 <div class="cards--info-personal-one">
                 <h4 class="season">Season(s): {{this.request-data.season}}</h4>
                 {{#if this.request-data.description}}
                 <h4 class="season">Description: {{this.request-data.description}}</h4>
                 {{/if}}
+                </div>
             </div>
         </div>
         {{/unless}}
@@ -37,26 +46,34 @@
         {{#if this.current}}
         {{#unless this.done}}
         <div class="card--taps">
-            <input type="button" value="Personal Info" class="tap--personal">
-            <input type="button" value="Request" class="tap--request">
+            <input type="button" value="Personal Info" class="tap--personal card--tabs-button selected">
+            <input type="button" value="Request" class="tap--request card--tabs-button">
         </div>
         <div class="cards--info">
             <div class="cards--info-personal">
+                <div class ='cards--info-personal-one'>
                 <h4 class="fullName">Full Name: {{this.personal-data.fullName}}</h4>
                 <h4 class="phoneNumber">Phone Number: {{this.personal-data.phoneNumber}}</h4>
+                    </div>
+                    <div class ='cards--info-personal-two'>
                 <h4 class="city">City: {{this.personal-data.cityName}}</h4>
                 <h4 class="street">Street: {{this.personal-data.streetName}}</h4>
+                </div>
             </div>
             <div class="cards--info-request hide">
+                 <div class ='cards--info-personal-one'>
                 <h4 class="piecesNumber">Number Of Pieces: {{this.request-data.numberOfPieces}}</h4>
-                <h4 class="quality">Gender(s): {{this.request-data.location}}</h4>
+                <h4 class="quality">Gender(s): {{this.request-data.gender}}</h4>
+                </div>
+                 <div class ='cards--info-personal-one'>
                 <h4 class="season">Season(s): {{this.request-data.season}}</h4>
                 {{#if this.request-data.description}}
                 <h4 class="season">Description: {{this.request-data.description}}</h4>
                 {{/if}}
+                </div>
             </div>
+        <input type="checkbox" name="checked" id={{this._id}} class="checkBox"><span>Make As a Done</span>
         </div>
-        <input type="checkbox" name="checked" id={{this._id}} class="checkBox">
         {{/unless}}
         {{/if}}
         {{/each}}
@@ -66,19 +83,23 @@
         {{#each card}}
         {{#if this.done}}
         <div class="card--taps">
-            <input type="button" value="Personal Info" class="tap--personal">
-            <input type="button" value="Request" class="tap--request">
+            <input type="button" value="Personal Info" class="tap--personal card--tabs-button selected">
+            <input type="button" value="Request" class="tap--request card--tabs-button">
         </div>
         <div class="cards--info">
             <div class="cards--info-personal">
+                <div class ='cards--info-personal-one'>
                 <h4 class="fullName">Full Name: {{this.personal-data.fullName}}</h4>
                 <h4 class="phoneNumber">Phone Number: {{this.personal-data.phoneNumber}}</h4>
+                </div> 
+                <div class ='cards--info-personal-two' >
                 <h4 class="city">City: {{this.personal-data.cityName}}</h4>
                 <h4 class="street">Street: {{this.personal-data.streetName}}</h4>
+                </div>
             </div>
             <div class="cards--info-request hide">
                 <h4 class="piecesNumber">Number Of Pieces: {{this.request-data.numberOfPieces}}</h4>
-                <h4 class="quality">Gender(s): {{this.request-data.location}}</h4>
+                <h4 class="quality">Gender(s): {{this.request-data.gender}}</h4>
                 <h4 class="season">Season(s): {{this.request-data.season}}</h4>
                 {{#if this.request-data.description}}
                 <h4 class="season">Description: {{this.request-data.description}}</h4>

@@ -10,21 +10,75 @@ body {
 
 .main {
     text-align: center;
-    margin-top: 50px;
+    margin:70px 29px 15px 29px;
 }
 
 .taps {
     display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px
 }
 
+
+.tabs-button {
+    width: 346px;
+    height: 50px;
+    font-size: 17px;
+    letter-spacing: 1px;
+    color: #333;
+}
+.selected{
+    width: 346px;
+    height: 50px;
+    font-size: 17px;
+    letter-spacing: 1px;
+    background: #333;
+    color: #E2E2E2; 
+}
+.new{
+    width: 346px;
+    color: #fff;
+    height: 50px;
+    font-size: 17px;
+    letter-spacing: 1px;
+    background: #333; 
+}
+.card--taps{
+    display: flex;
+}
+.card--tabs-button{
+    width: 50%;
+    height: 28px;
+    font-size: 20px;
+    letter-spacing: 3px
+}
 .cards--info {
-    border: 2px solid red;
+    background: #E2E2E2;
+    margin-bottom: 15px;
 }
-
-.cards--new {
+.cards--current,
+.cards--new ,
+.cards--done{
     display: flex;
     flex-direction: column;
+height: 200px;
 }
+.cards--info-request,
+.cards--info-personal{
+    display: flex;
+    height: 100px;
+    justify-content: space-evenly;
+    padding: 10px
+}
+.cards--info-personal-two,
+.cards--info-personal-one{
+    display: flex;
+    flex-direction:column; 
+    justify-content: space-between;
+    font-size: 25px;
+    align-items: self-start;
+}
+
 
 .hide {
     display: none;

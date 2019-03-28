@@ -56,6 +56,9 @@ doneBtnCheck.addEventListener('click', (e) => {
 newBtn.addEventListener('click', (e) => {
   e.preventDefault();
   newDonatesSection.classList.remove('hide');
+  newBtn.classList.add('new');
+  currentBtn.classList.remove('new');
+  doneBtn.classList.remove('new');
   currentDonatesSection.classList.add('hide');
   doneDonatesSection.classList.add('hide');
 });
@@ -63,6 +66,9 @@ newBtn.addEventListener('click', (e) => {
 currentBtn.addEventListener('click', (e) => {
   e.preventDefault();
   currentDonatesSection.classList.remove('hide');
+  currentBtn.classList.add('new');
+  newBtn.classList.remove('new');
+  doneBtn.classList.remove('new');
   newDonatesSection.classList.add('hide');
   doneDonatesSection.classList.add('hide');
 });
@@ -72,6 +78,9 @@ doneBtn.addEventListener('click', (e) => {
   doneDonatesSection.classList.remove('hide');
   newDonatesSection.classList.add('hide');
   currentDonatesSection.classList.add('hide');
+  currentBtn.classList.remove('new');
+  newBtn.classList.remove('new');
+  doneBtn.classList.add('new');
 });
 
 const infoBtnArray = Array.from(infoBtn);
@@ -84,14 +93,17 @@ infoBtnArray.forEach((element, index) => {
     e.preventDefault();
     infoDivArray[index].classList.remove('hide');
     donateDivArray[index].classList.add('hide');
+    element.classList.add('selected');
+    donateBtnArray[index].classList.remove('selected');
   });
 });
-
 donateBtnArray.forEach((element, index) => {
   element.addEventListener('click', (e) => {
     e.preventDefault();
     infoDivArray[index].classList.add('hide');
     donateDivArray[index].classList.remove('hide');
+    element.classList.add('selected');
+    infoBtnArray[index].classList.remove('selected');
     const cardInfo = {
       id: element.id,
       obj: {
