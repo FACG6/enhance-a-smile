@@ -16,11 +16,16 @@ exports.get = (request, response) => {
           layout: 'admin',
           result: res,
           totalDonations: totalDonation,
-          css: [join('admin', 'profile'), join('partials', 'adminNav'), join('partials', 'adminSidebar')],
-          js: ['domUyils', join('admin', 'profile'), join('admin', 'sidebar')],
+          css: [
+            join('admin', 'profile'),
+            join('partials', 'adminNav'),
+            join('partials', 'adminSidebar'),
+          ],
+          js: ['domUyils', join('admin', 'profile')],
         });
       });
-    }).catch((error) => {
+    })
+    .catch((error) => {
       response.send(error);
     });
 };
