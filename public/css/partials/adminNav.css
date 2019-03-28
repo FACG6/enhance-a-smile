@@ -38,8 +38,8 @@ a {
 .nav .current-admin {
   display: flex;
   justify-content: flex-start;
-  margin-right: 50px;
-  width: 180px;
+  margin-right: 35px;
+  width: 250px;
   font-size: 1.2rem;
   font-family: Roboto;
 }
