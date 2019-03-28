@@ -1,15 +1,15 @@
 <main class="main">
     <section class="taps">
-        <input type="button" value="New Help-Others" class="new main-tap">
+        <input type="button" value="New Help-Others" class="new main-tap tap-focus">
         <input type="button" value="Current Help-Others" class="current main-tap">
         <input type="button" value="Done Help-Others" class="done main-tap">
     </section>
-    <section class="cards--new">
+    <section class="cards--new cards-section">
         {{#each card}}
         {{#unless this.current}}
         {{#unless this.done}}
         <div class="card--taps">
-            <input type="button" value="Personal Info" class="tap--personal">
+            <input type="button" value="Personal Info" class="tap--personal tap-focus">
             <input type="button" value="Request Info" class="tap--request" id={{this._id}}>
         </div>
         <div class="cards--info">
@@ -33,12 +33,12 @@
         {{/unless}}
         {{/each}}
     </section>
-    <section class="cards--current hide">
+    <section class="cards--current cards-section hide">
         {{#each card}}
         {{#if this.current}}
         {{#unless this.done}}
         <div class="card--taps">
-            <input type="button" value="Personal Info" class="tap--personal">
+            <input type="button" value="Personal Info" class="tap--personal tap-focus">
             <input type="button" value="Request" class="tap--request">
         </div>
         <div class="cards--info">
@@ -58,18 +58,20 @@
                 {{/if}}
             </div>
         </div>
-        <input type="checkbox" name="checked" id={{this._id}} class="checkBox">
+        <label for="{{this._id}}" class="checkBox-label"><input type="checkbox" name="checked" id={{this._id}}
+                class="checkBox checkBox-box">Mark as
+            Done</label>
         {{/unless}}
         {{/if}}
         {{/each}}
         <input type="button" value="Done" class="doneBtn">
     </section>
-    <section class="cards--done hide">
+    <section class="cards--done cards-section hide">
         {{#each card}}
         {{#if this.done}}
         <div class="card--taps">
-            <input type="button" value="Personal Info" class="tap--personal">
-            <input type="button" value="Request" class="tap--request">
+            <input type="button" value="Personal Info" class="tap--personal tap-focus">
+            <input type="button" value="Request" class="tap--request ">
         </div>
         <div class="cards--info">
             <div class="cards--info-personal">

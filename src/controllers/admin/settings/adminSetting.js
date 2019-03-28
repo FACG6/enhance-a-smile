@@ -24,6 +24,7 @@ exports.getAdminSetting = (request, response) => {
               join('admin', 'setting'),
             ],
             adminInfo,
+            adminName: request.token.name,
           });
         })
         .catch(() => {

@@ -13,6 +13,7 @@ exports.get = (request, response) => {
           join('admin', 'helpOthers'),
         ],
         layout: 'admin',
+        adminName: request.token.name,
         card,
       });
     })

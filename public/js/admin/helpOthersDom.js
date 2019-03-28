@@ -12,6 +12,7 @@ const popUpSection = document.querySelector('.popUpsection');
 const mainParagraph = document.querySelector('.mainParagraph');
 const back = document.querySelector('.back');
 const doneBtnCheck = document.querySelector('.doneBtn');
+const mainTaps = Array.from(document.querySelectorAll('.main-tap'));
 const profile = document.querySelector('.profile');
 const profileA = document.querySelector('.profile-a');
 const helpOthers = document.querySelector('.helpOthers');
@@ -21,6 +22,28 @@ profile.classList.remove('focus');
 profileA.classList.remove('black');
 helpOthers.classList.add('focus');
 helpOthersA.classList.add('black');
+
+mainTaps[0].addEventListener('click', () => {
+  if (!mainTaps[0].classList.contains('tap-focus')) {
+    mainTaps[0].classList.add('tap-focus');
+    mainTaps[1].classList.remove('tap-focus');
+    mainTaps[2].classList.remove('tap-focus');
+  }
+});
+mainTaps[1].addEventListener('click', () => {
+  if (!mainTaps[1].classList.contains('tap-focus')) {
+    mainTaps[1].classList.add('tap-focus');
+    mainTaps[0].classList.remove('tap-focus');
+    mainTaps[2].classList.remove('tap-focus');
+  }
+});
+mainTaps[2].addEventListener('click', () => {
+  if (!mainTaps[2].classList.contains('tap-focus')) {
+    mainTaps[2].classList.add('tap-focus');
+    mainTaps[1].classList.remove('tap-focus');
+    mainTaps[0].classList.remove('tap-focus');
+  }
+});
 
 doneBtnCheck.addEventListener('click', (e) => {
   e.preventDefault();
@@ -91,6 +114,10 @@ const donateDivArray = Array.from(donateDiv);
 infoBtnArray.forEach((element, index) => {
   element.addEventListener('click', (e) => {
     e.preventDefault();
+    if (!element.classList.contains('tap-focus')) {
+      element.classList.add('tap-focus');
+      donateBtnArray[index].classList.remove('tap-focus');
+    }
     infoDivArray[index].classList.remove('hide');
     donateDivArray[index].classList.add('hide');
   });
@@ -99,6 +126,10 @@ infoBtnArray.forEach((element, index) => {
 donateBtnArray.forEach((element, index) => {
   element.addEventListener('click', (e) => {
     e.preventDefault();
+    if (!element.classList.contains('tap-focus')) {
+      element.classList.add('tap-focus');
+      infoBtnArray[index].classList.remove('tap-focus');
+    }
     infoDivArray[index].classList.add('hide');
     donateDivArray[index].classList.remove('hide');
     const cardInfo = {
