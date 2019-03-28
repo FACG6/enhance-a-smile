@@ -1,17 +1,12 @@
-const {
-  join,
-} = require('path');
+const { join } = require('path');
 const Joi = require('joi');
 const bcrypt = require('bcryptjs');
-const {
-  compare,
-} = require('bcryptjs');
+const { compare } = require('bcryptjs');
 const unlookCookies = require('./../../../utillity/checkCookie');
 const getAdmin = require('./../../../database/queries/admin/getQuery');
 const updateAdmin = require('../../../database/queries/admin/update');
 const genCookie = require('../../../utillity/genCookie');
 const getQuery = require('../../../database/queries/admin/getQuery.js');
-
 
 exports.getAdminSetting = (request, response) => {
   unlookCookies(request.cookies.jwt)
@@ -29,6 +24,7 @@ exports.getAdminSetting = (request, response) => {
               join('admin', 'setting'),
             ],
             adminInfo,
+            adminName: request.token.name,
           });
         })
         .catch(() => {
@@ -55,10 +51,9 @@ exports.postAdminSettings = (request, response) => {
         .min(5)
         .max(30)
         .required(),
-      email: Joi.string()
-        .email({
-          minDomainAtoms: 2,
-        }),
+      email: Joi.string().email({
+        minDomainAtoms: 2,
+      }),
       oldPassword: Joi.string()
         .min(3)
         .required(),
@@ -69,10 +64,9 @@ exports.postAdminSettings = (request, response) => {
         .min(5)
         .max(30)
         .required(),
-      email: Joi.string()
-        .email({
-          minDomainAtoms: 2,
-        }),
+      email: Joi.string().email({
+        minDomainAtoms: 2,
+      }),
       oldPassword: Joi.string()
         .min(3)
         .required(),
@@ -92,9 +86,7 @@ exports.postAdminSettings = (request, response) => {
   } else {
     unlookCookies(request.cookies.jwt)
       .then((cookieObj) => {
-        const {
-          email,
-        } = cookieObj;
+        const { email } = cookieObj;
         return getQuery('admins', {
           email,
         });
@@ -105,88 +97,84 @@ exports.postAdminSettings = (request, response) => {
             msg: 'email is wrong',
           });
         }
-        compare(request.body.oldPassword, result[0].password)
-          .then((isPass) => {
-            if (!isPass) {
-              response.status(401).send({
-                msg: 'password is wrong',
-              });
-            } else if (request.body.newPassword) {
-              hashPass(request.body.newPassword)
-                .then((hashedPass) => {
-                  const obj = {
-                    password: hashedPass,
-                    full_name: request.body.full_name,
-                    email: request.body.email,
-                  };
-                  updateAdmin('admins', request.cookies.name, obj)
-                    .then(() => {
-                      const {
-                        email,
-                      } = obj;
-                      genCookie({
-                        email,
-                      })
-                        .then((token) => {
-                          response.clearCookie('jwt');
-                          response.clearCookie('name');
-                          response.cookie('jwt', token, {
-                            maxAge: 1000 * 60 * 60 * 24 * 30,
-                          });
-                          response.cookie('name', request.body.full_name, {
-                            maxAge: 1000 * 60 * 60 * 24 * 30,
-                          });
-                          response.status(200).send({
-                            msg: 'settings update',
-                          });
-                        })
-                        .catch(() => {
-                          response.status(500).send({
-                            msg: 'server error',
-                          });
-                        });
+        compare(request.body.oldPassword, result[0].password).then((isPass) => {
+          if (!isPass) {
+            response.status(401).send({
+              msg: 'password is wrong',
+            });
+          } else if (request.body.newPassword) {
+            hashPass(request.body.newPassword)
+              .then((hashedPass) => {
+                const obj = {
+                  password: hashedPass,
+                  full_name: request.body.full_name,
+                  email: request.body.email,
+                };
+                updateAdmin('admins', request.cookies.name, obj)
+                  .then(() => {
+                    const { email } = obj;
+                    genCookie({
+                      email,
                     })
-                    .catch(() => {
-                      response.status(500).send({
-                        msg: 'server error',
+                      .then((token) => {
+                        response.clearCookie('jwt');
+                        response.clearCookie('name');
+                        response.cookie('jwt', token, {
+                          maxAge: 1000 * 60 * 60 * 24 * 30,
+                        });
+                        response.cookie('name', request.body.full_name, {
+                          maxAge: 1000 * 60 * 60 * 24 * 30,
+                        });
+                        response.status(200).send({
+                          msg: 'settings update',
+                        });
+                      })
+                      .catch(() => {
+                        response.status(500).send({
+                          msg: 'server error',
+                        });
                       });
+                  })
+                  .catch(() => {
+                    response.status(500).send({
+                      msg: 'server error',
                     });
-                })
-                .catch(() => {
-                  response.status(500).send({
-                    msg: 'server error',
                   });
+              })
+              .catch(() => {
+                response.status(500).send({
+                  msg: 'server error',
                 });
-            } else {
-              const obj = {
-                full_name: request.body.full_name,
-                email: request.body.email,
-              };
-              updateAdmin('admins', request.cookies.name, obj)
-                .then(() => {
-                  const {
-                    email,
-                  } = obj;
-                  return genCookie({
-                    email,
-                  });
-                })
-                .then((token) => {
-                  response.clearCookie('jwt');
-                  response.clearCookie('name');
-                  response.cookie('jwt', token, {
-                    maxAge: 1000 * 60 * 60 * 24 * 30,
-                  });
-                  response.cookie('name', request.body.full_name, {
-                    maxAge: 1000 * 60 * 60 * 24 * 30,
-                  });
-                  response.status(200).send({
-                    msg: 'settings update',
-                  });
+              });
+          } else {
+            const obj = {
+              full_name: request.body.full_name,
+              email: request.body.email,
+            };
+            updateAdmin('admins', request.cookies.name, obj)
+              .then(() => {
+                const { email } = obj;
+                return genCookie({
+                  email,
                 });
-            }
-          });
-      }).catch(() => {
+              })
+              .then((token) => {
+                response.clearCookie('jwt');
+                response.clearCookie('name');
+                response.cookie('jwt', token, {
+                  maxAge: 1000 * 60 * 60 * 24 * 30,
+                });
+                response.cookie('name', request.body.full_name, {
+                  maxAge: 1000 * 60 * 60 * 24 * 30,
+                });
+                response.status(200).send({
+                  msg: 'settings update',
+                });
+              });
+          }
+        });
+      })
+      .catch(() => {
         response.status(500).send({
           msg: 'server error',
         });

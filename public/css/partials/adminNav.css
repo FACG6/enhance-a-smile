@@ -37,7 +37,7 @@ a {
 
 .nav .current-admin {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-right: 50px;
   width: 180px;
   font-size: 1.2rem;
@@ -46,4 +46,9 @@ a {
 
 .nav-icon {
   font-size: 1.6rem;
+  margin-right: 10px;
+}
+
+.admin-name {
+  text-transform: capitalize;
 }

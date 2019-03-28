@@ -60,6 +60,10 @@ router
   .route('/admin/help-others')
   .get(adminHelpOthers.get)
   .post(adminHelpOthers.post);
+router
+  .route('/admin/requests')
+  .get(adminRequests.get)
+  .post(adminRequests.post);
 router.get('/admin/contact-us', getAdminContactUs);
 router.post('/admin/contact-us', postAdminContactUs);
 router.get('/admin/registers', getAdminRegisters);

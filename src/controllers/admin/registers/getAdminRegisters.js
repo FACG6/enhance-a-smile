@@ -13,6 +13,7 @@ exports.getAdminRegisters = (request, response) => {
         ],
         js: ['domUyils', join('admin', 'registers')],
         res,
+        adminName: request.token.name,
       });
     })
     .catch(() => {
