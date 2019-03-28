@@ -25,7 +25,7 @@
 
 .admin--information-email, .admin--information-name, .admin--information-password, .admin--information-password-show {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .email--label, .full--name-label, .password--label {
@@ -42,6 +42,11 @@
 
 .fa-user-circle {
     font-size: 120px;
+}
+
+.user-profile-icon {
+    margin-bottom: 45px;
+    color: #333;
 }
 
 .fa-eye-slash, .fa-eye {

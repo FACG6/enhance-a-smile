@@ -1,5 +1,5 @@
 <div class="admin--information">
-  <i class="far fa-user-circle"></i>
+  <i class="far fa-user-circle user-profile-icon"></i>
   {{#each result}}
   <div class="information--container">
     <div class="admin--information-name">
@@ -11,14 +11,6 @@
       <div class="email">{{this.email}} </div>
     </div>
     <div class="admin--information-password">
-      <div class="password--label ">Password :</div><input type="password" value={{this.password}} disabled
-        class="password">
-      <i class="fas fa-eye"></i>
-    </div>
-    <div class="admin--information-password-show hiden">
-      <div class="password--label ">Password :</div><input type="text" value={{this.password}} disabled
-        class="password">
-      <i class="fas fa-eye-slash"></i>
     </div>
   </div>
   {{/each}}
