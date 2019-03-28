@@ -3,10 +3,74 @@
   margin: 0px;
   box-sizing: border-box;
 }
-body{
+body {
   margin-left: 250px;
 }
-.main{
-  margin-left: 100px;
+.main {
+  margin-left: 80px;
   margin-top: 80px;
+}
+.titel {
+  text-align: center;
+  font-weight: normal;
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+.form {
+  margin-left: 150px;
+  display: flex;
+}
+.input {
+  margin: 5px;
+  padding: 5px;
+  color: #333;
+  font-size: 25px;
+  background: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  height: 50px;
+}
+.label {
+  margin: 10px;
+  padding: 5px;
+  color: black;
+  font-size: 28px;
+}
+.titelDiv {
+  padding: 30px;
+  font-size: 25px;
+  letter-spacing: 4px;
+  margin-left: 10px;
+  font-family: Roboto;
+
+}
+.inputsDiv {
+  margin-top: 20px;
+  width: 300px;
+  display: flex;
+  page-break-after: 30px;
+  flex-direction: column;
+}
+.save,
+.showPassword {
+  cursor: pointer;
+  background: #333;
+  border: 1px solid rgba(0, 131, 38);
+  color: #fff;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  letter-spacing: 1.5px;
+  width: 200px;
+  height: 50px;
+  align-self: center;
+  margin-top: 20px;
+}
+.btn {
+  display: flex;
+  justify-content: space-evenly;
+}
+.valditMsg {
+  text-align: center;
+  color: rgb(107, 0, 0);
+  font-weight: bold;
 }
