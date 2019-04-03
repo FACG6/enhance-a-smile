@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(245, 227, 193);
+}
+
+.container {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.status {
+  font-size: 10rem;
+  font-family: "Londrina Outline";
+  color: rgb(0, 0, 104);
+}
+
+.keyword {
+  font-size: 5rem;
+  font-family: Roboto;
+  color: rgba(0, 131, 38);
+}
+
+.msg {
+  font-size: 3rem;
+  font-family: rubik;
+  color: rgb(0, 0, 104);
+}
+
+.btn {
+  cursor: pointer;
+  color: #fff;
+  background: rgba(0, 131, 38);
+  border: 1px solid rgba(0, 131, 38);
+  border-radius: 5px;
+  font-family: roboto;
+  font-size: 1.2rem;
+  width: 200px;
+  height: 50px;
+}

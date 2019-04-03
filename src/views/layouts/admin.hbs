@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{> head}}
+</head>
+
+<body>
+    {{> adminNav}}
+    {{> adminSidebar}}
+    {{{body}}}
+    {{#each js}}
+    <script src="/js/{{this}}.js"></script>
+    {{/each}}
+</body>
+
+</html>

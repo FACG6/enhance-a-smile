@@ -1,0 +1,43 @@
+<main class="main">
+  <section class="main--header">
+    <div class="main-tabs">
+      <input type="submit" value="Registers" class="main-emails tabs active">
+      <input type="submit" value="Send Mails" class="main-send tabs">
+    </div>
+  </section>
+
+  <section class="main--emails">
+    <div class="main--mails">
+      <h3 class="main-tital">Email :</h3>
+      <ol class="main-ol">
+        {{#if res}}
+        {{#each res}}
+        <li class="main-li">
+          <h3 class="main-li-h3">{{inc @index}} - {{email}}</h3><button value="{{email}}" class="addEmail"><i
+              class="fas fa-plus-circle"></i></button>
+        </li>
+        {{/each}}
+        {{else}}
+        <li class="main-li">
+          <h3 class="main-li-h3">No Registers Email</h3>
+        </li>
+        {{/if}}
+      </ol>
+    </div>
+  </section>
+
+  <section class="main--sendEmail  hide">
+    <div class="main--sendMail">
+      <form class="main--form">
+        <label for="to" class="main-label">To :</label>
+        <input name="to" id="to" class="main-inputs toEmails" required>
+        <label for="subject" class="main-label">Subject :</label>
+        <input name="subject" id="to" class="main-inputs" required>
+        <label for="message" class="main-label">Message :</label>
+        <textarea name="message" id="message" class="main-inputs main-textarea" required></textarea>
+        <input class="submit" type="submit" value="Send Email" class="main-send">
+      </form>
+      <span class="from-msg"></span>
+    </div>
+  </section>
+</main>

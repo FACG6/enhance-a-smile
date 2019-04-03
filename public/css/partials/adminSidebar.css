@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin-left: 250px;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 40px;
+  width: 250px;
+  height: 100vh;
+  padding-top: 10px;
+  background: #333;
+  color: #fff;
+  font-family: Roboto;
+}
+
+.sidebar .admin-tabs {
+  width: 100%;
+  height: 90%;
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.tab {
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.side-icon {
+  margin-right: 10px;
+  font-size: 2rem;
+}
+
+.focus {
+  background: #fff;
+  padding: 10px 0px 10px 20px;
+}
+
+.black {
+  color: black
+}
+
+.logout {
+  text-align: center;
+  color: #ff606b;
+  margin-bottom: 15px;
+}

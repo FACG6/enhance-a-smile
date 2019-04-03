@@ -17,9 +17,6 @@ const { inputsContactUs, emailRegisterInput } = querySelectorsAll(
   ['.footer-inputs', '.footer--form-registerEmail.footer-inputs'],
 );
 
-// const inputsContactUs = document.querySelectorAll('.footer-inputs');
-// const emailRegisterInput = document.querySelectorAll('.footer--form-registerEmail.footer-inputs');
-
 formContactUs.addEventListener('submit', (e) => {
   e.preventDefault();
   const formData = new FormData(formContactUs);
@@ -30,7 +27,7 @@ formContactUs.addEventListener('submit', (e) => {
   const { email, fullName, message } = dataContactUs;
   if (!email || !validateEamil(email) || !fullName || !message) {
     popup.classList.add('popup-show');
-    popupMassage.innerText = 'Please enter a valid values';
+    popupMassage.textContent = 'Please enter a valid values';
     return false;
   }
   fetch('/contact-us', {
@@ -42,9 +39,18 @@ formContactUs.addEventListener('submit', (e) => {
     .then((res) => {
       if (res.msg === 'done') {
         popup.classList.add('popup-show');
-        popupMassage.innerText = 'We received your message, we will send you our response soon.';
+        popupMassage.textContent = 'We received your message, we will send you our response soon.';
         innerTextRemove(Array.from(inputsContactUs).slice(0, 3));
+      } else if (res.msg === 'inputs not validate') {
+        popup.classList.add('popup-show');
+        popupMassage.textContent = 'Please enter a valid values';
+      } else {
+        popup.classList.add('popup-show');
+        popupMassage.textContent = res.msg;
       }
+    })
+    .catch(() => {
+      popupMassage.textContent = 'There was an error with the server please check your internet connection and try again later';
     });
   return true;
 });
@@ -59,7 +65,7 @@ registerEmail.addEventListener('submit', (e) => {
   const { email } = dataregisterEmail;
   if (!validateEamil(email)) {
     popup.classList.add('popup-show');
-    popupMassage.innerText = 'Please enter valid email';
+    popupMassage.textContent = 'Please enter valid email';
     return false;
   }
   fetch('/register', {
@@ -69,11 +75,20 @@ registerEmail.addEventListener('submit', (e) => {
   })
     .then(res => res.json())
     .then((res) => {
-      if (res.msg === 'done') {
+      if (res.msg.msg === 'inserted sucssfully') {
         popup.classList.add('popup-show');
-        popupMassage.innerText = 'We received your Email, we will send you our news.';
+        popupMassage.textContent = 'We received your Email, we will send you our news.';
         innerTextRemove(Array.from(emailRegisterInput));
+      } else if (res.msg.msg === 'there is some error in server please try again later') {
+        popup.classList.add('popup-show');
+        popupMassage.textContent = res.msg.msg;
+      } else {
+        popup.classList.add('popup-show');
+        popupMassage.textContent = res.msg.msg;
       }
+    })
+    .catch(() => {
+      popupMassage.textContent = 'There was an error with the server please check your internet connection and try again later';
     });
   return true;
 });

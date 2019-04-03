@@ -1,0 +1,20 @@
+<div class="admin--information">
+  <i class="far fa-user-circle user-profile-icon"></i>
+  {{#each result}}
+  <div class="information--container">
+    <div class="admin--information-name">
+      <div class="full--name-label">Full Name :</div>
+      <div class="full--name">{{this.full_name}} </div>
+    </div>
+    <div class="admin--information-email">
+      <div class="email--label">Email :</div>
+      <div class="email">{{this.email}} </div>
+    </div>
+    <div class="admin--information-password">
+    </div>
+  </div>
+  {{/each}}
+  <div class="total--donations">
+    Total Donations :{{{totalDonations}}}
+  </div>
+</div>

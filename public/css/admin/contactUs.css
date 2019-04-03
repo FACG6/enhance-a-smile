@@ -1,0 +1,139 @@
+.main {
+  text-align: center;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main--section {
+  width: 50%;
+}
+
+.main--tabs {
+  display: flex;
+  justify-content: center;
+}
+
+.tabs {
+  width: 50%;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border: none;
+  background: #E2E2E2;
+}
+
+.active {
+  background: black;
+  color: white;
+}
+
+.main--contactUs {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #E2E2E2;
+  padding: 30px;
+  height: 400px;
+  overflow: auto;
+}
+
+.main--tital {
+  margin-bottom: 15px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding-left: 20px;
+}
+
+.main--message {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  position: relative;
+  padding: 10px;
+  background: white;
+  color: #000;
+}
+
+.main--message:nth-child(2n) {
+  background: black;
+  color: white;
+}
+
+.main--message .icon {
+  color: black;
+}
+
+.main--message:nth-child(2n) .icon {
+  color: white;
+}
+
+.done {
+  border: none;
+  background: none;
+  position: absolute;
+  right: 5px;
+}
+
+.hide {
+  display: none;
+}
+
+.popup {
+  position: fixed;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-show {
+  display: flex;
+}
+
+.popup--content {
+  background-color: #fefefe;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #888;
+  width: 30%;
+  height: fit-content;
+}
+
+.popup--content-message {
+  font-weight: 400;
+  color: #393939;
+  margin-bottom: 20px;
+  width: 85%;
+  text-align: center;
+}
+
+.popup--content-Done {
+  color: white;
+  font-size: 30px;
+  letter-spacing: 5px;
+  width: 40%;
+  height: 50px;
+}
+
+.popup--content-Done {
+  background: rgba(0, 131, 38, 0.9);
+  border-radius: 5px;
+  border: none;
+  width: 50%
+}

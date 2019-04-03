@@ -11,33 +11,38 @@ const {
   secundtTap,
   valditMsg,
   validMsgDonation,
-} = querySelectors(['personalSection',
-  'personalForm',
-  'next',
-  'donatSection',
-  'donationForm',
-  'done',
-  'popUpSection',
-  'back',
-  'firstTap',
-  'secundtTap',
-  'valditMsg',
-  'validMsgDonation',
-], ['.personal',
-  '.personal--form',
-  '.next',
-  '.donation',
-  '.donation--form',
-  '.submit',
-  '.popUpBack',
-  '.back',
-  '.taps--peronalInfo',
-  '.taps--donationInfo',
-  '.validMsg',
-  '.validMsgDonation',
-]);
+} = querySelectors(
+  [
+    'personalSection',
+    'personalForm',
+    'next',
+    'donatSection',
+    'donationForm',
+    'done',
+    'popUpSection',
+    'back',
+    'firstTap',
+    'secundtTap',
+    'valditMsg',
+    'validMsgDonation',
+  ],
+  [
+    '.personal',
+    '.personal--form',
+    '.next',
+    '.donation',
+    '.donation--form',
+    '.submit',
+    '.popUpBack',
+    '.back',
+    '.taps--peronalInfo',
+    '.taps--donationInfo',
+    '.validMsg',
+    '.validMsgDonation',
+  ],
+);
 
-next.addEventListener('click', (e) => {
+const nextEvent = (e) => {
   e.preventDefault();
   const formData = new FormData(personalForm);
   const personalInformation = {};
@@ -45,10 +50,7 @@ next.addEventListener('click', (e) => {
     personalInformation[key] = value;
   });
   const {
-    fullName,
-    phoneNumber,
-    cityName,
-    email,
+    fullName, phoneNumber, cityName, email,
   } = personalInformation;
   if (!fullName) {
     valditMsg.textContent = 'Please enter your full name';
@@ -56,10 +58,12 @@ next.addEventListener('click', (e) => {
     valditMsg.textContent = 'Full name must be at least 6 characters';
   } else if (!phoneNumber) {
     valditMsg.textContent = 'Please enter your phone number';
-  } else if ((!/^[0-9]{10}$/.test(phoneNumber))) {
+  } else if (!/^[0-9]{10}$/.test(phoneNumber)) {
     valditMsg.textContent = 'Please enter a valid phone number';
   } else if (!cityName) {
     valditMsg.textContent = 'Please enter your city name';
+  } else if (cityName.length < 2) {
+    valditMsg.textContent = 'City name must be at least 3 characters';
   } else if (!email) {
     valditMsg.textContent = 'Please enter your email';
   } else if (!email) {
@@ -74,7 +78,9 @@ next.addEventListener('click', (e) => {
     valditMsg.textContent = '';
     validMsgDonation.textContent = '';
   }
-});
+};
+
+next.addEventListener('click', nextEvent);
 firstTap.addEventListener('click', (e) => {
   e.preventDefault();
   personalSection.classList.remove('hide');
@@ -84,7 +90,7 @@ firstTap.addEventListener('click', (e) => {
   valditMsg.textContent = '';
   validMsgDonation.textContent = '';
 });
-
+secundtTap.addEventListener('click', nextEvent);
 done.addEventListener('click', (e) => {
   e.preventDefault();
   const formDatavalid = new FormData(donationForm);
@@ -105,8 +111,13 @@ done.addEventListener('click', (e) => {
     seasonWinter,
     seasonAutum,
   } = personalInformationq;
-  if (!numberOfClothes || !(qualityVeryGood || qualityMedium || qualityLow) || !(genderMen || genderWomen || genderKids) || !(seasonSummer || seasonSpring || seasonWinter || seasonAutum)) {
-    validMsgDonation.textContent = 'All fiels rqured';
+  if (
+    !numberOfClothes
+    || !(qualityVeryGood || qualityMedium || qualityLow)
+    || !(genderMen || genderWomen || genderKids)
+    || !(seasonSummer || seasonSpring || seasonWinter || seasonAutum)
+  ) {
+    validMsgDonation.textContent = 'All fields are required';
   } else {
     const formData2 = new FormData(personalForm);
     const personalInformation = {};
@@ -131,10 +142,11 @@ done.addEventListener('click', (e) => {
     });
     const deleteProps = (obj, prop) => {
       for (const p of prop) {
-        (p in obj) && (delete obj[p]);
+        p in obj && delete obj[p];
       }
     };
-    deleteProps(personalInformation, ['qualityVeryGood',
+    deleteProps(personalInformation, [
+      'qualityVeryGood',
       'qualityMedium',
       'qualityLow',
       'genderMen',

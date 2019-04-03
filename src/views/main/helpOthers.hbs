@@ -31,7 +31,9 @@
             <span class="instructions">Please fill out the following form to provide us information about the people you
                 are requesting for.</span>
 
-            <label for="number" class="label">Number Of People Requested for</label>
+            <label for="number" class="label">Number Of People Requested for <span class="user-restrictions">(max
+                    5)</span>
+                :</label>
             <input type="number" name="numOfPeople" id="number" class="numberOfClothes input"
                 placeholder="Enter Number Of People  ... " required>
 
@@ -39,12 +41,14 @@
             <input type="text" name="location" id="location" class="location input" placeholder="Enter Location  ... "
                 required>
 
-            <label for="phone-number" class="label">Phone No. of an indivisual Benefiting from this service (optional)
+            <label for="phone-number" class="label">Phone No. of an indivisual Benefiting from this service <span
+                    class="user-restrictions">(optional)</span>
                 :</label>
             <input type="text" name="phoneNumber" id="phone-number" class="phone-number input"
                 placeholder="Enter Phone Number  ... " required>
 
-            <label for="description" class="label">Add some more description (optional) :</label>
+            <label for="description" class="label">Add some more description <span
+                    class="user-restrictions">(optional)</span> :</label>
             <textarea name="description" id="description" class="description input" cols="30" rows="10"
                 placeholder="Enter Description"></textarea>
             <input type="button" class="done button" value="Done">
@@ -52,7 +56,7 @@
     </section>
     <section class="popUpBack hide">
         <div class="popUp ">
-            <p class="mainParagraph">Thank you for your generosity, we appreciate what you have done today</p>
+            <p class="mainParagraph">We recieved your request and will be reaching you very soon.</p>
             <input type="button" value="Back To Home" class="back">
             <p class="secondryParagraph">By using our service you push us a step forward to achieving our vision</p>
         </div>

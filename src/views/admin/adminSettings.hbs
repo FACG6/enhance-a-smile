@@ -1,0 +1,30 @@
+<main class="main">
+  {{#each adminInfo}}
+  <section>
+    <h1 class="titel">Admin-Settings</h1>
+  </section>
+  <section>
+    <form class="form">
+      <div class="titelDiv">
+        <h3 class="label">Name: </h3>
+        <h3 class="label">Email: </h3>
+        <h3 class="label">New Password: </h3>
+        <h3 class="label">Confirm Password: </h3>
+        <h3 class="label">Old Password: </h3>
+      </div>
+      <div class="inputsDiv">
+        <input type="text" name="full_name" value="{{this.full_name}}" class="full_name input">
+        <input type="email" name="email" value="{{this.email}}" class="email input">
+        <input type="password" name="newPassword" class="newPassword input">
+        <input type="password" name="confirmPassword" class="confirmPassword input">
+        <input type="password" name="oldPassword" class="oldPassword input">
+      </div>
+    </form>
+    <h4 class="valditMsg"></h4>
+    <div class="btn">
+      <input type="button" value="Show Password" class="showPassword">
+      <input type="button" value="Save Settings" class="save">
+    </div>
+  </section>
+  {{/each}}
+</main>
